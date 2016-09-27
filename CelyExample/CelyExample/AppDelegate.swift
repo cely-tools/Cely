@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        Cely.setup(with: window)
+
+        Cely.setup(with: window, forModel: User.ref, requiredProperties: [.Email])
+
         return true
     }
 

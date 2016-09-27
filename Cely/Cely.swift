@@ -38,7 +38,7 @@ public struct Cely {
         CelyClass.sharedInstance.showScreen(self)
     }
 
-    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, for: T, requiredProperties:[U]) where T.Property == U {
+    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, forModel: T, requiredProperties:[U]) where T.Property == U {
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
         setup(with: window)
     }
