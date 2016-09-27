@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aIY-uz-m5q">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cely Login View Controller-->
+        <scene sceneID="TOV-Ih-1Yc">
+            <objects>
+                <viewController id="aIY-uz-m5q" customClass="CelyLoginViewController" customModule="Cely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wmr-7t-K4E"/>
+                        <viewControllerLayoutGuide type="bottom" id="o0h-7c-xO5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bxO-0I-Ha5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvi-Hw-TgH">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7sb-5Z-aFS">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5m-uC-019">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4r-kd-DwE">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-aU-c4H">
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qqQ-aU-c4H" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="1K7-rV-Cb3"/>
+                            <constraint firstItem="gvi-Hw-TgH" firstAttribute="top" secondItem="wmr-7t-K4E" secondAttribute="bottom" constant="100" id="PbQ-xB-fW4"/>
+                            <constraint firstItem="7sb-5Z-aFS" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="Wx8-iO-nq8"/>
+                            <constraint firstItem="qqQ-aU-c4H" firstAttribute="top" secondItem="7sb-5Z-aFS" secondAttribute="bottom" constant="100" id="Xp7-ob-rT3"/>
+                            <constraint firstItem="7sb-5Z-aFS" firstAttribute="top" secondItem="gvi-Hw-TgH" secondAttribute="bottom" constant="40" id="cOq-lZ-RmS"/>
+                            <constraint firstItem="gvi-Hw-TgH" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="jhR-qd-VTr"/>
+                            <constraint firstItem="7sb-5Z-aFS" firstAttribute="leading" secondItem="bxO-0I-Ha5" secondAttribute="leadingMargin" constant="20" id="wn2-8Z-f8S"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="loginButton" destination="qqQ-aU-c4H" id="6wr-rR-gvu"/>
+                        <outlet property="passwordField" destination="h4r-kd-DwE" id="4Po-h7-Tev"/>
+                        <outlet property="usernameField" destination="I5m-uC-019" id="Kvb-jc-hPC"/>
+                        <outletCollection property="textFields" destination="I5m-uC-019" collectionClass="NSMutableArray" id="TcM-A0-M7b"/>
+                        <outletCollection property="textFields" destination="h4r-kd-DwE" collectionClass="NSMutableArray" id="HM1-cw-u7L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KID-oM-kvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="338"/>
+        </scene>
+    </scenes>
+</document>
