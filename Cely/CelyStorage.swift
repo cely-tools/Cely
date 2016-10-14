@@ -13,9 +13,12 @@ class CelyStorage {
     // MARK: - Variables
     static let sharedInstance = CelyStorage()
 
-    private init(){}
-    // Secure storage
+    private init() {}
 
+    // Secure storage
+    func storeSecurely() {
+
+    }
     // Insecure storage
 
 

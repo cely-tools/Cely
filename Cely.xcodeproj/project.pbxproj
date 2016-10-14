@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F801A1B1DB141C100187FA6 /* CelyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1A1DB141C100187FA6 /* CelyManager.swift */; };
+		1F801A1B1DB141C100187FA6 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */; };
 		1F801A201DB143C100187FA6 /* CelyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1F1DB143C100187FA6 /* CelyConstants.swift */; };
 		1F801A221DB1473A00187FA6 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A211DB1473A00187FA6 /* CelyStorage.swift */; };
 		1FAA02401D4E7B5B00A6D209 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FAA023F1D4E7B5B00A6D209 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2B23E1DB1751600716E80 /* CelyTests.swift */; };
+		1FB2B2411DB1751600716E80 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAA023C1D4E7B5B00A6D209 /* Cely.framework */; };
 		1FDAB4DA1D4E7BC9003AC5EE /* Cely.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */; };
 		1FDAB4DC1D4E7BDC003AC5EE /* CelyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */; };
 		1FDAB4DE1D4E7BE4003AC5EE /* Cely.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */; };
@@ -39,16 +41,26 @@
 			remoteGlobalIDString = 1F8CB60F1D9B135D00F404E9;
 			remoteInfo = CelyExampleUITests;
 		};
+		1FB2B2421DB1751600716E80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FAA02331D4E7B5B00A6D209 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FAA023B1D4E7B5B00A6D209;
+			remoteInfo = Cely;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F801A1A1DB141C100187FA6 /* CelyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyManager.swift; sourceTree = "<group>"; };
+		1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManager.swift; sourceTree = "<group>"; };
 		1F801A1F1DB143C100187FA6 /* CelyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyConstants.swift; sourceTree = "<group>"; };
 		1F801A211DB1473A00187FA6 /* CelyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyStorage.swift; sourceTree = "<group>"; };
 		1F8CB65F1D9B143C00F404E9 /* CelyExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CelyExample.xcodeproj; path = CelyExample/CelyExample.xcodeproj; sourceTree = "<group>"; };
 		1FAA023C1D4E7B5B00A6D209 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAA023F1D4E7B5B00A6D209 /* Cely.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cely.h; sourceTree = "<group>"; };
 		1FAA02411D4E7B5B00A6D209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FB2B23C1DB1751600716E80 /* CelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FB2B23E1DB1751600716E80 /* CelyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelyTests.swift; sourceTree = "<group>"; };
+		1FB2B2401DB1751600716E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cely.storyboard; sourceTree = "<group>"; };
 		1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyLoginViewController.swift; sourceTree = "<group>"; };
 		1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cely.swift; sourceTree = "<group>"; };
@@ -61,6 +73,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FFCE1121DB12FAE00A42A3B /* Locksmith.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FB2B2391DB1751600716E80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FB2B2411DB1751600716E80 /* Cely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAA023E1D4E7B5B00A6D209 /* Cely */,
+				1FB2B23D1DB1751600716E80 /* CelyTests */,
 				1FFCE1101DB12FAE00A42A3B /* Frameworks */,
 				1F8CB65F1D9B143C00F404E9 /* CelyExample.xcodeproj */,
 			);
@@ -90,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAA023C1D4E7B5B00A6D209 /* Cely.framework */,
+				1FB2B23C1DB1751600716E80 /* CelyTests.xctest */,
 			);
 			name = Products;
 			path = ..;
@@ -101,14 +123,31 @@
 				1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */,
 				1F801A1F1DB143C100187FA6 /* CelyConstants.swift */,
 				1F801A211DB1473A00187FA6 /* CelyStorage.swift */,
-				1F801A1A1DB141C100187FA6 /* CelyManager.swift */,
+				1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */,
 				1FAA023F1D4E7B5B00A6D209 /* Cely.h */,
-				1FAA02411D4E7B5B00A6D209 /* Info.plist */,
-				1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */,
-				1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */,
+				1FB2B24A1DB1754B00716E80 /* Supporting Files */,
 				1FAA023D1D4E7B5B00A6D209 /* Products */,
 			);
 			path = Cely;
+			sourceTree = "<group>";
+		};
+		1FB2B23D1DB1751600716E80 /* CelyTests */ = {
+			isa = PBXGroup;
+			children = (
+				1FB2B23E1DB1751600716E80 /* CelyTests.swift */,
+				1FB2B2401DB1751600716E80 /* Info.plist */,
+			);
+			path = CelyTests;
+			sourceTree = "<group>";
+		};
+		1FB2B24A1DB1754B00716E80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1FAA02411D4E7B5B00A6D209 /* Info.plist */,
+				1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */,
+				1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		1FFCE1101DB12FAE00A42A3B /* Frameworks */ = {
@@ -137,6 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FAA02501D4E7B5B00A6D209 /* Build configuration list for PBXNativeTarget "Cely" */;
 			buildPhases = (
+				1FB2B24B1DB1770B00716E80 /* Swift Lint */,
 				1FAA02371D4E7B5B00A6D209 /* Sources */,
 				1FAA02381D4E7B5B00A6D209 /* Frameworks */,
 				1FAA02391D4E7B5B00A6D209 /* Headers */,
@@ -152,6 +192,24 @@
 			productReference = 1FAA023C1D4E7B5B00A6D209 /* Cely.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		1FB2B23B1DB1751600716E80 /* CelyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FB2B2491DB1751600716E80 /* Build configuration list for PBXNativeTarget "CelyTests" */;
+			buildPhases = (
+				1FB2B2381DB1751600716E80 /* Sources */,
+				1FB2B2391DB1751600716E80 /* Frameworks */,
+				1FB2B23A1DB1751600716E80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FB2B2431DB1751600716E80 /* PBXTargetDependency */,
+			);
+			name = CelyTests;
+			productName = CelyTests;
+			productReference = 1FB2B23C1DB1751600716E80 /* CelyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -166,6 +224,11 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 7CX9JN6SPG;
 						LastSwiftMigration = 0800;
+					};
+					1FB2B23B1DB1751600716E80 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = K83DSSAEPP;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -189,6 +252,7 @@
 			projectRoot = "";
 			targets = (
 				1FAA023B1D4E7B5B00A6D209 /* Cely */,
+				1FB2B23B1DB1751600716E80 /* CelyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,9 +290,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FB2B23A1DB1751600716E80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1FB2B24B1DB1770B00716E80 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		1FFCE1131DB12FC300A42A3B /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,11 +340,27 @@
 				1FDAB4DE1D4E7BE4003AC5EE /* Cely.swift in Sources */,
 				1FDAB4DC1D4E7BDC003AC5EE /* CelyLoginViewController.swift in Sources */,
 				1F801A221DB1473A00187FA6 /* CelyStorage.swift in Sources */,
-				1F801A1B1DB141C100187FA6 /* CelyManager.swift in Sources */,
+				1F801A1B1DB141C100187FA6 /* CelyWindowManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FB2B2381DB1751600716E80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FB2B2431DB1751600716E80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FAA023B1D4E7B5B00A6D209 /* Cely */;
+			targetProxy = 1FB2B2421DB1751600716E80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1FAA024E1D4E7B5B00A6D209 /* Debug */ = {
@@ -407,6 +508,35 @@
 			};
 			name = Release;
 		};
+		1FB2B2441DB1751600716E80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = K83DSSAEPP;
+				INFOPLIST_FILE = CelyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.CelyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1FB2B2451DB1751600716E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = K83DSSAEPP;
+				INFOPLIST_FILE = CelyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.CelyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -424,6 +554,15 @@
 			buildConfigurations = (
 				1FAA02511D4E7B5B00A6D209 /* Debug */,
 				1FAA02521D4E7B5B00A6D209 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FB2B2491DB1751600716E80 /* Build configuration list for PBXNativeTarget "CelyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FB2B2441DB1751600716E80 /* Debug */,
+				1FB2B2451DB1751600716E80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

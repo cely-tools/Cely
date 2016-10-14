@@ -25,18 +25,20 @@ public struct Cely {
         CelyWindowManager.sharedInstance.window = window
         CelyWindowManager.sharedInstance.showScreen(self)
     }
-
-    public static func setRequiredProperties(properties: [CelyProperty]) {
-
-    }
 }
 
 public extension Cely {
 
-    static func isLoggedIn() -> Bool {
-        guard Cely.requiredProperties.count > 0 else { return false }
 
-        let missingRequiredProperties = Cely.requiredProperties
+    /// Checks to see if required properties are in storage.
+    ///
+    /// - parameter properties: Array of required properties that need to be in storage.
+    ///
+    /// - returns: Boolean whether or not the user is logged in.
+    static func isLoggedIn(requiredProperties properties: [CelyProperty] = requiredProperties) -> Bool {
+        guard properties.count > 0 else { return false }
+
+        let missingRequiredProperties = properties
             .map({return CelyStorage.get($0)})
             .contains(where: {$0 == nil})
 
@@ -50,7 +52,7 @@ public extension Cely {
     static func set(_ value: Any?, key: String) {
         return CelyStorage.set(value, forKey: key)
     }
-    
+
     static func userAction(_ action: CelyAction) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: action.rawValue), object: nil)
     }
