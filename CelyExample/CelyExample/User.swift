@@ -15,17 +15,17 @@ struct User: CelyUser {
     private init() {}
     static let ref = User()
 
-    enum Property: CelyProperties {
+    enum Property: CelyProperty {
         case Username = "username"
         case Email = "email"
         case Token = "token"
 
         func save(_ value: Any) {
-            Cely.save(self.rawValue, value: value)
+            Cely.set(value, key: rawValue)
         }
 
         func get() -> Any? {
-            return Cely.get(self.rawValue)
+            return Cely.get(key: rawValue)
         }
     }
 }

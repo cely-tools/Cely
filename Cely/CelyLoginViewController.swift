@@ -33,8 +33,9 @@ class CelyLoginViewController: UIViewController {
         if let fields = textFields ,
             fields.flatMap({$0}).reduce(true, {$0 && !$1.text!.isEmpty}) {
 
-            Cely.save("username", value: usernameField?.text)
-            Cely.save("token", value: "\(usernameField?.text) + \(passwordField?.text)")
+
+            Cely.set(usernameField?.text, key: "username")
+            Cely.set("\(usernameField?.text) + \(passwordField?.text)", key: "token")
             Cely.userAction(.LoggedIn)
         }
     }

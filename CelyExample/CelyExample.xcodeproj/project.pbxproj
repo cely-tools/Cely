@@ -16,7 +16,7 @@
 		1F8CB6141D9B135D00F404E9 /* CelyExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CB6131D9B135D00F404E9 /* CelyExampleUITests.swift */; };
 		1F8CB66F1D9B152900F404E9 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8CB66E1D9B152900F404E9 /* Cely.framework */; };
 		1F8CB6701D9B152900F404E9 /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8CB66E1D9B152900F404E9 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1FE3E28A1D9B19D10007C51E /* User.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E2891D9B19D10007C51E /* User.model.swift */; };
+		1FE3E28A1D9B19D10007C51E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E2891D9B19D10007C51E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 		1F8CB6151D9B135D00F404E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F8CB66C1D9B144300F404E9 /* Cely.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cely.framework; path = "../build/Debug-iphoneos/Cely.framework"; sourceTree = "<group>"; };
 		1F8CB66E1D9B152900F404E9 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FE3E2891D9B19D10007C51E /* User.model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.model.swift; sourceTree = "<group>"; };
+		1FE3E2891D9B19D10007C51E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,6 @@
 		1F8CB5E71D9B135C00F404E9 = {
 			isa = PBXGroup;
 			children = (
-				1F8CB66E1D9B152900F404E9 /* Cely.framework */,
 				1F8CB5F21D9B135C00F404E9 /* CelyExample */,
 				1F8CB6071D9B135C00F404E9 /* CelyExampleTests */,
 				1F8CB6121D9B135D00F404E9 /* CelyExampleUITests */,
@@ -126,7 +125,7 @@
 				1F8CB5FA1D9B135C00F404E9 /* Assets.xcassets */,
 				1F8CB5FC1D9B135C00F404E9 /* LaunchScreen.storyboard */,
 				1F8CB5FF1D9B135C00F404E9 /* Info.plist */,
-				1FE3E2891D9B19D10007C51E /* User.model.swift */,
+				1FE3E2891D9B19D10007C51E /* User.swift */,
 			);
 			path = CelyExample;
 			sourceTree = "<group>";
@@ -152,6 +151,7 @@
 		1F8CB66B1D9B144300F404E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F8CB66E1D9B152900F404E9 /* Cely.framework */,
 				1F8CB66C1D9B144300F404E9 /* Cely.framework */,
 			);
 			name = Frameworks;
@@ -297,7 +297,7 @@
 			files = (
 				1F8CB5F61D9B135C00F404E9 /* ViewController.swift in Sources */,
 				1F8CB5F41D9B135C00F404E9 /* AppDelegate.swift in Sources */,
-				1FE3E28A1D9B19D10007C51E /* User.model.swift in Sources */,
+				1FE3E28A1D9B19D10007C51E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
