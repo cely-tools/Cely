@@ -20,8 +20,8 @@ public protocol CelyUser {
     associatedtype Property : RawRepresentable
 }
 
-/// Actions for Cely to perform
-public enum CelyAction: CelyCommands {
-    case LoggedIn = "c1Action.login.user"
-    case LoggedOut = "c1Action.logout.user"
+/// Statuses for Cely to perform actions on
+public enum CelyStatus: CelyCommands {
+    case LoggedIn = "c1Action.LoggedIn.user"
+    case LoggedOut = "c1Action.LoggedOut.user"
 }

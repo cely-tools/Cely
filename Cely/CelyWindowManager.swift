@@ -11,18 +11,21 @@ import Foundation
 class CelyWindowManager {
 
     // MARK: - Variables
-    static let sharedInstance = CelyWindowManager()
-    var window: UIWindow?
+    static let manager = CelyWindowManager()
+    var window: UIWindow!
 
-    fileprivate init() {
-        addObserver(#selector(homeScreen), action: .LoggedIn)
-        addObserver(#selector(loginScreen), action: .LoggedOut)
+    fileprivate init() {}
+
+    static func setup(window _window: UIWindow) {
+        CelyWindowManager.manager.window = _window
+        // TODO: Replace selectors with blocks that I can access with test
+        CelyWindowManager.manager.addObserver(#selector(goToHomeScreen), action: .LoggedIn)
+        CelyWindowManager.manager.addObserver(#selector(goToLoginScreen), action: .LoggedOut)
     }
-
     // MARK: - Private Methods
 
     // MARK: - Public Methods
-    func addObserver(_ selector: Selector, action: CelyAction) {
+    func addObserver(_ selector: Selector, action: CelyStatus) {
         NotificationCenter.default
             .addObserver(self,
                          selector: selector,
@@ -30,21 +33,26 @@ class CelyWindowManager {
                          object: nil)
     }
 
-    @objc private func homeScreen() {
-        CelyWindowManager.sharedInstance.window!.rootViewController = CelyWindowManager.showHomeScreen()
+    /// Bring user to home screen
+    @objc private func goToHomeScreen() {
+        CelyWindowManager.manager.window.rootViewController = CelyWindowManager.showHomeScreen()
     }
 
-    @objc private func loginScreen() {
-        CelyWindowManager.sharedInstance.window!.rootViewController = CelyWindowManager.showLoginScreen()
+    /// Bring user to login screen
+    @objc private func goToLoginScreen() {
+        CelyWindowManager.manager.window.rootViewController = CelyWindowManager.showLoginScreen()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 
-    public func showScreen(_ from: Cely.Type) {
-        let vc = from.isLoggedIn() ? CelyWindowManager.showHomeScreen() : CelyWindowManager.showLoginScreen()
-        CelyWindowManager.sharedInstance.window!.rootViewController = vc
+    /// Show screens Depending on user's current status
+    ///
+    /// - parameter from: `CelyStatus`
+    func showScreen(forStatus status: CelyStatus) {
+        if status == .LoggedIn {
+            goToHomeScreen()
+        } else {
+            goToLoginScreen()
+        }
     }
 
     class func showLoginScreen() -> UIViewController? {
@@ -56,5 +64,9 @@ class CelyWindowManager {
 
     class func showHomeScreen() -> UIViewController? {
         return UIStoryboard(name: "Main", bundle:Bundle.main).instantiateInitialViewController()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
