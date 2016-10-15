@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Locksmith
+
 internal let kCelyDomain = "cely.storage"
 
 public class CelyStorage {
