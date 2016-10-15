@@ -40,10 +40,10 @@ class CelyWindowManagerTest: XCTestCase {
 
     func testShowScreen() {
         testMatchingHomeScreens()
-        CelyWindowManager.manager.showScreenWith(notification: NSNotification(name: NSNotification.Name(rawValue: "CelyStatus.LoggedIn.user"), object: CelyStatus.LoggedIn))
+        Cely.changeStatus(to: .LoggedIn)
         XCTAssert(CelyWindowManager.manager.window.rootViewController == testHomeScreen, "did not properly set manager's home screen")
 
-        CelyWindowManager.manager.showScreenWith(notification: NSNotification(name: NSNotification.Name(rawValue: "CelyStatus.LoggedOut.user"), object: CelyStatus.LoggedOut))
+        Cely.changeStatus(to: .LoggedOut)
         XCTAssert(CelyWindowManager.manager.window.rootViewController == testLoginScreen, "did not properly set manager's login screen")
     }
 }

@@ -134,10 +134,10 @@ class CelyTests: XCTestCase {
     }
 
     func testUserAction() {
-        Cely.userAction(.LoggedIn)
+        Cely.changeStatus(to: .LoggedIn)
         XCTAssert(triggeredNotification == "CelyStatus.LoggedIn.user", "The .LoggedIn status didnt properly set 'triggeredNotification'")
 
-        Cely.userAction(.LoggedOut)
+        Cely.changeStatus(to: .LoggedOut)
         XCTAssert(triggeredNotification == "CelyStatus.LoggedOut.user", "The .LoggedOut status didnt properly set 'triggeredNotification'")
     }
 

@@ -16,7 +16,7 @@ struct Dummy {
     var storeSecurely: Bool!
 
     func failedMessage(returnedValue: Any?) -> String {
-        return "\(key!) failed! It's supposed to equal '\(value!)'. Not '\(returnedValue!)'."
+        return "\(key!) failed! It's supposed to equal '\(value)'. Not '\(returnedValue)'."
     }
     func failedToSet() -> String {
         return "[\(key!), securely: \(storeSecurely!)]: failed to set in storage!"
@@ -80,6 +80,7 @@ class CelyStorageTests: XCTestCase {
 
     override func tearDown() {
         dummyData = nil
+        UserDefaults().removePersistentDomain(forName: kCelyDomain)
         super.tearDown()
     }
 
@@ -87,7 +88,11 @@ class CelyStorageTests: XCTestCase {
         dummyData.forEach { dummy in
 
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely)
-            XCTAssert(success, dummy.failedToSet())
+            if dummy.value != nil {
+                XCTAssert(success, dummy.failedToSet())
+            } else {
+                XCTAssert(success == false, "You're not supposed to be able to set nil in the storage.")
+            }
         }
     }
 
@@ -105,15 +110,21 @@ class CelyStorageTests: XCTestCase {
     func testRemoveAllData() {
         testSavingData()
         var secureCount = store.secureStorage.count
-        var storageCount = store.storage.count
+        var storageCount = dummyData.flatMap({ dummy -> Any? in
+            guard dummy.storeSecurely == false else { return nil }
+            return store.get(dummy.key)
+        }).count
 
-        XCTAssert(secureCount == 6, "Did not add all entries inside of 'secureStorage'")
-        XCTAssert(storageCount == 6, "Did not add all entries inside of 'storage'")
+        XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage'")
+        XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage'")
 
         store.removeAllData()
 
         secureCount = store.secureStorage.count
-        storageCount = store.storage.count
+        storageCount = dummyData.flatMap({ dummy -> Any? in
+            guard dummy.storeSecurely == false else { return nil }
+            return store.get(dummy.key)
+        }).count
 
         XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage'")
         XCTAssert(storageCount == 0, "Did not remove all entries inside of 'storage'")

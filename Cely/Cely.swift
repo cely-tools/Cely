@@ -72,15 +72,15 @@ extension Cely {
     /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String, fromStorage store: CelyStorage = store) -> Bool {
-        return store.set(value, forKey: key)
+    @discardableResult public static func save(_ value: Any?, forKey key: String, fromStorage store: CelyStorage = store, securely secure: Bool = false) -> Bool {
+        return store.set(value, forKey: key, securely: secure)
     }
 
     /// Perform action like `LoggedIn` or `LoggedOut`
     ///
     /// - parameter status: CelyStatus
     public static func changeStatus(to status: CelyStatus) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: status.rawValue), object: ["status" : status.rawValue])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: status.rawValue), object: status)
     }
 
     /// Log user out

@@ -37,7 +37,7 @@ class CelyWindowManager {
             .addObserver(self,
                          selector: selector,
                          name: NSNotification.Name(rawValue: action.rawValue),
-                         object: action)
+                         object: nil)
     }
 
     // MARK: - Public Methods
