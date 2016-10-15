@@ -12,7 +12,7 @@ class CelyWindowManager {
 
     // MARK: - Variables
     static let manager = CelyWindowManager()
-    var window: UIWindow!
+    private var window: UIWindow!
 
     fileprivate init() {}
 

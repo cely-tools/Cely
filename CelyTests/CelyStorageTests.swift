@@ -55,9 +55,13 @@ struct Dummy {
 class CelyStorageTests: XCTestCase {
 
     var dummyData: [Dummy]!
+    var store: CelyStorage!
 
     override func setUp() {
         super.setUp()
+
+        store = CelyStorage.sharedInstance
+
         dummyData = [
             Dummy(key: "testString", value: "string success", storeSecurely: false),
             Dummy(key: "testString", value: "string success", storeSecurely: true),
@@ -82,7 +86,7 @@ class CelyStorageTests: XCTestCase {
     func testSavingData() {
         dummyData.forEach { dummy in
 
-            let success = CelyStorage.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely)
+            let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely)
             XCTAssert(success, dummy.failedToSet())
         }
     }
@@ -90,23 +94,23 @@ class CelyStorageTests: XCTestCase {
     func testGettingData() {
         testSavingData()
         dummyData.forEach { dummy in
-            let data = CelyStorage.get(dummy.key)
+            let data = store.get(dummy.key)
             XCTAssert(dummy.test(value: data), dummy.failedMessage(returnedValue: data))
         }
     }
 
     func testRemoveAllData() {
         testSavingData()
-        var secureCount = CelyStorage.sharedInstance.secureStorage.count
-        var storageCount = CelyStorage.sharedInstance.storage.count
+        var secureCount = store.secureStorage.count
+        var storageCount = store.storage.count
 
         XCTAssert(secureCount == 6, "Did not add all entries inside of 'secureStorage'")
         XCTAssert(storageCount == 6, "Did not add all entries inside of 'storage'")
 
-        CelyStorage.removeAllData()
+        store.removeAllData()
 
-        secureCount = CelyStorage.sharedInstance.secureStorage.count
-        storageCount = CelyStorage.sharedInstance.storage.count
+        secureCount = store.secureStorage.count
+        storageCount = store.storage.count
 
         XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage'")
         XCTAssert(storageCount == 0, "Did not remove all entries inside of 'storage'")

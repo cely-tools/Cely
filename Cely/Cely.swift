@@ -11,10 +11,12 @@ import UIKit
 
 public struct Cely {
 
-    private init() {}
+    fileprivate init() {}
 
     /// Properties that are needed inorder for user to stay logged in.
     public static var requiredProperties: [CelyProperty] = []
+    public static var store: CelyStorage = CelyStorage.sharedInstance
+
 
     /// Sets up Cely within your application
     ///
@@ -24,8 +26,10 @@ public struct Cely {
     public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, forModel: T, requiredProperties:[U] = []) where T.Property == U {
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
 
-        CelyWindowManager.manager.window = window
-        CelyWindowManager.manager.showScreen(forStatus: currentLoginStatus())
+        if let window = window {
+            CelyWindowManager.setup(window: window)
+            CelyWindowManager.manager.showScreen(forStatus: currentLoginStatus())
+        }
     }
 }
 
@@ -33,14 +37,15 @@ extension Cely {
 
     /// Will return the `CelyStatus` of the current user.
     ///
-    /// - parameter properties: Array of required properties that need to be in storage.
+    /// - parameter properties: Array of required properties that need to be in store.
+    /// - parameter store:    Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
-    /// - returns: `CelyStatus`. If `requiredProperties` are all in storage, it will return `.LoggedIn`, else `.LoggedOut`
-    public static func currentLoginStatus(requiredProperties properties: [CelyProperty] = requiredProperties) -> CelyStatus {
+    /// - returns: `CelyStatus`. If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
+    public static func currentLoginStatus(requiredProperties properties: [CelyProperty] = requiredProperties, fromStorage store: CelyStorage = store) -> CelyStatus {
         guard properties.count > 0 else { return .LoggedOut }
 
         let missingRequiredProperties = properties
-            .map({return CelyStorage.get($0)})
+            .map({return store.get($0)})
             .contains(where: {$0 == nil})
 
         if missingRequiredProperties {
@@ -52,21 +57,23 @@ extension Cely {
 
     /// Returns stored data for key.
     ///
-    /// - parameter key: String
+    /// - parameter key:    String
+    /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: Returns data as an optional `Any`
-    public static func get(key: String) -> Any? {
-        return CelyStorage.get(key)
+    public static func get(key: String, fromStorage store: CelyStorage = store) -> Any? {
+        return store.get(key)
     }
 
-    /// Saves data in storage
+    /// Saves data in store
     ///
-    /// - parameter value: data you want to save
-    /// - parameter key:   String for the key
+    /// - parameter value:   data you want to save
+    /// - parameter key:     String for the key
+    /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String) -> Bool {
-        return CelyStorage.set(value, forKey: key)
+    @discardableResult public static func save(_ value: Any?, forKey key: String, fromStorage store: CelyStorage = store) -> Bool {
+        return store.set(value, forKey: key)
     }
 
     /// Perform action like `LoggedIn` or `LoggedOut`
@@ -78,8 +85,15 @@ extension Cely {
 
 
     /// Log user out
-    public static func logout() {
-        CelyStorage.removeAllData()
+    public static func logout(useStorage store: CelyStorage = store) {
+        store.removeAllData()
         userAction(.LoggedOut)
+    }
+
+    /// Returns whether or not the user is logged in
+    ///
+    /// - returns: `Boolean`
+    public static func isLoggedIn() -> Bool {
+        return currentLoginStatus() == .LoggedIn
     }
 }

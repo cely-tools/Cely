@@ -9,22 +9,19 @@
 import Foundation
 import Locksmith
 
+
 public class CelyStorage {
     // MARK: - Variables
     static let sharedInstance = CelyStorage()
     var secureStorage: [String : Any?] = [:]
     var storage: [String : Any?] = [:]
-    private init() {}
-
-    // Insecure storage
-
+    init() {}
 
     /// Removes all data from both `secureStorage` and regular `storage`
-    static func removeAllData() {
+    func removeAllData() {
         CelyStorage.sharedInstance.secureStorage = [:]
         CelyStorage.sharedInstance.storage = [:]
     }
-
 
     /// Saves data to storage
     ///
@@ -33,7 +30,7 @@ public class CelyStorage {
     /// - parameter secure: `Boolean`: If you want to store the data securely. Set to `True` by default
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
-    static func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> Bool {
+    func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> Bool {
         if secure {
             CelyStorage.sharedInstance.secureStorage[key] = value
         } else {
@@ -42,7 +39,12 @@ public class CelyStorage {
         return true
     }
 
-    static func get(_ key: String) -> Any? {
+    /// Retrieve user data from key
+    ///
+    /// - parameter key: String
+    ///
+    /// - returns: Data For key value
+    func get(_ key: String) -> Any? {
         if let value = CelyStorage.sharedInstance.secureStorage[key] {
             return value
         } else if let value = CelyStorage.sharedInstance.storage[key] {
