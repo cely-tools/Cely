@@ -1,3 +1,7 @@
 disabled_rules: # rule identifiers to exclude from running
   - line_length
   - variable_name
+  - force_cast
+
+opt_in_rules:
+  - missing-docs

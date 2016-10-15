@@ -63,7 +63,9 @@ extension Cely {
     ///
     /// - parameter value: data you want to save
     /// - parameter key:   String for the key
-    public static func set(_ value: Any?, key: String) {
+    ///
+    /// - returns: `Boolean`: Whether or not your value was successfully set.
+    @discardableResult public static func save(_ value: Any?, forKey key: String) -> Bool {
         return CelyStorage.set(value, forKey: key)
     }
 

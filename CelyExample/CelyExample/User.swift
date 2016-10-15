@@ -21,7 +21,7 @@ struct User: CelyUser {
         case Token = "token"
 
         func save(_ value: Any) {
-            Cely.set(value, key: rawValue)
+            Cely.save(value, forKey: rawValue)
         }
 
         func get() -> Any? {
