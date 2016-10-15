@@ -16,8 +16,8 @@ public typealias CelyCommands = String
 
 /// Statuses for Cely to perform actions on
 public enum CelyStatus: CelyCommands {
-    case LoggedIn = "CelyAction.LoggedIn.user"
-    case LoggedOut = "CelyAction.LoggedOut.user"
+    case LoggedIn = "CelyStatus.LoggedIn.user"
+    case LoggedOut = "CelyStatus.LoggedOut.user"
 }
 
 /// Protocol for model class to implements

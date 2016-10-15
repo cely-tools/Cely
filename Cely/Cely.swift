@@ -28,7 +28,7 @@ public struct Cely {
 
         if let window = window {
             CelyWindowManager.setup(window: window)
-            CelyWindowManager.manager.showScreen(forStatus: currentLoginStatus())
+            changeStatus(to: currentLoginStatus())
         }
     }
 }
@@ -78,16 +78,17 @@ extension Cely {
 
     /// Perform action like `LoggedIn` or `LoggedOut`
     ///
-    /// - parameter action: CelyStatus
-    public static func userAction(_ status: CelyStatus) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: status.rawValue), object: nil)
+    /// - parameter status: CelyStatus
+    public static func changeStatus(to status: CelyStatus) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: status.rawValue), object: ["status" : status.rawValue])
     }
 
-
     /// Log user out
+    ///
+    /// - parameter store: `CelyStorage`. Defaulted to `Cely's` CelyStorage instance
     public static func logout(useStorage store: CelyStorage = store) {
         store.removeAllData()
-        userAction(.LoggedOut)
+        changeStatus(to: .LoggedOut)
     }
 
     /// Returns whether or not the user is logged in

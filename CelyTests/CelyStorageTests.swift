@@ -64,17 +64,17 @@ class CelyStorageTests: XCTestCase {
 
         dummyData = [
             Dummy(key: "testString", value: "string success", storeSecurely: false),
-            Dummy(key: "testString", value: "string success", storeSecurely: true),
+            Dummy(key: "testString_secure", value: "string success", storeSecurely: true),
             Dummy(key: "testFloat", value: 1.058, storeSecurely: false),
-            Dummy(key: "testFloat", value: 1.058, storeSecurely: true),
+            Dummy(key: "testFloat_secure", value: 1.058, storeSecurely: true),
             Dummy(key: "testInt", value: 100, storeSecurely: false),
-            Dummy(key: "testInt", value: 100, storeSecurely: true),
+            Dummy(key: "testInt_secure", value: 100, storeSecurely: true),
             Dummy(key: "testNil", value: nil, storeSecurely: false),
-            Dummy(key: "testNil", value: nil, storeSecurely: true),
+            Dummy(key: "testNil_secure", value: nil, storeSecurely: true),
             Dummy(key: "testArrayOfStrings", value: ["string1 success", "string2 success"], storeSecurely: false),
-            Dummy(key: "testArrayOfStrings", value: ["string1 success", "string2 success"], storeSecurely: true),
+            Dummy(key: "testArrayOfStrings_secure", value: ["string1 success", "string2 success"], storeSecurely: true),
             Dummy(key: "testArrayOfNumbers", value: [50, 48.5, 895.5], storeSecurely: false),
-            Dummy(key: "testArrayOfNumbers", value: [50, 48.5, 895.5], storeSecurely: true)
+            Dummy(key: "testArrayOfNumbers_secure", value: [50, 48.5, 895.5], storeSecurely: true)
         ]
     }
 
@@ -97,6 +97,9 @@ class CelyStorageTests: XCTestCase {
             let data = store.get(dummy.key)
             XCTAssert(dummy.test(value: data), dummy.failedMessage(returnedValue: data))
         }
+
+        let data = store.get("non-existing-value")
+        XCTAssert(data == nil, "Data should've return as `nil`")
     }
 
     func testRemoveAllData() {

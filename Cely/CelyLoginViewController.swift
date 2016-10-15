@@ -34,7 +34,7 @@ class CelyLoginViewController: UIViewController {
 
             Cely.save(usernameField?.text, forKey: "username")
             Cely.save("\(usernameField?.text) + \(passwordField?.text)", forKey: "token")
-            Cely.userAction(.LoggedIn)
+            Cely.changeStatus(to: .LoggedIn)
         }
     }
 
