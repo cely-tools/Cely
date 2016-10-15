@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Cely.setup(with: window, forModel: User.ref, requiredProperties: [.Email])
+        Cely.setup(with: window, forModel: User.ref, requiredProperties: [.Token])
 
         return true
     }

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,11 +18,53 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERV-1Q-xnE">
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="C1a-WB-Mk4" kind="show" id="e3d-hA-y7S"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ERV-1Q-xnE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VU8-mZ-iXI"/>
+                            <constraint firstItem="ERV-1Q-xnE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uN2-WK-eyH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Z05-Gc-I7I">
+            <objects>
+                <viewController id="C1a-WB-Mk4" customClass="SettingsViewController" customModule="CelyExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="STc-1t-HuO"/>
+                        <viewControllerLayoutGuide type="bottom" id="32l-PI-aJL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PIe-VL-lSc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jZ-iA-siu">
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="LogoutButtonPressed" destination="C1a-WB-Mk4" eventType="touchUpInside" id="dOx-U9-qOr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1jZ-iA-siu" firstAttribute="centerY" secondItem="PIe-VL-lSc" secondAttribute="centerY" id="4L6-lj-A4r"/>
+                            <constraint firstItem="1jZ-iA-siu" firstAttribute="centerX" secondItem="PIe-VL-lSc" secondAttribute="centerX" id="HsR-7X-Qt8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNn-YF-N0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="139"/>
         </scene>
     </scenes>
 </document>

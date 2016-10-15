@@ -17,6 +17,7 @@
 		1F8CB66F1D9B152900F404E9 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8CB66E1D9B152900F404E9 /* Cely.framework */; };
 		1F8CB6701D9B152900F404E9 /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8CB66E1D9B152900F404E9 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FE3E28A1D9B19D10007C51E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E2891D9B19D10007C51E /* User.swift */; };
+		3153755A1DB2C74F009E1113 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315375591DB2C74F009E1113 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		1F8CB66C1D9B144300F404E9 /* Cely.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cely.framework; path = "../build/Debug-iphoneos/Cely.framework"; sourceTree = "<group>"; };
 		1F8CB66E1D9B152900F404E9 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E2891D9B19D10007C51E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		315375591DB2C74F009E1113 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				1F8CB5FC1D9B135C00F404E9 /* LaunchScreen.storyboard */,
 				1F8CB5FF1D9B135C00F404E9 /* Info.plist */,
 				1FE3E2891D9B19D10007C51E /* User.swift */,
+				315375591DB2C74F009E1113 /* SettingsViewController.swift */,
 			);
 			path = CelyExample;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				1F8CB5F61D9B135C00F404E9 /* ViewController.swift in Sources */,
 				1F8CB5F41D9B135C00F404E9 /* AppDelegate.swift in Sources */,
 				1FE3E28A1D9B19D10007C51E /* User.swift in Sources */,
+				3153755A1DB2C74F009E1113 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
