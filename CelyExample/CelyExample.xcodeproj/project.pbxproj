@@ -17,6 +17,8 @@
 		1F8CB66F1D9B152900F404E9 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8CB66E1D9B152900F404E9 /* Cely.framework */; };
 		1F8CB6701D9B152900F404E9 /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8CB66E1D9B152900F404E9 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FE3E28A1D9B19D10007C51E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E2891D9B19D10007C51E /* User.swift */; };
+		31358EA11DB313A400AC7119 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31358EA01DB313A400AC7119 /* Locksmith.framework */; };
+		31358EA21DB313A400AC7119 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31358EA01DB313A400AC7119 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3153755A1DB2C74F009E1113 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315375591DB2C74F009E1113 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1F8CB6701D9B152900F404E9 /* Cely.framework in Embed Frameworks */,
+				31358EA21DB313A400AC7119 /* Locksmith.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,7 +71,9 @@
 		1F8CB66C1D9B144300F404E9 /* Cely.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cely.framework; path = "../build/Debug-iphoneos/Cely.framework"; sourceTree = "<group>"; };
 		1F8CB66E1D9B152900F404E9 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E2891D9B19D10007C51E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		31358EA01DB313A400AC7119 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Locksmith.framework; sourceTree = "<group>"; };
 		315375591DB2C74F009E1113 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3182A0F71DB30D3800EE42A6 /* CelyExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CelyExample.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F8CB66F1D9B152900F404E9 /* Cely.framework in Frameworks */,
+				31358EA11DB313A400AC7119 /* Locksmith.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +106,7 @@
 		1F8CB5E71D9B135C00F404E9 = {
 			isa = PBXGroup;
 			children = (
+				31358EA01DB313A400AC7119 /* Locksmith.framework */,
 				1F8CB5F21D9B135C00F404E9 /* CelyExample */,
 				1F8CB6071D9B135C00F404E9 /* CelyExampleTests */,
 				1F8CB6121D9B135D00F404E9 /* CelyExampleUITests */,
@@ -121,6 +128,7 @@
 		1F8CB5F21D9B135C00F404E9 /* CelyExample */ = {
 			isa = PBXGroup;
 			children = (
+				3182A0F71DB30D3800EE42A6 /* CelyExample.entitlements */,
 				1F8CB5F31D9B135C00F404E9 /* AppDelegate.swift */,
 				1F8CB5F51D9B135C00F404E9 /* ViewController.swift */,
 				1F8CB5F71D9B135C00F404E9 /* Main.storyboard */,
@@ -231,6 +239,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7CX9JN6SPG;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					1F8CB6031D9B135C00F404E9 = {
 						CreatedOnToolsVersion = 8.0;
@@ -453,7 +466,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CelyExample/CelyExample.entitlements;
 				DEVELOPMENT_TEAM = 7CX9JN6SPG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CelyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.buentello.CelyExample;
@@ -466,7 +484,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CelyExample/CelyExample.entitlements;
 				DEVELOPMENT_TEAM = 7CX9JN6SPG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CelyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.buentello.CelyExample;

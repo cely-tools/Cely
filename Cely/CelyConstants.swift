@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Locksmith
 
 /// `String` type alias. Is used in User model
 public typealias CelyProperty = String
@@ -24,4 +25,22 @@ public enum CelyStatus: CelyCommands {
 public protocol CelyUser {
     /// Enum of all the properties you would like to save for a model
     associatedtype Property : RawRepresentable
+}
+
+public enum StorageResult: Equatable {
+    case Success
+    case Fail(LocksmithError)
+}
+
+public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
+    switch (lhs, rhs) {
+    case (let .Fail(error1), let .Fail(error2)):
+        return error1 == error2
+
+    case (.Success, .Success):
+        return true
+
+    default:
+        return false
+    }
 }

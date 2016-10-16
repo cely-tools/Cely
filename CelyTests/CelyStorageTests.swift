@@ -80,18 +80,16 @@ class CelyStorageTests: XCTestCase {
 
     override func tearDown() {
         dummyData = nil
-        UserDefaults().removePersistentDomain(forName: kCelyDomain)
         super.tearDown()
     }
 
     func testSavingData() {
         dummyData.forEach { dummy in
-
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely)
             if dummy.value != nil {
-                XCTAssert(success, dummy.failedToSet())
+                XCTAssert(success == StorageResult.Success, dummy.failedToSet())
             } else {
-                XCTAssert(success == false, "You're not supposed to be able to set nil in the storage.")
+                XCTAssert(StorageResult.Fail(.undefined) == success, "You're not supposed to be able to set nil in the storage.")
             }
         }
     }

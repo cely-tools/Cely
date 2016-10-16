@@ -66,7 +66,6 @@
 		1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cely.storyboard; sourceTree = "<group>"; };
 		1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyLoginViewController.swift; sourceTree = "<group>"; };
 		1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cely.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		1FFCE1111DB12FAE00A42A3B /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +103,6 @@
 			children = (
 				1FAA023E1D4E7B5B00A6D209 /* Cely */,
 				1FB2B23D1DB1751600716E80 /* CelyTests */,
-				1FFCE1101DB12FAE00A42A3B /* Frameworks */,
 				1F8CB65F1D9B143C00F404E9 /* CelyExample.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -154,14 +152,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1FFCE1101DB12FAE00A42A3B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1FFCE1111DB12FAE00A42A3B /* Locksmith.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -185,7 +175,6 @@
 				1FAA02381D4E7B5B00A6D209 /* Frameworks */,
 				1FAA02391D4E7B5B00A6D209 /* Headers */,
 				1FAA023A1D4E7B5B00A6D209 /* Resources */,
-				3153755D1DB2C9BB009E1113 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -228,6 +217,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 7CX9JN6SPG;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					1FB2B23B1DB1751600716E80 = {
 						CreatedOnToolsVersion = 8.0;
@@ -317,21 +307,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		3153755D1DB2C9BB009E1113 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -468,6 +443,7 @@
 		1FAA02511D4E7B5B00A6D209 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -493,8 +469,9 @@
 		1FAA02521D4E7B5B00A6D209 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				DYLIB_COMPATIBILITY_VERSION = 1;

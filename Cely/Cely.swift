@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Locksmith
 
 public struct Cely {
 
@@ -72,7 +73,7 @@ extension Cely {
     /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String, fromStorage store: CelyStorage = store, securely secure: Bool = false) -> Bool {
+    @discardableResult public static func save(_ value: Any?, forKey key: String, fromStorage store: CelyStorage = store, securely secure: Bool = false) -> StorageResult {
         return store.set(value, forKey: key, securely: secure)
     }
 

@@ -20,8 +20,17 @@ struct User: CelyUser {
         case Email = "email"
         case Token = "token"
 
+        func securely() -> Bool {
+            switch self {
+            case .Token:
+                return true
+            default:
+                return false
+            }
+        }
+
         func save(_ value: Any) {
-            Cely.save(value, forKey: rawValue)
+            Cely.save(value, forKey: rawValue, securely: securely())
         }
 
         func get() -> Any? {
