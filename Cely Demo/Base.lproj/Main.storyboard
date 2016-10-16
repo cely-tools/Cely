@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CelyExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cely_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -19,17 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERV-1Q-xnE">
-                                <state key="normal" title="Settings"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxd-Ai-Z3U">
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="C1a-WB-Mk4" kind="show" id="e3d-hA-y7S"/>
+                                    <segue destination="Hcw-9b-enT" kind="show" id="0Ya-LC-h2S"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.59607845540000004" green="0.66274511810000003" blue="0.98431372640000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ERV-1Q-xnE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VU8-mZ-iXI"/>
-                            <constraint firstItem="ERV-1Q-xnE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uN2-WK-eyH"/>
+                            <constraint firstItem="xxd-Ai-Z3U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kQN-ME-Rw9"/>
+                            <constraint firstItem="xxd-Ai-Z3U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yYA-Xs-rH6"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,34 +37,34 @@
             </objects>
         </scene>
         <!--Settings View Controller-->
-        <scene sceneID="Z05-Gc-I7I">
+        <scene sceneID="uZI-nc-KCh">
             <objects>
-                <viewController id="C1a-WB-Mk4" customClass="SettingsViewController" customModule="CelyExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hcw-9b-enT" customClass="SettingsViewController" customModule="Cely_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="STc-1t-HuO"/>
-                        <viewControllerLayoutGuide type="bottom" id="32l-PI-aJL"/>
+                        <viewControllerLayoutGuide type="top" id="m86-Dg-hl2"/>
+                        <viewControllerLayoutGuide type="bottom" id="4hY-zw-v16"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PIe-VL-lSc">
+                    <view key="view" contentMode="scaleToFill" id="rmo-y0-whp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jZ-iA-siu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eG-gi-ZOj">
                                 <state key="normal" title="Logout"/>
                                 <connections>
-                                    <action selector="LogoutButtonPressed" destination="C1a-WB-Mk4" eventType="touchUpInside" id="dOx-U9-qOr"/>
+                                    <action selector="LogoutButtonPressed" destination="Hcw-9b-enT" eventType="touchUpInside" id="9fe-MU-tLM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1jZ-iA-siu" firstAttribute="centerY" secondItem="PIe-VL-lSc" secondAttribute="centerY" id="4L6-lj-A4r"/>
-                            <constraint firstItem="1jZ-iA-siu" firstAttribute="centerX" secondItem="PIe-VL-lSc" secondAttribute="centerX" id="HsR-7X-Qt8"/>
+                            <constraint firstItem="5eG-gi-ZOj" firstAttribute="centerX" secondItem="rmo-y0-whp" secondAttribute="centerX" id="LIR-qN-vpw"/>
+                            <constraint firstItem="5eG-gi-ZOj" firstAttribute="centerY" secondItem="rmo-y0-whp" secondAttribute="centerY" id="RD4-JW-4px"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UNn-YF-N0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKf-SV-Yh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="139"/>
+            <point key="canvasLocation" x="833" y="38"/>
         </scene>
     </scenes>
 </document>

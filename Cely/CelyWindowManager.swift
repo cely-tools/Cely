@@ -15,7 +15,7 @@ class CelyWindowManager {
     internal var window: UIWindow!
 
     public var loginScreen: UIViewController!
-    public lazy var homeScreen: UIViewController! = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+    lazy public var initialStoryboard: UIStoryboard! = UIStoryboard(name: "Main", bundle: Bundle.main)
     class var _defaultLoginScreen: UIViewController? {
         let s = UIStoryboard(name: "Cely", bundle: Bundle(for: self))
         let vc = s.instantiateInitialViewController()
@@ -45,15 +45,15 @@ class CelyWindowManager {
     @objc func showScreenWith(notification: NSNotification) {
         if let status = notification.object as? CelyStatus {
             if status == .LoggedIn {
-                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.homeScreen
+                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.initialStoryboard.instantiateInitialViewController()
             } else {
                 CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.loginScreen
             }
         }
     }
 
-    class func setHomeScreen(to vc: UIViewController! = manager.homeScreen) {
-        CelyWindowManager.manager.homeScreen = vc
+    class func setInitialStoryboard(_ storyboard: UIStoryboard! = manager.initialStoryboard) {
+        CelyWindowManager.manager.initialStoryboard = storyboard
     }
 
     deinit {

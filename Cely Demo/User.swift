@@ -1,13 +1,12 @@
 //
-//  User.model.swift
-//  CelyExample
+//  User.swift
+//  Cely
 //
-//  Created by Fabian Buentello on 9/27/16.
+//  Created by Fabian Buentello on 10/15/16.
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
 import Foundation
-
 import Cely
 
 struct User: CelyUser {

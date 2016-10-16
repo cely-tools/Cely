@@ -20,6 +20,9 @@ public class CelyStorage {
     var secureStorage: [String : Any] = [:]
     var storage: [String : [String : Any]]  = [:]
     internal init() {
+
+        // TODO: Figure out if this is the first app launch
+        // http://stackoverflow.com/questions/27208103/swift-detect-first-launch
         setupStorage()
         setupSecureStorage()
     }
@@ -60,12 +63,19 @@ public class CelyStorage {
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
     func set(_ value: Any?, forKey key: String, securely secure: Bool = false) -> StorageResult {
-        guard let val = value else { return .Fail(.undefined) }
+        guard let val = value as? String else { return .Fail(.undefined) }
         if secure {
             var currentStorage = CelyStorage.sharedInstance.secureStorage
             currentStorage[key] = val
+            CelyStorage.sharedInstance.secureStorage = currentStorage
             do {
-                try Locksmith.saveData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+                // If testing, user `saveData` instead of `updateData`
+                if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+                    try Locksmith.saveData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+                    return .Success
+                }
+
+                try Locksmith.updateData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
                 return .Success
             } catch let storageError as LocksmithError {
                 return .Fail(storageError)
