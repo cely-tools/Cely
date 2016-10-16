@@ -37,7 +37,10 @@ struct Dummy {
         case let val as Int:
             return val == _value as? Int
         case let val as [String]:
-            return val == (_value as? [String])!
+            if let _val = _value as? [String] {
+                return val == _val
+            }
+            return false
         case let val as [Float]:
             guard let _vals = _value as? [Float] else { return false }
             return val.elementsEqual(_vals)
@@ -80,18 +83,16 @@ class CelyStorageTests: XCTestCase {
 
     override func tearDown() {
         dummyData = nil
-        UserDefaults().removePersistentDomain(forName: kCelyDomain)
         super.tearDown()
     }
 
     func testSavingData() {
         dummyData.forEach { dummy in
-
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely)
             if dummy.value != nil {
-                XCTAssert(success, dummy.failedToSet())
+                XCTAssert(success == StorageResult.Success, dummy.failedToSet())
             } else {
-                XCTAssert(success == false, "You're not supposed to be able to set nil in the storage.")
+                XCTAssert(StorageResult.Fail(.undefined) == success, "You're not supposed to be able to set nil in the storage.")
             }
         }
     }

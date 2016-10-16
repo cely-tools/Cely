@@ -29,11 +29,11 @@ class CelyLoginViewController: UIViewController {
     }
 
     func didPressLogin() {
-        if let fields = textFields ,
+        if let fields = textFields,
             fields.flatMap({$0}).reduce(true, {$0 && !$1.text!.isEmpty}) {
 
             Cely.save(usernameField?.text, forKey: "username")
-            Cely.save("\(usernameField?.text) + \(passwordField?.text)", forKey: "token")
+            Cely.save("token 29585843899", forKey: "token", securely: true)
             Cely.changeStatus(to: .LoggedIn)
 
             usernameField?.text = ""

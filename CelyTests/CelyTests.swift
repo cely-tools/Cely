@@ -25,10 +25,10 @@ class DummyStorage: CelyStorage {
 
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
-    override func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> Bool {
-        if value == nil { return false }
+    override func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> StorageResult {
+        if value == nil { return .Fail(.undefined) }
         DummyStorage.successful_setCalls += 1
-        return true
+        return .Success
     }
 
     override func get(_ key: String) -> Any? {
@@ -125,10 +125,10 @@ class CelyTests: XCTestCase {
     }
 
     func testSaveProperty() {
-        XCTAssert(Cely.save(3, forKey: "number"), "failed to save Number")
-        XCTAssert(Cely.save("string", forKey: "string"), "failed to save string")
-        XCTAssert(Cely.save(nil, forKey: "nilValue") == false, "failed to save nilValue")
-        XCTAssert(Cely.save("token", forKey: "tokenString"), "failed to save tokenString")
+        XCTAssert(Cely.save(3, forKey: "number") == StorageResult.Success, "failed to save Number")
+        XCTAssert(Cely.save("string", forKey: "string") == StorageResult.Success, "failed to save string")
+        XCTAssert(Cely.save(nil, forKey: "nilValue") == StorageResult.Fail(.undefined), "failed to save nilValue")
+        XCTAssert(Cely.save("token", forKey: "tokenString") == StorageResult.Success, "failed to save tokenString")
 
         XCTAssert(DummyStorage.successful_setCalls == 3, "`Cely.store` and `DummyStorage` are not consistent")
     }
