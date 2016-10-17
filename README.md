@@ -22,7 +22,7 @@ What does Cely **does not do** for you?
 2. Handle Network errors
 3. Anything with the network 
 
-# customizable login screen
+# Customizable login screen
 
 - textboxes
 - background image(and or)color
@@ -30,9 +30,6 @@ What does Cely **does not do** for you?
 - New cely user protocol??
    - username
    - password
-
-####Keychain entitlement Part(Xcode 8 bug?)
-Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
 
 ## Usage
 
@@ -141,12 +138,8 @@ let token = User.get(.Token)
 
 ##API
 
-
-
-# Cely
-
-## Variables
-### `store`
+### Variables
+#### `store`
 A [`CelyStorage`[LINK!!]](asdf) instance. 
 
 store |
@@ -154,9 +147,9 @@ store |
 Default Value | singleton instance of `CelyStorage`
 
 
-## Methods
+### Methods
 
-### `setup(with:forModel:requiredProperties:)`
+#### `setup(with:forModel:requiredProperties:)`
 Sets up Cely within your application
 <details>
 <summary>Example</summary>
@@ -176,7 +169,7 @@ Key | Type| Required? | Description
 </details>
 
 
-### `currentLoginStatus(requiredProperties:fromStorage:)`
+#### `currentLoginStatus(requiredProperties:fromStorage:)`
 Will return the `CelyStatus` of the current user.
 <details>
 <summary>Example</summary>
@@ -204,7 +197,7 @@ Type| Description
 </details>
 
 
-### `get(_:fromStorage:)`
+#### `get(_:fromStorage:)`
 Returns stored data for key.
 <details>
 <summary>Example</summary>
@@ -234,7 +227,7 @@ Type| Description
 
 
 
-### `save(_:forKey:toStorage:securely:)`
+#### `save(_:forKey:toStorage:securely:)`
 Saves data in store
 <details>
 <summary>Example</summary>
@@ -267,7 +260,7 @@ Type| Description
 
 
 
-### `changeStatus(to:)`
+#### `changeStatus(to:)`
 Perform action like `LoggedIn` or `LoggedOut`.
 <details>
 <summary>Example</summary>
@@ -285,7 +278,7 @@ Key | Type| Required? | Description
 </details>
 
 
-### `logout(usesStorage:)`
+#### `logout(usesStorage:)`
 Convenience method to logout user. Is equivalent to `changeStatus(to: .LoggedOut)`
 <details>
 <summary>Example</summary>
@@ -303,7 +296,7 @@ Key | Type| Required? | Description
 </details>
 
 
-### `isLoggedIn()`
+#### `isLoggedIn()`
 Returns whether or not the user is logged in
 <details>
 <summary>Example</summary>
@@ -322,26 +315,22 @@ Type| Description
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
 ## Requirements
 - Xcode 8
 - swift 3.0
 
-# Installation
-
+## Installation
 
 ###Carthage
 ```
 github "initFabian/Cely"
 ```
+Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith) when you import it into your project, so be sure to add `Locksmith` in your copy phase script.
+
+> $(SRCROOT)/Carthage/Build/iOS/Cely.framework
+> $(SRCROOT)/Carthage/Build/iOS/Locksmith.framework
+####Keychain entitlement Part(Xcode 8 bug?)
+Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
 
 ## License
 
