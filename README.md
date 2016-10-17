@@ -1,6 +1,12 @@
 #Cely 
 
-Cely makes handling user state easier than ever.
+Plug-n-Play iOS login framework written in Swift.
+
+
+## Overview
+Cely's goal is to add a login system into your up in under 20 seconds! 
+
+There are many "How to build a login system for iOS" tutorials that tell you to [store credentials in NSUserDefaults](http://im2.ezgif.com/tmp/ezgif-1182228405.gif), which is incorrect. The need to be stored in  
 
 1. What Cely takes care of for you.
 2. Requirements
