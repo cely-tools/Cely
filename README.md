@@ -1,4 +1,4 @@
-#Cely 
+#Cely (WIP)
 
 Plug-n-Play iOS login framework written in Swift.
 
