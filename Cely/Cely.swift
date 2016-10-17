@@ -15,7 +15,9 @@ public struct Cely {
     fileprivate init() {}
 
     /// Properties that are needed inorder for user to stay logged in.
-    public static var requiredProperties: [CelyProperty] = []
+    internal static var requiredProperties: [CelyProperty] = []
+
+    /// A `CelyStorage` instance
     public static var store: CelyStorage = CelyStorage.sharedInstance
 
 
@@ -73,7 +75,7 @@ extension Cely {
     /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String, fromStorage store: CelyStorage = store, securely secure: Bool = false) -> StorageResult {
+    @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorage = store, securely secure: Bool = false) -> StorageResult {
         return store.set(value, forKey: key, securely: secure)
     }
 
@@ -81,6 +83,7 @@ extension Cely {
     ///
     /// - parameter status: CelyStatus
     public static func changeStatus(to status: CelyStatus) {
+        store.removeAllData()
         NotificationCenter.default.post(name: Notification.Name(rawValue: status.rawValue), object: status)
     }
 
