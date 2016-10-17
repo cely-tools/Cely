@@ -16,8 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Cely.setup(with: window, forModel: User.ref, requiredProperties:[.Token])
+//        Cely.setup(with: window!, forModel: User.ref, requiredProperties:[.Token])
 
+        Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.Token], withOption: [
+            .Storage: CelyStorage(),
+            .WindowManager: CelyWindowManager(),
+            .HomeStoryboard: UIStoryboard(name: "Main", bundle: nil),
+            .LoginStoryboard: UIStoryboard(name: "Main", bundle: nil),
+        ])
         return true
     }
 }

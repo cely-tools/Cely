@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CelyWindowManager {
+public class CelyWindowManager {
 
     // MARK: - Variables
     static let manager = CelyWindowManager()
@@ -22,7 +22,7 @@ class CelyWindowManager {
         return vc
     }
 
-    fileprivate init() {}
+    public init() {}
 
     static func setup(window _window: UIWindow, withLoginScreen vc: UIViewController? = CelyWindowManager._defaultLoginScreen) {
         CelyWindowManager.manager.window = _window

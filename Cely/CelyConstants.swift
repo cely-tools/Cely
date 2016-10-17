@@ -44,3 +44,10 @@ public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
         return false
     }
 }
+
+public enum CelyOptions {
+    case Storage
+    case WindowManager
+    case HomeStoryboard
+    case LoginStoryboard
+}

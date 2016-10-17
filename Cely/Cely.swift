@@ -24,13 +24,28 @@ public struct Cely {
     /// - parameter window:             `UIWindow` of your application.
     /// - parameter forModel:           The `Model` Cely will be storing.
     /// - parameter requiredProperties: `[CelyProperty]`: The properties that cely tests against to determine if a user is logged in.
-    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, forModel: T, requiredProperties:[U] = []) where T.Property == U {
+    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow, forModel: T, requiredProperties:[U] = []) where T.Property == U {
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
 
-        if let window = window {
-            CelyWindowManager.setup(window: window)
-            changeStatus(to: currentLoginStatus())
-        }
+        CelyWindowManager.setup(window: window)
+        changeStatus(to: currentLoginStatus())
+
+    }
+
+    /// Sets up Cely within your application
+    ///
+    /// - parameter window:             `UIWindow` of your application.
+    /// - parameter forModel:           The `Model` Cely will be storing.
+    /// - parameter requiredProperties: `[CelyProperty]`: The properties that cely tests against to determine if a user is logged in.
+    /// - parameter withOption:         Dictionary of options to pass into cely upon setup. Please refer to `CelyOptions` to view all options.
+    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow, forModel: T, requiredProperties:[U] = [], withOption options: [CelyOptions : Any?]? = [:]) where T.Property == U {
+
+        Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
+
+        store = options?[CelyOptions.Storage] as? CelyStorage ?? store
+
+        CelyWindowManager.setup(window: window)
+        changeStatus(to: currentLoginStatus())
     }
 }
 

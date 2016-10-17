@@ -19,7 +19,7 @@ public class CelyStorage {
 
     var secureStorage: [String : Any] = [:]
     var storage: [String : [String : Any]]  = [:]
-    internal init() {
+    public init() {
 
         // TODO: Figure out if this is the first app launch
         // http://stackoverflow.com/questions/27208103/swift-detect-first-launch
