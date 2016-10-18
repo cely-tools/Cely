@@ -36,7 +36,7 @@ What does Cely **does not do** for you?
 ###Setup(20 seconds)
 
 #### User Model (`User.swift`)
-Let's start by creating a `User` model that conforms to the `CelyUser`(Link it) Protocol:
+Let's start by creating a `User` model that conforms to the `CelyUser` Protocol:
 
 ```swift
 // User.swift
@@ -138,18 +138,15 @@ let token = User.get(.Token)
 
 ##API
 
-### Variables
-#### `store`
-A [`CelyStorage`[LINK!!]](asdf) instance. 
-
-store |
------|----
-Default Value | singleton instance of `CelyStorage`
+###Cely
+#### Variables
+##### `store`
+A `CelyStorage` instance which by default is set to a singleton instance of `CelyStorage`.
 
 
-### Methods
+#### Methods
 
-#### `setup(with:forModel:requiredProperties:)`
+##### `setup(with:forModel:requiredProperties:)`
 Sets up Cely within your application
 <details>
 <summary>Example</summary>
@@ -163,13 +160,13 @@ Cely.setup(with: window, forModel: User(), requiredProperties:[.Token])
 Key | Type| Required? | Description
 ----|------|----------|--------
 `window` | `UIWindow` | ✅ | window of your application.
-`forModel` | [`CelyUser`[LINK]](asd) | ✅ | The model Cely will be using to store data.
-`requiredProperties` | `[CelyProperty[LINK]]` | no | The properties that cely tests against to determine if a user is logged in. <br> **Default value**: empty array.
+`forModel` | [`CelyUser` | ✅ | The model Cely will be using to store data.
+`requiredProperties` | `[CelyProperty]` | no | The properties that cely tests against to determine if a user is logged in. <br> **Default value**: empty array.
 
 </details>
 
 
-#### `currentLoginStatus(requiredProperties:fromStorage:)`
+##### `currentLoginStatus(requiredProperties:fromStorage:)`
 Will return the `CelyStatus` of the current user.
 <details>
 <summary>Example</summary>
@@ -197,7 +194,7 @@ Type| Description
 </details>
 
 
-#### `get(_:fromStorage:)`
+##### `get(_:fromStorage:)`
 Returns stored data for key.
 <details>
 <summary>Example</summary>
@@ -227,7 +224,7 @@ Type| Description
 
 
 
-#### `save(_:forKey:toStorage:securely:)`
+##### `save(_:forKey:toStorage:securely:)`
 Saves data in store
 <details>
 <summary>Example</summary>
@@ -257,10 +254,7 @@ Type| Description
 </details>
 
 
-
-
-
-#### `changeStatus(to:)`
+##### `changeStatus(to:)`
 Perform action like `LoggedIn` or `LoggedOut`.
 <details>
 <summary>Example</summary>
@@ -278,7 +272,7 @@ Key | Type| Required? | Description
 </details>
 
 
-#### `logout(usesStorage:)`
+##### `logout(usesStorage:)`
 Convenience method to logout user. Is equivalent to `changeStatus(to: .LoggedOut)`
 <details>
 <summary>Example</summary>
@@ -296,7 +290,7 @@ Key | Type| Required? | Description
 </details>
 
 
-#### `isLoggedIn()`
+##### `isLoggedIn()`
 Returns whether or not the user is logged in
 <details>
 <summary>Example</summary>
@@ -314,6 +308,54 @@ Type| Description
 </details>
 
 
+### Constants
+#### Protocols
+##### `CelyUser `
+`protocol` for model class to implements
+
+<details>
+<summary>Required</summary>
+
+value | Type| Description
+----|------|---
+`Property ` | `associatedtype` | Enum of all the properties you would like to save for a model
+
+</details>
+
+#### Typealias
+##### `CelyProperty `
+`String` type alias. Is used in User model
+
+##### `CelyCommands `
+`String` type alias. Command for cely to execute
+
+#### enums
+##### `CelyStatus`
+`enum` Statuses for Cely to perform actions on
+
+<details>
+<summary>Cases</summary>
+
+Case ||
+----|------|
+`LoggedIn ` | Indicates user is now logged in.
+`LoggedOut ` | Indicates user is now logged out.
+
+</details>
+
+##### `StorageResult `
+`enum` result on whether or not Cely successfully saved your data.
+
+<details>
+<summary>Cases</summary>
+
+Case ||
+----|------|
+`Success ` | Successfully saved your data
+`Fail(error) ` | Failed to save data along with a `LocksmithError`. 
+
+</details>
+
 
 ## Requirements
 - Xcode 8
@@ -327,8 +369,9 @@ github "initFabian/Cely"
 ```
 Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith) when you import it into your project, so be sure to add `Locksmith` in your copy phase script.
 
-> $(SRCROOT)/Carthage/Build/iOS/Cely.framework
+> $(SRCROOT)/Carthage/Build/iOS/Cely.framework  
 > $(SRCROOT)/Carthage/Build/iOS/Locksmith.framework
+
 ####Keychain entitlement Part(Xcode 8 bug?)
 Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
 
