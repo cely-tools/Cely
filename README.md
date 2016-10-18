@@ -138,8 +138,9 @@ let token = User.get(.Token)
 
 ##API
 
-### Variables
-#### `store`
+###Cely
+#### Variables
+##### `store`
 A [`CelyStorage`[LINK!!]](asdf) instance. 
 
 store |
@@ -147,9 +148,9 @@ store |
 Default Value | singleton instance of `CelyStorage`
 
 
-### Methods
+#### Methods
 
-#### `setup(with:forModel:requiredProperties:)`
+##### `setup(with:forModel:requiredProperties:)`
 Sets up Cely within your application
 <details>
 <summary>Example</summary>
@@ -169,7 +170,7 @@ Key | Type| Required? | Description
 </details>
 
 
-#### `currentLoginStatus(requiredProperties:fromStorage:)`
+##### `currentLoginStatus(requiredProperties:fromStorage:)`
 Will return the `CelyStatus` of the current user.
 <details>
 <summary>Example</summary>
@@ -197,7 +198,7 @@ Type| Description
 </details>
 
 
-#### `get(_:fromStorage:)`
+##### `get(_:fromStorage:)`
 Returns stored data for key.
 <details>
 <summary>Example</summary>
@@ -227,7 +228,7 @@ Type| Description
 
 
 
-#### `save(_:forKey:toStorage:securely:)`
+##### `save(_:forKey:toStorage:securely:)`
 Saves data in store
 <details>
 <summary>Example</summary>
@@ -260,7 +261,7 @@ Type| Description
 
 
 
-#### `changeStatus(to:)`
+##### `changeStatus(to:)`
 Perform action like `LoggedIn` or `LoggedOut`.
 <details>
 <summary>Example</summary>
@@ -278,7 +279,7 @@ Key | Type| Required? | Description
 </details>
 
 
-#### `logout(usesStorage:)`
+##### `logout(usesStorage:)`
 Convenience method to logout user. Is equivalent to `changeStatus(to: .LoggedOut)`
 <details>
 <summary>Example</summary>
@@ -296,7 +297,7 @@ Key | Type| Required? | Description
 </details>
 
 
-#### `isLoggedIn()`
+##### `isLoggedIn()`
 Returns whether or not the user is logged in
 <details>
 <summary>Example</summary>
@@ -314,6 +315,34 @@ Type| Description
 </details>
 
 
+### Constants
+    /// `String` type alias. Is used in User model
+    public typealias CelyProperty = String
+    /// `String` type alias. Command for cely to execute
+    public typealias CelyCommands = String
+
+    /// Statuses for Cely to perform actions on
+    public enum CelyStatus : CelyCommands {
+
+        case LoggedIn
+
+        case LoggedOut
+    }
+
+    /// Protocol for model class to implements
+    public protocol CelyUser {
+
+        /// Enum of all the properties you would like to save for a model
+        associatedtype Property : RawRepresentable
+    }
+
+    public enum StorageResult : Equatable {
+
+        case Success
+
+        case Fail<<error type>>
+    }
+
 
 ## Requirements
 - Xcode 8
@@ -327,8 +356,9 @@ github "initFabian/Cely"
 ```
 Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith) when you import it into your project, so be sure to add `Locksmith` in your copy phase script.
 
-> $(SRCROOT)/Carthage/Build/iOS/Cely.framework
+> $(SRCROOT)/Carthage/Build/iOS/Cely.framework  
 > $(SRCROOT)/Carthage/Build/iOS/Locksmith.framework
+
 ####Keychain entitlement Part(Xcode 8 bug?)
 Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
 
