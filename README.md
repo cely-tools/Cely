@@ -1,3 +1,6 @@
+![bitrise status](https://www.bitrise.io/app/aff729145cb46dfe.svg?token=YUV0bymd7P_w2tdiKw2xOQ&branch=master)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 #Cely (WIP)
 
 Plug-n-Play iOS login framework written in Swift.
