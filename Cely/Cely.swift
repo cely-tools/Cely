@@ -91,7 +91,6 @@ extension Cely {
     ///
     /// - parameter store: `CelyStorage`. Defaulted to `Cely's` CelyStorage instance
     public static func logout(useStorage store: CelyStorage = store) {
-        store.removeAllData()
         changeStatus(to: .LoggedOut)
     }
 
