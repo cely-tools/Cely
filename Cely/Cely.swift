@@ -37,7 +37,7 @@ public struct Cely {
         store = options?[.Storage] as? CelyStorage ?? store
 
         if let window = window {
-            CelyWindowManager.setup(window: window)
+            CelyWindowManager.setup(window: window, withOptions: options)
             changeStatus(to: currentLoginStatus())
         }
     }

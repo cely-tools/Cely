@@ -30,6 +30,7 @@
 		31358EB41DB31BC400AC7119 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31358EB21DB31BC400AC7119 /* LaunchScreen.storyboard */; };
 		31358EC51DB31D3300AC7119 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31358EC41DB31D3300AC7119 /* Locksmith.framework */; };
 		31358EC61DB31D3300AC7119 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31358EC41DB31D3300AC7119 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		317516421DB7BD9D00974002 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 317516401DB7B23C00974002 /* TestStoryboard.storyboard */; };
 		31DAA33E1DB289220040B266 /* CelyWindowManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		31358EB91DB31BDE00AC7119 /* Cely Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cely Demo.entitlements"; sourceTree = "<group>"; };
 		31358EBF1DB31CA800AC7119 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Locksmith.framework; sourceTree = "<group>"; };
 		31358EC41DB31D3300AC7119 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = "Cely Demo/Locksmith.framework"; sourceTree = "<group>"; };
+		317516401DB7B23C00974002 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = ../CelyTests/Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
 		31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +217,7 @@
 				31358EAB1DB31BC400AC7119 /* ViewController.swift */,
 				311B1F2D1DB3230F005A155B /* SettingsViewController.swift */,
 				31358EAD1DB31BC400AC7119 /* Main.storyboard */,
+				317516401DB7B23C00974002 /* TestStoryboard.storyboard */,
 				31358EB01DB31BC400AC7119 /* Assets.xcassets */,
 				31358EB21DB31BC400AC7119 /* LaunchScreen.storyboard */,
 				31358EB51DB31BC400AC7119 /* Info.plist */,
@@ -369,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31358EB41DB31BC400AC7119 /* LaunchScreen.storyboard in Resources */,
+				317516421DB7BD9D00974002 /* TestStoryboard.storyboard in Resources */,
 				31358EB11DB31BC400AC7119 /* Assets.xcassets in Resources */,
 				31358EAF1DB31BC400AC7119 /* Main.storyboard in Resources */,
 			);
