@@ -37,6 +37,7 @@ public class CelyWindowManager {
         CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .LoggedIn)
         CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .LoggedOut)
     }
+
     // MARK: - Private Methods
 
     private func addObserver(_ selector: Selector, action: CelyStatus) {
