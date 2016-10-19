@@ -13,12 +13,15 @@ import Locksmith
 public struct Cely {
 
     fileprivate init() {}
-
+    public typealias LoginCompletion = (_ username: String?, _ password: String?) -> Void
     /// Properties that are needed inorder for user to stay logged in.
     internal static var requiredProperties: [CelyProperty] = []
 
     /// A `CelyStorage` instance
-    public static var store: CelyStorage = CelyStorage.sharedInstance
+    internal static var store: CelyStorage = CelyStorage.sharedInstance
+
+    /// A Completion Block that is expecting a `username:String` and a `password:String`
+    public static var loginCompletionBlock: LoginCompletion?
 
 
     /// Sets up Cely within your application
@@ -26,12 +29,13 @@ public struct Cely {
     /// - parameter window:             `UIWindow` of your application.
     /// - parameter forModel:           The `Model` Cely will be storing.
     /// - parameter requiredProperties: `[CelyProperty]`: The properties that cely tests against to determine if a user is logged in.
-    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow, forModel: T, requiredProperties:[U] = []) where T.Property == U {
+    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, forModel: T, requiredProperties:[U] = []) where T.Property == U {
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
 
-        CelyWindowManager.setup(window: window)
-        changeStatus(to: currentLoginStatus())
-
+        if let window = window {
+            CelyWindowManager.setup(window: window)
+            changeStatus(to: currentLoginStatus())
+        }
     }
 
     /// Sets up Cely within your application
@@ -44,6 +48,7 @@ public struct Cely {
 
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
 
+        Cely.loginCompletionBlock = options?[.LoginCompletionBlock] as? LoginCompletion
         store = options?[CelyOptions.Storage] as? CelyStorage ?? store
 
         CelyWindowManager.setup(window: window)
@@ -98,7 +103,6 @@ extension Cely {
     ///
     /// - parameter status: CelyStatus
     public static func changeStatus(to status: CelyStatus) {
-        store.removeAllData()
         NotificationCenter.default.post(name: Notification.Name(rawValue: status.rawValue), object: status)
     }
 
@@ -106,6 +110,7 @@ extension Cely {
     ///
     /// - parameter store: `CelyStorage`. Defaulted to `Cely's` CelyStorage instance
     public static func logout(useStorage store: CelyStorage = store) {
+        store.removeAllData()
         changeStatus(to: .LoggedOut)
     }
 

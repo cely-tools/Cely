@@ -51,4 +51,5 @@ public enum CelyOptions {
     case WindowManager
     case HomeStoryboard
     case LoginStoryboard
+    case LoginCompletionBlock
 }

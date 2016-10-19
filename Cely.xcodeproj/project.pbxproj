@@ -318,7 +318,7 @@
 					};
 					31358EA61DB31BC400AC7119 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = H367AL682C;
+						DevelopmentTeam = 7CX9JN6SPG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -653,7 +653,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
-				DEVELOPMENT_TEAM = H367AL682C;
+				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Cely\\ Demo",
@@ -678,7 +678,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
-				DEVELOPMENT_TEAM = H367AL682C;
+				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Cely\\ Demo",
