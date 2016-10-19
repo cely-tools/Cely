@@ -27,6 +27,7 @@ public protocol CelyUser {
     associatedtype Property : RawRepresentable
 }
 
+// enum result on whether or not Cely successfully saved your data
 public enum StorageResult: Equatable {
     case Success
     case Fail(LocksmithError)

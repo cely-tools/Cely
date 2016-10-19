@@ -63,7 +63,7 @@ public class CelyStorage {
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
     func set(_ value: Any?, forKey key: String, securely secure: Bool = false) -> StorageResult {
-        guard let val = value as? String else { return .Fail(.undefined) }
+        guard let val = value else { return .Fail(.undefined) }
         if secure {
             var currentStorage = CelyStorage.sharedInstance.secureStorage
             currentStorage[key] = val
