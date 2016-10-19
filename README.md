@@ -10,7 +10,7 @@ Plug-n-Play iOS login framework written in Swift.
 Cely's goal is to add a login system into your up in under 20 seconds! 
 
 ## Background
-There are many **How to build a login system for iOS** tutorials on the web that tell you to store credentials in NSUserDefaults, which is incorrect, credentials need to be stored in Keychain. Now working with Keychain is not very fun, that's why Cely is built on top of [Locksmith](https://github.com/matthewpalmer/Locksmith), swift's most popular Keychain wrapper. 
+There are many **How to build a login system for iOS** tutorials on the web that tell you to store credentials in NSUserDefaults, which is incorrect, credentials need to be stored in Keychain. Now working with Keychain is not very fun, that's why Cely is built on top of [Locksmith](https://github.com/matthewpalmer/Locksmith), swift's most popular Keychain wrapper. Cely makes adding a login system to your application as simple as dropping in a UITableView.
 
 ###Details:
 What does Cely does for you? 
@@ -19,27 +19,24 @@ What does Cely does for you?
 2. Manages switching between Login Screen and your apps Home Screen
 3. Customizable starter Login screen
  
-What does Cely **does not do** for you? 
+What Cely **does not do** for you? 
 
 1. Network requests
 2. Handle Network errors
 3. Anything with the network 
 
-# Customizable login screen
+# Customizable login screen(WIP)
 
 - textboxes
 - background image(and or)color
 - email/password keyboard
-- New cely user protocol??
-   - username
-   - password
 
 ## Usage
 
 ###Setup(20 seconds)
 
 #### User Model (`User.swift`)
-Let's start by creating a `User` model that conforms to the `CelyUser` Protocol:
+Let's start by creating a `User` model that conforms to the [`CelyUser`](#Cely.CelyUser) Protocol:
 
 ```swift
 // User.swift
@@ -56,7 +53,7 @@ struct User: CelyUser {
 ```
 ####Login redirect(`AppDelegate.swift`)
 
-Cely's **Simple Setup** function will get you up and running in a matter of seconds. Inside of your `AppDelegate.swift` simply `import Cely` and call the `setup(_:)` function inside of your `didFinishLaunchingWithOptions` method.
+Cely's **Simple Setup** function will get you up and running in a matter of seconds. Inside of your `AppDelegate.swift` simply `import Cely` and call the [`setup(_:)`](#Cely.setup) function inside of your `didFinishLaunchingWithOptions` method.
 
 ```swift
 // AppDelegate.swift
@@ -74,7 +71,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 **Hit RUN!!**
 
 ### Handle LoginCallback
-Now how do we get the `username` and `password` from Cely's default LoginViewController? It's easy, just pass in a completion block.
+Now how do we get the `username` and `password` from Cely's default LoginViewController? It's easy, just pass in a completion block in the options.
 
 ```swift
 
@@ -109,7 +106,7 @@ struct User: CelyUser {
         func securely() -> Bool {
             switch self {
             case .Token:
-                return true
+                return true // Store our token securely
             default:
                 return false
             }
@@ -167,20 +164,35 @@ let token = User.get(.Token)
 ##API
 
 ###Cely
-The `Cely` class is what you will mostly be interacting with. It's the class that will 
+Cely was made to help handle user credentials and handling login with ease. Below you will find documentation for Cely's Framework. 
 #### Variables
+<div id="Cely.store"></div>
 ##### `store`
-A class that conforms to the `CelyStorageProtocol` protocol. By default is set to a singleton instance of `CelyStorage`.
+A class that conforms to the [`CelyStorageProtocol`](#Cely.CelyStorageProtocol) protocol. By default is set to a singleton instance of `CelyStorage`.
 
 
 #### Methods
 
+<div id="Cely.setup"></div>
 ##### `setup(with:forModel:requiredProperties:withOptions:)`
 Sets up Cely within your application
 <details>
 <summary>Example</summary>
+
 ```swift
 Cely.setup(with: window, forModel: User(), requiredProperties:[.Token])
+
+// or 
+
+Cely.setup(with: window, forModel: User(), requiredProperties:[.Token], withOptions:[
+	.LoginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
+	.HomeStoryboard: UIStoryboard(name: "My_NonMain_Storyboard", bundle: nil),
+	.LoginCompletionBlock: { (username: String, password: String) in
+        if username == "asdf" && password == "asdf" {
+            print("username: \(username): password: \(password)")
+        }
+    }
+])
 ```
 </details>
 <details>
@@ -189,28 +201,31 @@ Cely.setup(with: window, forModel: User(), requiredProperties:[.Token])
 Key | Type| Required? | Description
 ----|------|----------|--------
 `window` | `UIWindow` | ✅ | window of your application.
-`forModel` | [`CelyUser` | ✅ | The model Cely will be using to store data.
+`forModel` | [`CelyUser`](#Cely.CelyUser) | ✅ | The model Cely will be using to store data.
 `requiredProperties` | `[CelyProperty]` | no | The properties that cely tests against to determine if a user is logged in. <br> **Default value**: empty array.
-`options` | `[CelyProperty]` | no | The properties that cely tests against to determine if a user is logged in. <br> **Default value**: empty array.
+`options` | `[CelyOption]` | no | An array of [`CelyOptions`](#Cely.CelyOptions) to pass in additional customizations to cely.
 
 </details>
 
 
+<div id="Cely.currentLoginStatus"></div>
 ##### `currentLoginStatus(requiredProperties:fromStorage:)`
 Will return the `CelyStatus` of the current user.
 <details>
 <summary>Example</summary>
+
 ```swift
 let status = Cely.currentLoginStatus()
 ```
+
 </details>
 <details>
 <summary>Parameters</summary>
 
 Key | Type| Required? | Description
 ----|------|----------|--------
-`properties` | [CelyProperty] | no | Array of required properties that need to be in store.
-`store` | CelyStorage | no |    Storage `Cely` will be using. Defaulted to `CelyStorage`
+`properties` | [`CelyProperty`] | no | Array of required properties that need to be in store.
+`store` | `CelyStorage` | no |    Storage `Cely` will be using. Defaulted to `CelyStorage`
 
 </details>
 
@@ -219,15 +234,17 @@ Key | Type| Required? | Description
 
 Type| Description
 ----|------
-`CelyStatus` | If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
+[`CelyStatus`](#Cely.CelyStatus) | If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
 
 </details>
 
 
+<div id="Cely.get"></div>
 ##### `get(_:fromStorage:)`
 Returns stored data for key.
 <details>
 <summary>Example</summary>
+
 ```swift
 let username = Cely.get(key: "username")
 ```
@@ -254,10 +271,12 @@ Type| Description
 
 
 
+<div id="Cely.save"></div>
 ##### `save(_:forKey:toStorage:securely:)`
 Saves data in store
 <details>
 <summary>Example</summary>
+
 ```swift
 let username = Cely.get(key: "username")
 ```
@@ -284,10 +303,12 @@ Type| Description
 </details>
 
 
+<div id="Cely.changeStatus"></div>
 ##### `changeStatus(to:)`
 Perform action like `LoggedIn` or `LoggedOut`.
 <details>
 <summary>Example</summary>
+
 ```swift
 changeStatus(to: .LoggedOut)
 ```
@@ -302,10 +323,13 @@ Key | Type| Required? | Description
 </details>
 
 
+<div id="Cely.logout"></div>
 ##### `logout(usesStorage:)`
 Convenience method to logout user. Is equivalent to `changeStatus(to: .LoggedOut)`
 <details>
 <summary>Example</summary>
+
+
 ```swift
 Cely.logout()
 ```
@@ -320,12 +344,14 @@ Key | Type| Required? | Description
 </details>
 
 
+<div id="Cely.isLoggedIn"></div>
 ##### `isLoggedIn()`
 Returns whether or not the user is logged in
 <details>
 <summary>Example</summary>
+
 ```swift
-Cely.logout()
+Cely.isLoggedIn()
 ```
 </details>
 <details>
@@ -340,6 +366,7 @@ Type| Description
 
 ### Constants
 #### Protocols
+<div id="Cely.CelyUser"></div>
 ##### `CelyUser `
 `protocol` for model class to implements
 
@@ -352,19 +379,37 @@ value | Type| Description
 
 </details>
 
+<div id="Cely.CelyStorageProtocol"></div>
+##### `CelyStorageProtocol `
+`protocol` a storage class must abide by in order for Cely to use it
+
+<details>
+<summary>Required</summary>
+
+```swift
+func set(_ value: Any?, forKey key: String, securely secure: Bool) -> StorageResult  
+func get(_ key: String) -> Any?  
+func removeAllData()  
+
+```    
+</details>
+
 #### Typealias
+<div id="Cely.CelyProperty"></div>
 ##### `CelyProperty `
 `String` type alias. Is used in User model
 
+<div id="Cely.CelyCommands"></div>
 ##### `CelyCommands `
 `String` type alias. Command for cely to execute
 
 #### enums
+<div id="Cely.CelyOptions"></div>
 ##### `CelyOptions`
-`enum` Options that you can pass into Cely on `setup(with:forModel:requiredProperties:withOptions:)`
+`enum` Options that you can pass into Cely on [`setup(with:forModel:requiredProperties:withOptions:)`](#Cely.setup)
 
 <details>
-<summary>Cases</summary>
+<summary>Options</summary>
 
 Case ||
 ----|------|
@@ -374,11 +419,12 @@ Case ||
 `LoginCompletionBlock ` | `(String,String) -> Void` block of code that will run once the Login button is pressed on Cely's default login Controller
 
 </details>
+<div id="Cely.CelyStatus"></div>
 ##### `CelyStatus`
 `enum` Statuses for Cely to perform actions on
 
 <details>
-<summary>Cases</summary>
+<summary>Statuses</summary>
 
 Case ||
 ----|------|
@@ -387,11 +433,12 @@ Case ||
 
 </details>
 
+<div id="Cely.StorageResult"></div>
 ##### `StorageResult `
 `enum` result on whether or not Cely successfully saved your data.
 
 <details>
-<summary>Cases</summary>
+<summary>Results</summary>
 
 Case ||
 ----|------|
@@ -409,7 +456,7 @@ Case ||
 
 ###Carthage
 ```
-github "initFabian/Cely"
+github "ChaiOne/Cely"
 ```
 Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith) when you import it into your project, so be sure to add `Locksmith` in your copy phase script.
 

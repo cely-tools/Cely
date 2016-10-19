@@ -13,7 +13,7 @@ internal let kCelyDomain = "cely.storage"
 internal let kCelyLocksmithAccount = "cely.secure.storage"
 internal let kCelyLocksmithService = "cely.secure.service"
 
-public class CelyStorage: CelyStorage {
+public class CelyStorage: CelyStorageProtocol {
     // MARK: - Variables
     static let sharedInstance = CelyStorage()
 

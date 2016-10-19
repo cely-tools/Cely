@@ -16,7 +16,7 @@ class DummyUser: CelyUser {
     }
 }
 
-class DummyStorage: CelyStorage {
+class DummyStorage: CelyStorageProtocol {
 
     public var dummyStorage: [String : Any?] = [
         "username":"testUser",
