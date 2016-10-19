@@ -73,8 +73,27 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 **Hit RUN!!**
 
-## Example
-#<#Get data from login controller(Delegate)>
+### Handle LoginCallback
+Now how do we get the `username` and `password` from Cely's default LoginViewController? It's easy, just pass in a completion block.
+
+```swift
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+    Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.Token], withOptions: [
+        .LoginCompletionBlock: { (username: String, password: String) in
+            if username == "asdf" && password == "asdf" {
+                Cely.save(username, forKey: "username")
+                Cely.save("FAKETOKEN:\(username)\(password)", forKey: "token", securely: true)
+                Cely.changeStatus(to: .LoggedIn)
+            }
+        }
+    ])
+
+    return true
+}
+```
+
 ###Recommended User Pattern
 
 ```swift
@@ -82,20 +101,26 @@ import Cely
 
 struct User: CelyUser {
 
-    private init() {}
-    static let instance = User() // singleton reference
-
     enum Property: CelyProperty {
         case Username = "username"
         case Email = "email"
         case Token = "token"
 
+        func securely() -> Bool {
+            switch self {
+            case .Token:
+                return true
+            default:
+                return false
+            }
+        }
+
         func save(_ value: Any) {
-            Cely.save(value, forKey: self.rawValue)
+            Cely.save(value, forKey: rawValue, securely: securely())
         }
 
         func get() -> Any? {
-            return Cely.get(key: self.rawValue)
+            return Cely.get(key: rawValue)
         }
     }
 }
@@ -104,17 +129,17 @@ struct User: CelyUser {
 
 extension User {
 
-    static func save(_ value: Any, as property: Property) {
-        property.save(value)
+    static func save(value: Any, as property: Property) {
+        property.save(value: value)
     }
 
-    static func save(_ data: [Property : Any]) {
+    static func save(data: [Property : Any]) {
         data.forEach { property, value in
             property.save(value)
         }
     }
 
-    static func get(_ property: Property) -> Any? {
+    static func get(property: Property) -> Any? {
         return property.get()
     }
 }
@@ -142,14 +167,15 @@ let token = User.get(.Token)
 ##API
 
 ###Cely
+The `Cely` class is what you will mostly be interacting with. It's the class that will 
 #### Variables
 ##### `store`
-A `CelyStorage` instance which by default is set to a singleton instance of `CelyStorage`.
+A class that conforms to the `CelyStorageProtocol` protocol. By default is set to a singleton instance of `CelyStorage`.
 
 
 #### Methods
 
-##### `setup(with:forModel:requiredProperties:)`
+##### `setup(with:forModel:requiredProperties:withOptions:)`
 Sets up Cely within your application
 <details>
 <summary>Example</summary>
@@ -165,6 +191,7 @@ Key | Type| Required? | Description
 `window` | `UIWindow` | ✅ | window of your application.
 `forModel` | [`CelyUser` | ✅ | The model Cely will be using to store data.
 `requiredProperties` | `[CelyProperty]` | no | The properties that cely tests against to determine if a user is logged in. <br> **Default value**: empty array.
+`options` | `[CelyProperty]` | no | The properties that cely tests against to determine if a user is logged in. <br> **Default value**: empty array.
 
 </details>
 
@@ -333,6 +360,20 @@ value | Type| Description
 `String` type alias. Command for cely to execute
 
 #### enums
+##### `CelyOptions`
+`enum` Options that you can pass into Cely on `setup(with:forModel:requiredProperties:withOptions:)`
+
+<details>
+<summary>Cases</summary>
+
+Case ||
+----|------|
+`Storage ` | Pass in you're own storage class if you wish not to use Cely's default storage. Class must conform to the `CelyStorage` protocol.
+`HomeStoryboard ` | Pass in your app's default storyboard if it is not named "Main"
+`LoginStoryboard ` | Pass in your own login storyboard.
+`LoginCompletionBlock ` | `(String,String) -> Void` block of code that will run once the Login button is pressed on Cely's default login Controller
+
+</details>
 ##### `CelyStatus`
 `enum` Statuses for Cely to perform actions on
 

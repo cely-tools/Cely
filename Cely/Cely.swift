@@ -13,15 +13,15 @@ import Locksmith
 public struct Cely {
 
     fileprivate init() {}
-    public typealias LoginCompletion = (_ username: String?, _ password: String?) -> Void
+    public typealias CelyLoginCompletion = (_ username: String, _ password: String) -> Void
     /// Properties that are needed inorder for user to stay logged in.
     internal static var requiredProperties: [CelyProperty] = []
 
-    /// A `Storage` instance
-    internal static var store: CelyStorage = Storage.sharedInstance
+    /// A `CelyStorage` instance
+    internal static var store: CelyStorageProtocol = CelyStorage.sharedInstance
 
     /// A Completion Block that is expecting a `username:String` and a `password:String`
-    public static var loginCompletionBlock: LoginCompletion?
+    public static var loginCompletionBlock: CelyLoginCompletion?
 
     /// Sets up Cely within your application
     ///
@@ -33,7 +33,7 @@ public struct Cely {
 
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
 
-        Cely.loginCompletionBlock = options?[.LoginCompletionBlock] as? LoginCompletion
+        Cely.loginCompletionBlock = options?[.LoginCompletionBlock] as? CelyLoginCompletion
         store = options?[.Storage] as? CelyStorage ?? store
 
         if let window = window {
@@ -48,10 +48,10 @@ extension Cely {
     /// Will return the `CelyStatus` of the current user.
     ///
     /// - parameter properties: Array of required properties that need to be in store.
-    /// - parameter store:    Storage `Cely` will be using. Defaulted to `Storage`
+    /// - parameter store:    Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: `CelyStatus`. If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
-    public static func currentLoginStatus(requiredProperties properties: [CelyProperty] = requiredProperties, fromStorage store: CelyStorage = store) -> CelyStatus {
+    public static func currentLoginStatus(requiredProperties properties: [CelyProperty] = requiredProperties, fromStorage store: CelyStorageProtocol = store) -> CelyStatus {
         guard properties.count > 0 else { return .LoggedOut }
 
         let missingRequiredProperties = properties
@@ -71,7 +71,7 @@ extension Cely {
     /// - parameter store: Object that conforms to the CelyStorage protocol that `Cely` will be using. Defaulted to `Cely`'s instance of store
     ///
     /// - returns: Returns data as an optional `Any`
-    public static func get(key: String, fromStorage store: CelyStorage = store) -> Any? {
+    public static func get(key: String, fromStorage store: CelyStorageProtocol = store) -> Any? {
         return store.get(key)
     }
 
@@ -79,10 +79,10 @@ extension Cely {
     ///
     /// - parameter value:   data you want to save
     /// - parameter key:     String for the key
-    /// - parameter store: Storage `Cely` will be using. Defaulted to `Storage`
+    /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorage = store, securely secure: Bool = false) -> StorageResult {
+    @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false) -> StorageResult {
         return store.set(value, forKey: key, securely: secure)
     }
 
@@ -96,7 +96,7 @@ extension Cely {
     /// Log user out
     ///
     /// - parameter store: `Storage`. Defaulted to `Cely's` Storage instance
-    public static func logout(useStorage store: CelyStorage = store) {
+    public static func logout(useStorage store: CelyStorageProtocol = store) {
         store.removeAllData()
         changeStatus(to: .LoggedOut)
     }
