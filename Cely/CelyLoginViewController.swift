@@ -34,7 +34,6 @@ class CelyLoginViewController: UIViewController {
 
             Cely.save(usernameField?.text, forKey: "username")
             Cely.save("token 29585843899", forKey: "token", securely: true)
-            Cely.changeStatus(to: .LoggedIn)
             Cely.loginCompletionBlock?(usernameField?.text, passwordField?.text)
             usernameField?.text = ""
             passwordField?.text = ""

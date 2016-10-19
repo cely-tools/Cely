@@ -18,10 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.Token], withOptions: [
-            .LoginStoryboard: UIStoryboard(name: "TestStoryboard", bundle: nil),
-//            .LoginCompletionBlock: { (username: String?, password: String?) in
-//                print("username: \(username), password: \(password)")
-//            }
+            .LoginCompletionBlock: { (username: String?, password: String?) in
+                if username == "asdf" && password == "asdf" {
+                    Cely.changeStatus(to: .LoggedIn)
+                }
+            }
         ])
 
         return true
