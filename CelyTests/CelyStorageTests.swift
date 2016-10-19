@@ -58,12 +58,12 @@ struct Dummy {
 class StorageTests: XCTestCase {
 
     var dummyData: [Dummy]!
-    var store: Storage!
+    var store: CelyStorage!
 
     override func setUp() {
         super.setUp()
 
-        store = Storage.sharedInstance
+        store = CelyStorage.sharedInstance
 
         dummyData = [
             Dummy(key: "testString", value: "string success", storeSecurely: false),
