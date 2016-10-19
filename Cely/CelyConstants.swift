@@ -46,6 +46,7 @@ public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
     }
 }
 
+/// Options that you can pass into Cely on `Cely.setup(_:)`
 public enum CelyOptions {
     case Storage
     case HomeStoryboard
