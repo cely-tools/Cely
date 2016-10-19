@@ -17,42 +17,29 @@ public struct Cely {
     /// Properties that are needed inorder for user to stay logged in.
     internal static var requiredProperties: [CelyProperty] = []
 
-    /// A `CelyStorage` instance
-    internal static var store: CelyStorage = CelyStorage.sharedInstance
+    /// A `Storage` instance
+    internal static var store: CelyStorage = Storage.sharedInstance
 
     /// A Completion Block that is expecting a `username:String` and a `password:String`
     public static var loginCompletionBlock: LoginCompletion?
-
 
     /// Sets up Cely within your application
     ///
     /// - parameter window:             `UIWindow` of your application.
     /// - parameter forModel:           The `Model` Cely will be storing.
     /// - parameter requiredProperties: `[CelyProperty]`: The properties that cely tests against to determine if a user is logged in.
-    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, forModel: T, requiredProperties:[U] = []) where T.Property == U {
+    /// - parameter withOptions:         Dictionary of options to pass into cely upon setup. Please refer to `CelyOptions` to view all options.
+    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow?, forModel: T, requiredProperties:[U] = [], withOptions options: [CelyOptions : Any?]? = [:]) where T.Property == U {
+
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
+
+        Cely.loginCompletionBlock = options?[.LoginCompletionBlock] as? LoginCompletion
+        store = options?[.Storage] as? CelyStorage ?? store
 
         if let window = window {
             CelyWindowManager.setup(window: window)
             changeStatus(to: currentLoginStatus())
         }
-    }
-
-    /// Sets up Cely within your application
-    ///
-    /// - parameter window:             `UIWindow` of your application.
-    /// - parameter forModel:           The `Model` Cely will be storing.
-    /// - parameter requiredProperties: `[CelyProperty]`: The properties that cely tests against to determine if a user is logged in.
-    /// - parameter withOption:         Dictionary of options to pass into cely upon setup. Please refer to `CelyOptions` to view all options.
-    public static func setup<T: CelyUser, U: RawRepresentable>(with window: UIWindow, forModel: T, requiredProperties:[U] = [], withOption options: [CelyOptions : Any?]? = [:]) where T.Property == U {
-
-        Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
-
-        Cely.loginCompletionBlock = options?[.LoginCompletionBlock] as? LoginCompletion
-        store = options?[CelyOptions.Storage] as? CelyStorage ?? store
-
-        CelyWindowManager.setup(window: window)
-        changeStatus(to: currentLoginStatus())
     }
 }
 
@@ -61,7 +48,7 @@ extension Cely {
     /// Will return the `CelyStatus` of the current user.
     ///
     /// - parameter properties: Array of required properties that need to be in store.
-    /// - parameter store:    Storage `Cely` will be using. Defaulted to `CelyStorage`
+    /// - parameter store:    Storage `Cely` will be using. Defaulted to `Storage`
     ///
     /// - returns: `CelyStatus`. If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
     public static func currentLoginStatus(requiredProperties properties: [CelyProperty] = requiredProperties, fromStorage store: CelyStorage = store) -> CelyStatus {
@@ -81,7 +68,7 @@ extension Cely {
     /// Returns stored data for key.
     ///
     /// - parameter key:    String
-    /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
+    /// - parameter store: Object that conforms to the CelyStorage protocol that `Cely` will be using. Defaulted to `Cely`'s instance of store
     ///
     /// - returns: Returns data as an optional `Any`
     public static func get(key: String, fromStorage store: CelyStorage = store) -> Any? {
@@ -92,7 +79,7 @@ extension Cely {
     ///
     /// - parameter value:   data you want to save
     /// - parameter key:     String for the key
-    /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorage`
+    /// - parameter store: Storage `Cely` will be using. Defaulted to `Storage`
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
     @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorage = store, securely secure: Bool = false) -> StorageResult {
@@ -108,7 +95,7 @@ extension Cely {
 
     /// Log user out
     ///
-    /// - parameter store: `CelyStorage`. Defaulted to `Cely's` CelyStorage instance
+    /// - parameter store: `Storage`. Defaulted to `Cely's` Storage instance
     public static func logout(useStorage store: CelyStorage = store) {
         store.removeAllData()
         changeStatus(to: .LoggedOut)

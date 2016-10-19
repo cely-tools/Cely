@@ -25,17 +25,17 @@ class DummyStorage: CelyStorage {
 
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
-    override func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> StorageResult {
+    func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> StorageResult {
         if value == nil { return .Fail(.undefined) }
         DummyStorage.successful_setCalls += 1
         return .Success
     }
 
-    override func get(_ key: String) -> Any? {
+    func get(_ key: String) -> Any? {
         return dummyStorage[key]
     }
 
-    override func removeAllData() {
+    func removeAllData() {
         DummyStorage.successful_removeCalls += 1
     }
 }
@@ -63,8 +63,9 @@ class CelyTests: XCTestCase {
                          object: nil)
 
         _properties = [.Username, .Token]
-        Cely.store = DummyStorage()
-        Cely.setup(with: nil, forModel: DummyUser(), requiredProperties: _properties)
+        Cely.setup(with: nil, forModel: DummyUser(), requiredProperties: _properties, withOptions:[
+            .Storage: DummyStorage()
+        ])
     }
 
     func setTriggeredNotification_LoggedIn() {
@@ -95,6 +96,9 @@ class CelyTests: XCTestCase {
 
         let statusWithParameters = Cely.currentLoginStatus(requiredProperties: [DummyUser.Property.Username.rawValue, DummyUser.Property.Token.rawValue], fromStorage: DummyStorage())
         XCTAssert(statusWithParameters == .LoggedIn, "User failed to have status of being .LoggedIn")
+
+        let notParameters = Cely.currentLoginStatus(requiredProperties: [], fromStorage: DummyStorage())
+        XCTAssert(notParameters == .LoggedOut, "User failed to have status of being .LoggedIn")
     }
 
     func testCurrentLogin_LoggedOut_Status() {

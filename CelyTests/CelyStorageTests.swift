@@ -1,5 +1,5 @@
 //
-//  CelyStorageTests.swift
+//  StorageTests.swift
 //  Cely
 //
 //  Created by Fabian Buentello on 10/14/16.
@@ -55,15 +55,15 @@ struct Dummy {
     }
 }
 
-class CelyStorageTests: XCTestCase {
+class StorageTests: XCTestCase {
 
     var dummyData: [Dummy]!
-    var store: CelyStorage!
+    var store: Storage!
 
     override func setUp() {
         super.setUp()
 
-        store = CelyStorage.sharedInstance
+        store = Storage.sharedInstance
 
         dummyData = [
             Dummy(key: "testString", value: "string success", storeSecurely: false),

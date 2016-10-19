@@ -53,3 +53,10 @@ public enum CelyOptions {
     case LoginStoryboard
     case LoginCompletionBlock
 }
+
+/// Protocol a storage class must abide by in order for Cely to use it
+public protocol CelyStorage {
+    func set(_ value: Any?, forKey key: String, securely secure: Bool) -> StorageResult
+    func get(_ key: String) -> Any?
+    func removeAllData()
+}

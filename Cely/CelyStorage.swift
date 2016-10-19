@@ -1,5 +1,5 @@
 //
-//  CelyStorage.swift
+//  Storage.swift
 //  Cely
 //
 //  Created by Fabian Buentello on 10/14/16.
@@ -13,9 +13,9 @@ internal let kCelyDomain = "cely.storage"
 internal let kCelyLocksmithAccount = "cely.secure.storage"
 internal let kCelyLocksmithService = "cely.secure.service"
 
-public class CelyStorage {
+public class Storage: CelyStorage {
     // MARK: - Variables
-    static let sharedInstance = CelyStorage()
+    static let sharedInstance = Storage()
 
     var secureStorage: [String : Any] = [:]
     var storage: [String : [String : Any]]  = [:]
@@ -43,10 +43,10 @@ public class CelyStorage {
     }
 
     /// Removes all data from both `secureStorage` and regular `storage`
-    func removeAllData() {
-        CelyStorage.sharedInstance.secureStorage = [:]
+    public func removeAllData() {
+        Storage.sharedInstance.secureStorage = [:]
         UserDefaults.standard.removePersistentDomain(forName: kCelyDomain)
-        CelyStorage.sharedInstance.storage = [:]
+        Storage.sharedInstance.storage = [:]
         do {
             try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
         } catch let error as NSError {
@@ -62,12 +62,12 @@ public class CelyStorage {
     /// - parameter secure: `Boolean`: If you want to store the data securely. Set to `True` by default
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
-    func set(_ value: Any?, forKey key: String, securely secure: Bool = false) -> StorageResult {
+    public func set(_ value: Any?, forKey key: String, securely secure: Bool = false) -> StorageResult {
         guard let val = value else { return .Fail(.undefined) }
         if secure {
-            var currentStorage = CelyStorage.sharedInstance.secureStorage
+            var currentStorage = Storage.sharedInstance.secureStorage
             currentStorage[key] = val
-            CelyStorage.sharedInstance.secureStorage = currentStorage
+            Storage.sharedInstance.secureStorage = currentStorage
             do {
                 // If testing, user `saveData` instead of `updateData`
                 if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
@@ -83,8 +83,8 @@ public class CelyStorage {
                 return .Fail(.undefined)
             }
         } else {
-            CelyStorage.sharedInstance.storage["store"]?[key] = val
-            UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
+            Storage.sharedInstance.storage["store"]?[key] = val
+            UserDefaults.standard.setPersistentDomain(Storage.sharedInstance.storage, forName: kCelyDomain)
             UserDefaults.standard.synchronize()
         }
         return .Success
@@ -95,10 +95,10 @@ public class CelyStorage {
     /// - parameter key: String
     ///
     /// - returns: Data For key value
-    func get(_ key: String) -> Any? {
-        if let value = CelyStorage.sharedInstance.secureStorage[key] {
+    public func get(_ key: String) -> Any? {
+        if let value = Storage.sharedInstance.secureStorage[key] {
             return value
-        } else if let value = CelyStorage.sharedInstance.storage["store"]?[key] {
+        } else if let value = Storage.sharedInstance.storage["store"]?[key] {
             return value
         }
 
