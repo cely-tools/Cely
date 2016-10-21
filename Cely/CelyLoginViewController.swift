@@ -29,16 +29,12 @@ class CelyLoginViewController: UIViewController {
     }
 
     func didPressLogin() {
-        if let fields = textFields,
-            fields.flatMap({$0}).reduce(true, {$0 && !$1.text!.isEmpty}) {
-
-            if let username = usernameField?.text, let password = passwordField?.text {
-                Cely.loginCompletionBlock?(username, password)
-            }
-
-            usernameField?.text = ""
-            passwordField?.text = ""
+        if let username = usernameField?.text, let password = passwordField?.text {
+            Cely.loginCompletionBlock?(username, password)
         }
+
+        usernameField?.text = ""
+        passwordField?.text = ""
     }
 
     deinit {
