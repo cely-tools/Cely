@@ -8,28 +8,36 @@
 
 import Foundation
 
-class CelyWindowManager {
+public class CelyWindowManager {
 
     // MARK: - Variables
     static let manager = CelyWindowManager()
     internal var window: UIWindow!
 
-    public var loginScreen: UIViewController!
-    lazy public var initialStoryboard: UIStoryboard! = UIStoryboard(name: "Main", bundle: Bundle.main)
-    class var _defaultLoginScreen: UIViewController? {
-        let s = UIStoryboard(name: "Cely", bundle: Bundle(for: self))
-        let vc = s.instantiateInitialViewController()
-        return vc
+    public var loginStoryboard: UIStoryboard!
+    public var homeStoryboard: UIStoryboard!
+
+    private init() {
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
+            // Code only executes when tests are NOT running because it cant find "Main" storyboard
+            loginStoryboard = UIStoryboard(name: "Cely", bundle: Bundle(for: type(of: self)))
+            homeStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        }
     }
 
-    fileprivate init() {}
-
-    static func setup(window _window: UIWindow, withLoginScreen vc: UIViewController? = CelyWindowManager._defaultLoginScreen) {
+    static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
         CelyWindowManager.manager.window = _window
-        CelyWindowManager.manager.loginScreen = vc
+
+        // Set the HomeStoryboard
+        CelyWindowManager.setHomeStoryboard(options?[.HomeStoryboard] as? UIStoryboard)
+
+        // Set the LoginStoryboard
+        CelyWindowManager.setLoginStoryboard(options?[.LoginStoryboard] as? UIStoryboard)
+
         CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .LoggedIn)
         CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .LoggedOut)
     }
+
     // MARK: - Private Methods
 
     private func addObserver(_ selector: Selector, action: CelyStatus) {
@@ -45,15 +53,19 @@ class CelyWindowManager {
     @objc func showScreenWith(notification: NSNotification) {
         if let status = notification.object as? CelyStatus {
             if status == .LoggedIn {
-                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.initialStoryboard.instantiateInitialViewController()
+                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.homeStoryboard.instantiateInitialViewController()
             } else {
-                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.loginScreen
+                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.loginStoryboard.instantiateInitialViewController()
             }
         }
     }
 
-    class func setInitialStoryboard(_ storyboard: UIStoryboard! = manager.initialStoryboard) {
-        CelyWindowManager.manager.initialStoryboard = storyboard
+    static func setHomeStoryboard(_ storyboard: UIStoryboard?) {
+        CelyWindowManager.manager.homeStoryboard = storyboard ?? CelyWindowManager.manager.homeStoryboard
+    }
+
+    static func setLoginStoryboard(_ storyboard: UIStoryboard?) {
+        CelyWindowManager.manager.loginStoryboard = storyboard ?? CelyWindowManager.manager.loginStoryboard
     }
 
     deinit {

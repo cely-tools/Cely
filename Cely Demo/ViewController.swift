@@ -20,5 +20,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    deinit {
+        // TODO: Need to be able to release the homeviewcontroller
+        print("released homeviewcontroller")
+    }
 }

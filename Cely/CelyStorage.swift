@@ -13,13 +13,13 @@ internal let kCelyDomain = "cely.storage"
 internal let kCelyLocksmithAccount = "cely.secure.storage"
 internal let kCelyLocksmithService = "cely.secure.service"
 
-public class CelyStorage {
+public class CelyStorage: CelyStorageProtocol {
     // MARK: - Variables
     static let sharedInstance = CelyStorage()
 
     var secureStorage: [String : Any] = [:]
     var storage: [String : [String : Any]]  = [:]
-    internal init() {
+    public init() {
 
         // TODO: Figure out if this is the first app launch
         // http://stackoverflow.com/questions/27208103/swift-detect-first-launch
@@ -43,7 +43,7 @@ public class CelyStorage {
     }
 
     /// Removes all data from both `secureStorage` and regular `storage`
-    func removeAllData() {
+    public func removeAllData() {
         CelyStorage.sharedInstance.secureStorage = [:]
         UserDefaults.standard.removePersistentDomain(forName: kCelyDomain)
         CelyStorage.sharedInstance.storage = [:]
@@ -62,7 +62,7 @@ public class CelyStorage {
     /// - parameter secure: `Boolean`: If you want to store the data securely. Set to `True` by default
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
-    func set(_ value: Any?, forKey key: String, securely secure: Bool = false) -> StorageResult {
+    public func set(_ value: Any?, forKey key: String, securely secure: Bool = false) -> StorageResult {
         guard let val = value else { return .Fail(.undefined) }
         if secure {
             var currentStorage = CelyStorage.sharedInstance.secureStorage
@@ -95,7 +95,7 @@ public class CelyStorage {
     /// - parameter key: String
     ///
     /// - returns: Data For key value
-    func get(_ key: String) -> Any? {
+    public func get(_ key: String) -> Any? {
         if let value = CelyStorage.sharedInstance.secureStorage[key] {
             return value
         } else if let value = CelyStorage.sharedInstance.storage["store"]?[key] {
