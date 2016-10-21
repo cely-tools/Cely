@@ -1,5 +1,5 @@
 //
-//  CelyStorageTests.swift
+//  StorageTests.swift
 //  Cely
 //
 //  Created by Fabian Buentello on 10/14/16.
@@ -55,7 +55,7 @@ struct Dummy {
     }
 }
 
-class CelyStorageTests: XCTestCase {
+class StorageTests: XCTestCase {
 
     var dummyData: [Dummy]!
     var store: CelyStorage!
