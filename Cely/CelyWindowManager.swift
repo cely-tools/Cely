@@ -18,11 +18,12 @@ public class CelyWindowManager {
     public var homeStoryboard: UIStoryboard!
 
     private init() {
-        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
-            // Code only executes when tests are NOT running because it cant find "Main" storyboard
-            loginStoryboard = UIStoryboard(name: "Cely", bundle: Bundle(for: type(of: self)))
-            homeStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        }
+        let notTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil
+
+        loginStoryboard = UIStoryboard(name: "Cely", bundle: Bundle(for: type(of: self)))
+        homeStoryboard = notTesting ?
+            UIStoryboard(name: "Main", bundle: Bundle.main) :
+            UIStoryboard(name: "TestMain", bundle: Bundle(for: type(of: self)))
     }
 
     static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
