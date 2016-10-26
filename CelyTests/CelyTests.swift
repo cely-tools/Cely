@@ -25,7 +25,7 @@ class DummyStorage: CelyStorageProtocol {
 
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
-    func set(_ value: Any?, forKey key: String, securely secure: Bool = true) -> StorageResult {
+    func set(_ value: Any?, forKey key: String, securely secure: Bool = true, persisted: Bool = false) -> StorageResult {
         if value == nil { return .Fail(.undefined) }
         DummyStorage.successful_setCalls += 1
         return .Success

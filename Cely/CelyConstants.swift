@@ -56,7 +56,7 @@ public enum CelyOptions {
 
 /// Protocol a storage class must abide by in order for Cely to use it
 public protocol CelyStorageProtocol {
-    func set(_ value: Any?, forKey key: String, securely secure: Bool) -> StorageResult
+    func set(_ value: Any?, forKey key: String, securely secure: Bool, persisted: Bool) -> StorageResult
     func get(_ key: String) -> Any?
     func removeAllData()
 }
