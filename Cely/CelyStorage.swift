@@ -14,6 +14,7 @@ internal let kCelyLocksmithAccount = "cely.secure.storage"
 internal let kCelyLocksmithService = "cely.secure.service"
 internal let kStore = "store"
 internal let kPersisted = "persisted"
+internal let kLaunchedBefore = "launchedBefore"
 
 public class CelyStorage: CelyStorageProtocol {
     // MARK: - Variables
@@ -23,10 +24,18 @@ public class CelyStorage: CelyStorageProtocol {
     var storage: [String : [String : Any]]  = [:]
     public init() {
 
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if !launchedBefore {
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-            removeAllData()
+        // Check if this is first launch of app
+        let persistedDict = UserDefaults.standard.persistentDomain(forName: kCelyDomain)?[kPersisted] as? [String: Any]
+        let launchedBefore = persistedDict?[kLaunchedBefore] as? Bool
+        if launchedBefore == nil {
+            // If not, Clear everything and set flag
+            UserDefaults.standard.setPersistentDomain([kStore: [:], kPersisted: [kLaunchedBefore:true]], forName: kCelyDomain)
+            UserDefaults.standard.synchronize()
+
+            // Clear Locksmith
+            do {
+                try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+            } catch {}
         }
 
         setupStorage()
@@ -34,7 +43,7 @@ public class CelyStorage: CelyStorageProtocol {
     }
 
     fileprivate func setupStorage() {
-        let store = UserDefaults.standard.persistentDomain(forName: kCelyDomain) ?? [kStore: [:]]
+        let store = UserDefaults.standard.persistentDomain(forName: kCelyDomain) ?? [kStore: [:], kPersisted: [:]]
         UserDefaults.standard.setPersistentDomain(store, forName: kCelyDomain)
         UserDefaults.standard.synchronize()
         if let store = store as? [String : [String : Any]] {
@@ -54,10 +63,9 @@ public class CelyStorage: CelyStorageProtocol {
         CelyStorage.sharedInstance.storage[kStore] = [:]
         UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
         UserDefaults.standard.synchronize()
-        CelyStorage.sharedInstance.storage = [:]
         do {
             try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-        } catch let error as NSError {
+        } catch {
             // handle the error
             print("error: \(error.localizedDescription)")
         }
@@ -68,6 +76,7 @@ public class CelyStorage: CelyStorageProtocol {
     /// - parameter value:  `Any?` object you want to save
     /// - parameter key:    `String`
     /// - parameter secure: `Boolean`: If you want to store the data securely. Set to `True` by default
+    /// - parameter persisted: `Boolean`: If you want to persist the data after logout
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
     public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {
