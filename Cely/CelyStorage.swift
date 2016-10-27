@@ -100,8 +100,13 @@ public class CelyStorage: CelyStorageProtocol {
                 return .Fail(.undefined)
             }
         } else {
-            let storage = persisted ? kPersisted : kStore
-            CelyStorage.sharedInstance.storage[storage]?[key] = val
+            if persisted {
+                CelyStorage.sharedInstance.storage[kPersisted]?[key] = val
+                CelyStorage.sharedInstance.storage[kStore]?[key] = nil
+            } else {
+                CelyStorage.sharedInstance.storage[kPersisted]?[key] = nil
+                CelyStorage.sharedInstance.storage[kStore]?[key] = val
+            }
             UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
             UserDefaults.standard.synchronize()
         }
