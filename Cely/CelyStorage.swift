@@ -76,7 +76,7 @@ public class CelyStorage: CelyStorageProtocol {
     /// - parameter value:  `Any?` object you want to save
     /// - parameter key:    `String`
     /// - parameter secure: `Boolean`: If you want to store the data securely. Set to `True` by default
-    /// - parameter persisted: `Boolean`: If you want to persist the data after logout
+    /// - parameter persisted: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
     public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {

@@ -108,14 +108,23 @@ struct User: CelyUser {
         func securely() -> Bool {
             switch self {
             case .Token:
-                return true // Store our token securely
+                return true
+            default:
+                return false
+            }
+        }
+
+        func persisted() -> Bool {
+            switch self {
+            case .Username:
+                return true
             default:
                 return false
             }
         }
 
         func save(_ value: Any) {
-            Cely.save(value, forKey: rawValue, securely: securely())
+            Cely.save(value, forKey: rawValue, securely: securely(), persisted: persisted())
         }
 
         func get() -> Any? {
@@ -274,13 +283,15 @@ Type| Description
 
 
 <div id="Cely.save"></div>
-##### `save(_:forKey:toStorage:securely:)`
+##### `save(_:forKey:toStorage:securely:persisted:)`
 Saves data in store
 <details>
 <summary>Example</summary>
 
 ```swift
-let username = Cely.get(key: "username")
+Cely.save("test@email.com", forKey: "email")
+Cely.save("testUsername", forKey: "username", persisted: true)
+Cely.save("token123", forKey: "token", securely: true)
 ```
 </details>
 <details>
@@ -292,6 +303,7 @@ Key | Type| Required? | Description
 `key` | <code>**String**</code> | ✅ | The key to the value you want to save.
 `store` | <code>**CelyStorage**</code> | no | Storage `Cely` will be using. Defaulted to `CelyStorage`.
 `secure` | <code>**Boolean**</code> | no | If you want to store the value securely.
+`persisted` | <code>**Boolean**</code> | no | Keep data after logout.
 
 </details>
 
@@ -389,7 +401,7 @@ value | Type| Description
 <summary>Required</summary>
 
 ```swift
-func set(_ value: Any?, forKey key: String, securely secure: Bool) -> StorageResult  
+func set(_ value: Any?, forKey key: String, securely secure: Bool, persisted: Bool) -> StorageResult
 func get(_ key: String) -> Any?  
 func removeAllData()  
 
