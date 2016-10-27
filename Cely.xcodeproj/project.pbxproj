@@ -11,6 +11,7 @@
 		1F801A1B1DB141C100187FA6 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */; };
 		1F801A201DB143C100187FA6 /* CelyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1F1DB143C100187FA6 /* CelyConstants.swift */; };
 		1F801A221DB1473A00187FA6 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A211DB1473A00187FA6 /* CelyStorage.swift */; };
+		1F9E55C31DC2426000435B52 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */; };
 		1FAA02401D4E7B5B00A6D209 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FAA023F1D4E7B5B00A6D209 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FABFAED1DBE727F0096DD36 /* TestMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */; };
 		1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2B23E1DB1751600716E80 /* CelyTests.swift */; };
@@ -89,6 +90,7 @@
 		1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyWindowManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1F801A1F1DB143C100187FA6 /* CelyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyConstants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1F801A211DB1473A00187FA6 /* CelyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyStorage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		1FAA023C1D4E7B5B00A6D209 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAA023F1D4E7B5B00A6D209 /* Cely.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cely.h; sourceTree = "<group>"; };
 		1FAA02411D4E7B5B00A6D209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB2B23E1DB1751600716E80 /* CelyTests.swift */,
+				1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */,
 				1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */,
 				31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */,
 				1FB2B2401DB1751600716E80 /* Info.plist */,
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9E55C31DC2426000435B52 /* LoginViewControllerTests.swift in Sources */,
 				1F0C13351DB188AB00AC1C94 /* CelyStorageTests.swift in Sources */,
 				1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */,
 				31DAA33E1DB289220040B266 /* CelyWindowManagerTest.swift in Sources */,

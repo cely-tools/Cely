@@ -36,10 +36,6 @@ class CelyLoginViewController: UIViewController {
         usernameField?.text = ""
         passwordField?.text = ""
     }
-
-    deinit {
-        print("CelyLoginViewController released!!")
-    }
 }
 
 extension CelyLoginViewController: UITextFieldDelegate {
