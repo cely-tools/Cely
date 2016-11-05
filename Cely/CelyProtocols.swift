@@ -31,22 +31,37 @@ public protocol CelyStyle {
 
 public extension CelyStyle {
 
+    /// Background Color for default login screen
+    ///
+    /// - returns: UIColor
     func backgroundColor() -> UIColor {
         return .white
     }
 
+    /// Background Color for textfields
+    ///
+    /// - returns: UIColor
     func textFieldBackgroundColor() -> UIColor {
         return .white
     }
 
+    /// Background Color for login button
+    ///
+    /// - returns: UIColor
     func buttonBackgroundColor() -> UIColor {
         return UIColor(red: 86/255, green: 203/255, blue: 249/255, alpha: 1)
     }
 
+    /// Text Color for login button
+    ///
+    /// - returns: UIColor
     func buttonTextColor() -> UIColor {
         return .white
     }
 
+    /// App icon for default login screen
+    ///
+    /// - returns: UIImage?
     func appLogo() -> UIImage? {
         return UIImage(named: "CelyLogo")
     }

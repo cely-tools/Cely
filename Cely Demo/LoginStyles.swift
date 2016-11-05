@@ -11,14 +11,6 @@ import Cely
 
 struct LoginStyles: CelyStyle {
 
-    func backgroundColor() -> UIColor {
-        return .red
-    }
-
-    func textFieldBackgroundColor() -> UIColor {
-        return .blue
-    }
-
     func appLogo() -> UIImage? {
         return UIImage(named: "ChaiOneLogo")
     }

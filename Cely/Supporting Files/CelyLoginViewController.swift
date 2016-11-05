@@ -17,7 +17,7 @@ class CelyLoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField?
     @IBOutlet weak var loginButton: UIButton?
     @IBOutlet var textFields: [UITextField]?
-    @IBOutlet fileprivate weak var bottomLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
     // MARK: - Variables
     var initialBottomConstant: CGFloat!
@@ -76,23 +76,30 @@ internal extension CelyLoginViewController {
                                                 name: .UIKeyboardWillChangeFrame, object: nil)
     }
 
-    func keyboardNotification(notification: NSNotification) {
-        let userInfo = notification.userInfo!
+    func convertNotification(notification: NSNotification) -> (duration: Double, endFrame: CGRect, animationCurve: UIViewAnimationOptions)? {
 
-        guard let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
-            let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-            let rawCurve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as? NSNumber else { return }
+        guard let userInfo = notification.userInfo,
+            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let rawCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.uint32Value else { return nil }
 
-        let animationDuration = (duration).doubleValue
-        let keyboardEndFrame = (endFrame).cgRectValue
-        let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
-        let rawAnimationCurve = (rawCurve).uint32Value << 16
+        let rawAnimationCurve = rawCurve << 16
         let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
 
+        return (duration, endFrame, animationCurve)
+    }
+
+    func keyboardNotification(notification: NSNotification) {
+
+        guard let (duration, endFrame, animationCurve) = convertNotification(notification: notification) else {
+            return
+        }
+
+        let convertedKeyboardEndFrame = view.convert(endFrame, from: view.window)
         let newConstraint = view.bounds.maxY - convertedKeyboardEndFrame.minY
         bottomLayoutConstraint.constant = newConstraint == 0 ? initialBottomConstant : newConstraint
 
-        UIView.animate(withDuration: animationDuration,
+        UIView.animate(withDuration: duration,
                        delay: 0.0,
                        options: [.beginFromCurrentState, animationCurve],
                        animations: {

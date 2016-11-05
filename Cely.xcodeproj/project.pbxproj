@@ -37,6 +37,9 @@
 		31D9B96E1DCD748F0039BCB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */; };
 		31DA8A581DCD8E8F0006C598 /* LoginStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA8A571DCD8E8F0006C598 /* LoginStyles.swift */; };
 		31DAA33E1DB289220040B266 /* CelyWindowManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */; };
+		31DB1FEB1DCE111900BE1D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */; };
+		31DB1FED1DCE132200BE1D1A /* ChaiOneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */; };
+		31DB1FEF1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,8 @@
 		31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
 		31DA8A571DCD8E8F0006C598 /* LoginStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginStyles.swift; sourceTree = "<group>"; };
 		31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManagerTest.swift; sourceTree = "<group>"; };
+		31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChaiOneLogo.png; sourceTree = "<group>"; };
+		31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsAndProtocolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,9 +198,11 @@
 		1FB2B23D1DB1751600716E80 /* CelyTests */ = {
 			isa = PBXGroup;
 			children = (
+				31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */,
 				1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */,
 				1FB2B23E1DB1751600716E80 /* CelyTests.swift */,
 				1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */,
+				31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */,
 				1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */,
 				31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */,
 				1FB2B2401DB1751600716E80 /* Info.plist */,
@@ -389,6 +396,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DB1FED1DCE132200BE1D1A /* ChaiOneLogo.png in Resources */,
+				31DB1FEB1DCE111900BE1D1A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DB1FEF1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift in Sources */,
 				1F9E55C31DC2426000435B52 /* LoginViewControllerTests.swift in Sources */,
 				1F0C13351DB188AB00AC1C94 /* CelyStorageTests.swift in Sources */,
 				1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */,
