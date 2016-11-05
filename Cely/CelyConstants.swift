@@ -17,31 +17,31 @@ public typealias CelyCommands = String
 
 /// Statuses for Cely to perform actions on
 public enum CelyStatus: CelyCommands {
-    case LoggedIn = "CelyStatus.LoggedIn.user"
-    case LoggedOut = "CelyStatus.LoggedOut.user"
+    case loggedIn = "CelyStatus.loggedIn.user"
+    case loggedOut = "CelyStatus.loggedOut.user"
 }
 
 /// Options that you can pass into Cely on `Cely.setup(_:)`
 public enum CelyOptions {
-    case Storage
-    case HomeStoryboard
-    case LoginStoryboard
-    case LoginCompletionBlock
-    case LoginStyle
+    case storage
+    case homeStoryboard
+    case loginStoryboard
+    case loginCompletionBlock
+    case loginStyle
 }
 
 // enum result on whether or not Cely successfully saved your data
 public enum StorageResult: Equatable {
-    case Success
-    case Fail(LocksmithError)
+    case success
+    case fail(LocksmithError)
 }
 
 public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
     switch (lhs, rhs) {
-    case (let .Fail(error1), let .Fail(error2)):
+    case (let .fail(error1), let .fail(error2)):
         return error1 == error2
 
-    case (.Success, .Success):
+    case (.success, .success):
         return true
 
     default:
