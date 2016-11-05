@@ -83,6 +83,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="appImageView" destination="uGl-qw-sCA" id="8zD-aD-0A8"/>
                         <outlet property="bottomLayoutConstraint" destination="WYL-6b-SR0" id="7ag-nW-7Ym"/>
                         <outlet property="loginButton" destination="qqQ-aU-c4H" id="6wr-rR-gvu"/>
                         <outlet property="passwordField" destination="h4r-kd-DwE" id="4Po-h7-Tev"/>

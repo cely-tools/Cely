@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.Token], withOptions: [
+            .LoginStyle: LoginStyles(),
             .LoginCompletionBlock: { (username: String, password: String) in
                 if username == "asdf" && password == "asdf" {
                     Cely.save(username, forKey: "username", persisted: true)

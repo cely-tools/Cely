@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "CelyThin.png",
+      "filename" : "CelyLogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "CelyThin@2x.png",
+      "filename" : "CelyLogo@2x.png",
       "scale" : "2x"
     },
     {

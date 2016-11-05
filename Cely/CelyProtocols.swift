@@ -21,4 +21,35 @@ public protocol CelyStorageProtocol {
     func removeAllData()
 }
 
-public protocol CelyStyle {}
+public protocol CelyStyle {
+    func backgroundColor() -> UIColor
+    func textFieldBackgroundColor() -> UIColor
+    func buttonBackgroundColor() -> UIColor
+    func buttonTextColor() -> UIColor
+    func appLogo() -> UIImage?
+}
+
+public extension CelyStyle {
+
+    func backgroundColor() -> UIColor {
+        return .white
+    }
+
+    func textFieldBackgroundColor() -> UIColor {
+        return .white
+    }
+
+    func buttonBackgroundColor() -> UIColor {
+        return UIColor(red: 86/255, green: 203/255, blue: 249/255, alpha: 1)
+    }
+
+    func buttonTextColor() -> UIColor {
+        return .white
+    }
+
+    func appLogo() -> UIImage? {
+        return UIImage(named: "CelyLogo")
+    }
+}
+
+struct DefaultSyle: CelyStyle {}

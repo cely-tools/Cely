@@ -16,6 +16,7 @@ public class CelyWindowManager {
 
     public var loginStoryboard: UIStoryboard!
     public var homeStoryboard: UIStoryboard!
+    public var loginStyle: CelyStyle!
 
     private init() {
         let notTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil
@@ -28,6 +29,9 @@ public class CelyWindowManager {
 
     static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
         CelyWindowManager.manager.window = _window
+
+        // Set the login Styles
+        CelyWindowManager.manager.loginStyle = options?[.LoginStyle] as? CelyStyle ?? DefaultSyle()
 
         // Set the HomeStoryboard
         CelyWindowManager.setHomeStoryboard(options?[.HomeStoryboard] as? UIStoryboard)

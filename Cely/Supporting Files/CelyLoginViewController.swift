@@ -11,6 +11,8 @@ import UIKit
 class CelyLoginViewController: UIViewController {
 
     // MARK: - IBOutlets
+
+    @IBOutlet weak var appImageView: UIImageView!
     @IBOutlet weak var usernameField: UITextField?
     @IBOutlet weak var passwordField: UITextField?
     @IBOutlet weak var loginButton: UIButton?
@@ -19,6 +21,7 @@ class CelyLoginViewController: UIViewController {
 
     // MARK: - Variables
     var initialBottomConstant: CGFloat!
+    var styles: CelyStyle!
 
     // MARK: - ViewController Life Cycle
     override func viewDidLoad() {
@@ -26,7 +29,21 @@ class CelyLoginViewController: UIViewController {
         usernameField?.delegate = self
         passwordField?.delegate = self
 
+        setupStyle()
         loginButton?.addTarget(self, action: #selector(didPressLogin), for: .touchUpInside)
+    }
+
+    private func setupStyle() {
+
+        styles = CelyWindowManager.manager.loginStyle
+
+        view.backgroundColor = styles.backgroundColor()
+        loginButton?.setTitleColor(styles.buttonTextColor(), for: .normal)
+        loginButton?.backgroundColor = styles.buttonBackgroundColor()
+        textFields?.forEach({$0.backgroundColor = styles.textFieldBackgroundColor()})
+        if let image = styles.appLogo() {
+            appImageView.image = image
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
