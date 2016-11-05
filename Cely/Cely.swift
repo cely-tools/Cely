@@ -80,7 +80,8 @@ extension Cely {
     /// - parameter value:   data you want to save
     /// - parameter key:     String for the key
     /// - parameter store: Storage `Cely` will be using. Defaulted to `Storage`
-    /// - parameter persisted: `Boolean`: Keep data after logout
+    /// - parameter secure: `Boolean`: Store data securely
+    /// - parameter persist: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
     @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> StorageResult {
