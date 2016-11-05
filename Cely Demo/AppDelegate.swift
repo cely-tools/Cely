@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        Cely.setup(with: window!, forModel: User(), requiredProperties: [.token], withOptions: [
+            .loginStyle: CottonCandy(),
+            .loginCompletionBlock: { (username: String, password: String) in
+                if username == "asdf" && password == "asdf" {
+                     User.save(username, as: .token)
+                    let token = User.get(.token)
+                    Cely.save(username, forKey: "username")
+                    Cely.save("FAKETOKEN:\(username)\(password)", forKey: "token", securely: true)
+                    Cely.changeStatus(to: .loggedIn)
+                }
+            }
+            ])
 
         return true
     }

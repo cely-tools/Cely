@@ -48,17 +48,35 @@ struct User: CelyUser {
 
 extension User {
 
-    static func save(value: Any, as property: Property) {
+    static func save(_ value: Any, as property: Property) {
         property.save(value: value)
     }
 
-    static func save(data: [Property : Any]) {
+    static func save(_ data: [Property : Any]) {
         data.forEach { property, value in
             property.save(value)
         }
     }
 
-    static func get(property: Property) -> Any? {
+    static func get(_ property: Property) -> Any? {
         return property.get()
+    }
+}
+
+struct CottonCandy: CelyStyle {
+    func backgroundColor() -> UIColor {
+        return UIColor(red: 86/255, green: 203/255, blue: 249/255, alpha: 1) // Changing Color
+    }
+    func buttonTextColor() -> UIColor {
+        return .white
+    }
+    func buttonBackgroundColor() -> UIColor {
+        return UIColor(red: 253/255, green: 108/255, blue: 179/255, alpha: 1) // Changing Color
+    }
+    func textFieldBackgroundColor() -> UIColor {
+        return UIColor.white.withAlphaComponent(0.4)
+    }
+    func appLogo() -> UIImage? {
+        return UIImage(named: "CelyLogo")
     }
 }
