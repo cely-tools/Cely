@@ -234,11 +234,11 @@
 			children = (
 				31358EBF1DB31CA800AC7119 /* Locksmith.framework */,
 				31358EA91DB31BC400AC7119 /* AppDelegate.swift */,
+				311B1F2B1DB31FF6005A155B /* User.swift */,
 				31358EAB1DB31BC400AC7119 /* ViewController.swift */,
 				31DA8A571DCD8E8F0006C598 /* LoginStyles.swift */,
 				311B1F2D1DB3230F005A155B /* SettingsViewController.swift */,
 				31DA8A561DCD8E600006C598 /* Supporting Files */,
-				311B1F2B1DB31FF6005A155B /* User.swift */,
 			);
 			path = "Cely Demo";
 			sourceTree = "<group>";
