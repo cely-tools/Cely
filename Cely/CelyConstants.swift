@@ -60,3 +60,19 @@ public protocol CelyStorageProtocol {
     func get(_ key: String) -> Any?
     func removeAllData()
 }
+
+internal extension UITextField {
+
+    @IBInspectable var leftSpacer: CGFloat {
+        get {
+            if let l = leftView {
+                return l.frame.size.width
+            } else {
+                return 0
+            }
+        } set {
+            leftViewMode = .always
+            leftView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
+        }
+    }
+}
