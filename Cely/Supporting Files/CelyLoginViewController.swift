@@ -18,7 +18,7 @@ class CelyLoginViewController: UIViewController {
     @IBOutlet fileprivate weak var bottomLayoutConstraint: NSLayoutConstraint!
 
     // MARK: - Variables
-
+    var initialBottomConstant: CGFloat!
 
     // MARK: - ViewController Life Cycle
     override func viewDidLoad() {
@@ -29,15 +29,15 @@ class CelyLoginViewController: UIViewController {
         loginButton?.addTarget(self, action: #selector(didPressLogin), for: .touchUpInside)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setUpKeyboardNotification()
+        initialBottomConstant = bottomLayoutConstraint.constant
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 
     func didPressLogin() {
@@ -52,24 +52,14 @@ class CelyLoginViewController: UIViewController {
 
 internal extension CelyLoginViewController {
 
-    func keyboardWillShowNotification(notification: NSNotification) {
-        updateBottomLayoutConstraintWithNotification(notification: notification)
-    }
-
-    func keyboardWillHideNotification(notification: NSNotification) {
-        updateBottomLayoutConstraintWithNotification(notification: notification)
-    }
-
     // MARK: - Private
 
     fileprivate func setUpKeyboardNotification() {
-        NotificationCenter.default
-            .addObserver(self, selector: #selector(keyboardWillShowNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default
-            .addObserver(self, selector: #selector(keyboardWillHideNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)),
+                                                name: .UIKeyboardWillChangeFrame, object: nil)
     }
 
-    fileprivate func updateBottomLayoutConstraintWithNotification(notification: NSNotification) {
+    func keyboardNotification(notification: NSNotification) {
         let userInfo = notification.userInfo!
 
         guard let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
@@ -83,9 +73,12 @@ internal extension CelyLoginViewController {
         let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
 
         let newConstraint = view.bounds.maxY - convertedKeyboardEndFrame.minY
-        bottomLayoutConstraint.constant = newConstraint == 0 ? 206 : newConstraint
+        bottomLayoutConstraint.constant = newConstraint == 0 ? initialBottomConstant : newConstraint
 
-        UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
+        UIView.animate(withDuration: animationDuration,
+                       delay: 0.0,
+                       options: [.beginFromCurrentState, animationCurve],
+                       animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
