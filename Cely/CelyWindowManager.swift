@@ -16,6 +16,7 @@ public class CelyWindowManager {
 
     public var loginStoryboard: UIStoryboard!
     public var homeStoryboard: UIStoryboard!
+    public var loginStyle: CelyStyle!
 
     private init() {
         let notTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil
@@ -29,14 +30,17 @@ public class CelyWindowManager {
     static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
         CelyWindowManager.manager.window = _window
 
+        // Set the login Styles
+        CelyWindowManager.manager.loginStyle = options?[.loginStyle] as? CelyStyle ?? DefaultSyle()
+
         // Set the HomeStoryboard
-        CelyWindowManager.setHomeStoryboard(options?[.HomeStoryboard] as? UIStoryboard)
+        CelyWindowManager.setHomeStoryboard(options?[.homeStoryboard] as? UIStoryboard)
 
         // Set the LoginStoryboard
-        CelyWindowManager.setLoginStoryboard(options?[.LoginStoryboard] as? UIStoryboard)
+        CelyWindowManager.setLoginStoryboard(options?[.loginStoryboard] as? UIStoryboard)
 
-        CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .LoggedIn)
-        CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .LoggedOut)
+        CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .loggedIn)
+        CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .loggedOut)
     }
 
     // MARK: - Private Methods
@@ -53,7 +57,7 @@ public class CelyWindowManager {
 
     @objc func showScreenWith(notification: NSNotification) {
         if let status = notification.object as? CelyStatus {
-            if status == .LoggedIn {
+            if status == .loggedIn {
                 CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.homeStoryboard.instantiateInitialViewController()
             } else {
                 CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.loginStoryboard.instantiateInitialViewController()

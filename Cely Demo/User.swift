@@ -11,17 +11,14 @@ import Cely
 
 struct User: CelyUser {
 
-    private init() {}
-    static let ref = User()
-
     enum Property: CelyProperty {
-        case Username = "username"
-        case Email = "email"
-        case Token = "token"
+        case username = "username"
+        case email = "email"
+        case token = "token"
 
         func securely() -> Bool {
             switch self {
-            case .Token:
+            case .token:
                 return true
             default:
                 return false
@@ -30,7 +27,7 @@ struct User: CelyUser {
 
         func persisted() -> Bool {
             switch self {
-            case .Username:
+            case .username:
                 return true
             default:
                 return false
@@ -51,17 +48,17 @@ struct User: CelyUser {
 
 extension User {
 
-    static func save(value: Any, as property: Property) {
+    static func save(_ value: Any, as property: Property) {
         property.save(value: value)
     }
 
-    static func save(data: [Property : Any]) {
+    static func save(_ data: [Property : Any]) {
         data.forEach { property, value in
             property.save(value)
         }
     }
 
-    static func get(property: Property) -> Any? {
+    static func get(_ property: Property) -> Any? {
         return property.get()
     }
 }

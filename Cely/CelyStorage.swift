@@ -80,7 +80,7 @@ public class CelyStorage: CelyStorageProtocol {
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
     public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {
-        guard let val = value else { return .Fail(.undefined) }
+        guard let val = value else { return .fail(.undefined) }
         if secure {
             var currentStorage = CelyStorage.sharedInstance.secureStorage
             currentStorage[key] = val
@@ -89,15 +89,15 @@ public class CelyStorage: CelyStorageProtocol {
                 // If testing, user `saveData` instead of `updateData`
                 if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
                     try Locksmith.saveData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-                    return .Success
+                    return .success
                 }
 
                 try Locksmith.updateData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-                return .Success
+                return .success
             } catch let storageError as LocksmithError {
-                return .Fail(storageError)
+                return .fail(storageError)
             } catch {
-                return .Fail(.undefined)
+                return .fail(.undefined)
             }
         } else {
             if persisted {
@@ -110,7 +110,7 @@ public class CelyStorage: CelyStorageProtocol {
             UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
             UserDefaults.standard.synchronize()
         }
-        return .Success
+        return .success
     }
 
     /// Retrieve user data from key

@@ -33,8 +33,8 @@ public struct Cely {
 
         Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
 
-        Cely.loginCompletionBlock = options?[.LoginCompletionBlock] as? CelyLoginCompletion
-        store = options?[.Storage] as? CelyStorageProtocol ?? store
+        Cely.loginCompletionBlock = options?[.loginCompletionBlock] as? CelyLoginCompletion
+        store = options?[.storage] as? CelyStorageProtocol ?? store
 
         if let window = window {
             CelyWindowManager.setup(window: window, withOptions: options)
@@ -52,16 +52,16 @@ extension Cely {
     ///
     /// - returns: `CelyStatus`. If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
     public static func currentLoginStatus(requiredProperties properties: [CelyProperty] = requiredProperties, fromStorage store: CelyStorageProtocol = store) -> CelyStatus {
-        guard properties.count > 0 else { return .LoggedOut }
+        guard properties.count > 0 else { return .loggedOut }
 
         let missingRequiredProperties = properties
             .map({return store.get($0)})
             .contains(where: {$0 == nil})
 
         if missingRequiredProperties {
-            return .LoggedOut
+            return .loggedOut
         } else {
-            return .LoggedIn
+            return .loggedIn
         }
     }
 
@@ -80,7 +80,8 @@ extension Cely {
     /// - parameter value:   data you want to save
     /// - parameter key:     String for the key
     /// - parameter store: Storage `Cely` will be using. Defaulted to `Storage`
-    /// - parameter persisted: `Boolean`: Keep data after logout
+    /// - parameter secure: `Boolean`: Store data securely
+    /// - parameter persist: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
     @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> StorageResult {
@@ -99,13 +100,13 @@ extension Cely {
     /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorageProtocol`
     public static func logout(useStorage store: CelyStorageProtocol = store) {
         store.removeAllData()
-        changeStatus(to: .LoggedOut)
+        changeStatus(to: .loggedOut)
     }
 
     /// Returns whether or not the user is logged in
     ///
     /// - returns: `Boolean`
     public static func isLoggedIn() -> Bool {
-        return currentLoginStatus() == .LoggedIn
+        return currentLoginStatus() == .loggedIn
     }
 }

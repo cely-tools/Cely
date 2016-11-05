@@ -33,7 +33,13 @@
 		31358EC51DB31D3300AC7119 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31358EC41DB31D3300AC7119 /* Locksmith.framework */; };
 		31358EC61DB31D3300AC7119 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31358EC41DB31D3300AC7119 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		317516421DB7BD9D00974002 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 317516401DB7B23C00974002 /* TestStoryboard.storyboard */; };
+		31D9B96C1DCD72700039BCB8 /* CelyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D9B96B1DCD72700039BCB8 /* CelyProtocols.swift */; };
+		31D9B96E1DCD748F0039BCB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */; };
+		31DA8A581DCD8E8F0006C598 /* LoginStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA8A571DCD8E8F0006C598 /* LoginStyles.swift */; };
 		31DAA33E1DB289220040B266 /* CelyWindowManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */; };
+		31DB1FEB1DCE111900BE1D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */; };
+		31DB1FED1DCE132200BE1D1A /* ChaiOneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */; };
+		31DB1FEF1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,13 +99,13 @@
 		1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		1FAA023C1D4E7B5B00A6D209 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAA023F1D4E7B5B00A6D209 /* Cely.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cely.h; sourceTree = "<group>"; };
-		1FAA02411D4E7B5B00A6D209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FAA02411D4E7B5B00A6D209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestMain.storyboard; path = CelyTests/TestMain.storyboard; sourceTree = SOURCE_ROOT; };
 		1FB2B23C1DB1751600716E80 /* CelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB2B23E1DB1751600716E80 /* CelyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1FB2B2401DB1751600716E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cely.storyboard; sourceTree = "<group>"; };
-		1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyLoginViewController.swift; sourceTree = "<group>"; };
+		1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Cely.storyboard; path = "Supporting Files/Cely.storyboard"; sourceTree = "<group>"; };
+		1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CelyLoginViewController.swift; path = "Supporting Files/CelyLoginViewController.swift"; sourceTree = "<group>"; };
 		1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cely.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		311B1F2B1DB31FF6005A155B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		311B1F2D1DB3230F005A155B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +121,12 @@
 		31358EBF1DB31CA800AC7119 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Locksmith.framework; sourceTree = "<group>"; };
 		31358EC41DB31D3300AC7119 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = "Cely Demo/Locksmith.framework"; sourceTree = "<group>"; };
 		317516401DB7B23C00974002 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = ../CelyTests/Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
+		31D9B96B1DCD72700039BCB8 /* CelyProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyProtocols.swift; sourceTree = "<group>"; };
+		31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
+		31DA8A571DCD8E8F0006C598 /* LoginStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginStyles.swift; sourceTree = "<group>"; };
 		31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManagerTest.swift; sourceTree = "<group>"; };
+		31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChaiOneLogo.png; sourceTree = "<group>"; };
+		31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsAndProtocolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,11 +183,12 @@
 		1FAA023E1D4E7B5B00A6D209 /* Cely */ = {
 			isa = PBXGroup;
 			children = (
+				1FAA023F1D4E7B5B00A6D209 /* Cely.h */,
 				1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */,
 				1F801A1F1DB143C100187FA6 /* CelyConstants.swift */,
+				31D9B96B1DCD72700039BCB8 /* CelyProtocols.swift */,
 				1F801A211DB1473A00187FA6 /* CelyStorage.swift */,
 				1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */,
-				1FAA023F1D4E7B5B00A6D209 /* Cely.h */,
 				1FB2B24A1DB1754B00716E80 /* Supporting Files */,
 				1FAA023D1D4E7B5B00A6D209 /* Products */,
 			);
@@ -186,8 +198,11 @@
 		1FB2B23D1DB1751600716E80 /* CelyTests */ = {
 			isa = PBXGroup;
 			children = (
+				31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */,
+				1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */,
 				1FB2B23E1DB1751600716E80 /* CelyTests.swift */,
 				1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */,
+				31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */,
 				1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */,
 				31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */,
 				1FB2B2401DB1751600716E80 /* Info.plist */,
@@ -198,9 +213,9 @@
 		1FB2B24A1DB1754B00716E80 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				31D9B96D1DCD748F0039BCB8 /* Assets.xcassets */,
 				1FAA02411D4E7B5B00A6D209 /* Info.plist */,
 				1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */,
-				1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */,
 				1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */,
 			);
 			name = "Supporting Files";
@@ -218,18 +233,27 @@
 			isa = PBXGroup;
 			children = (
 				31358EBF1DB31CA800AC7119 /* Locksmith.framework */,
-				31358EB91DB31BDE00AC7119 /* Cely Demo.entitlements */,
 				31358EA91DB31BC400AC7119 /* AppDelegate.swift */,
+				311B1F2B1DB31FF6005A155B /* User.swift */,
 				31358EAB1DB31BC400AC7119 /* ViewController.swift */,
+				31DA8A571DCD8E8F0006C598 /* LoginStyles.swift */,
 				311B1F2D1DB3230F005A155B /* SettingsViewController.swift */,
+				31DA8A561DCD8E600006C598 /* Supporting Files */,
+			);
+			path = "Cely Demo";
+			sourceTree = "<group>";
+		};
+		31DA8A561DCD8E600006C598 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				31358EB91DB31BDE00AC7119 /* Cely Demo.entitlements */,
 				31358EAD1DB31BC400AC7119 /* Main.storyboard */,
 				317516401DB7B23C00974002 /* TestStoryboard.storyboard */,
 				31358EB01DB31BC400AC7119 /* Assets.xcassets */,
 				31358EB21DB31BC400AC7119 /* LaunchScreen.storyboard */,
 				31358EB51DB31BC400AC7119 /* Info.plist */,
-				311B1F2B1DB31FF6005A155B /* User.swift */,
 			);
-			path = "Cely Demo";
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FDAB4DA1D4E7BC9003AC5EE /* Cely.storyboard in Resources */,
+				31D9B96E1DCD748F0039BCB8 /* Assets.xcassets in Resources */,
 				1FABFAED1DBE727F0096DD36 /* TestMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +396,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DB1FED1DCE132200BE1D1A /* ChaiOneLogo.png in Resources */,
+				31DB1FEB1DCE111900BE1D1A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31D9B96C1DCD72700039BCB8 /* CelyProtocols.swift in Sources */,
 				1F801A201DB143C100187FA6 /* CelyConstants.swift in Sources */,
 				1FDAB4DE1D4E7BE4003AC5EE /* Cely.swift in Sources */,
 				1FDAB4DC1D4E7BDC003AC5EE /* CelyLoginViewController.swift in Sources */,
@@ -421,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DB1FEF1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift in Sources */,
 				1F9E55C31DC2426000435B52 /* LoginViewControllerTests.swift in Sources */,
 				1F0C13351DB188AB00AC1C94 /* CelyStorageTests.swift in Sources */,
 				1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */,
@@ -434,6 +463,7 @@
 			files = (
 				31358EAC1DB31BC400AC7119 /* ViewController.swift in Sources */,
 				31358EAA1DB31BC400AC7119 /* AppDelegate.swift in Sources */,
+				31DA8A581DCD8E8F0006C598 /* LoginStyles.swift in Sources */,
 				311B1F2C1DB31FF6005A155B /* User.swift in Sources */,
 				311B1F2E1DB3230F005A155B /* SettingsViewController.swift in Sources */,
 			);
@@ -591,7 +621,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Cely\\ Demo",
 				);
-				INFOPLIST_FILE = Cely/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Cely/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely;
@@ -618,7 +648,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Cely\\ Demo",
 				);
-				INFOPLIST_FILE = Cely/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Cely/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely;
