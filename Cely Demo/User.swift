@@ -28,8 +28,17 @@ struct User: CelyUser {
             }
         }
 
+        func persisted() -> Bool {
+            switch self {
+            case .Username:
+                return true
+            default:
+                return false
+            }
+        }
+
         func save(_ value: Any) {
-            Cely.save(value, forKey: rawValue, securely: securely())
+            Cely.save(value, forKey: rawValue, securely: securely(), persisted: persisted())
         }
 
         func get() -> Any? {

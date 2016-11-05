@@ -16,6 +16,7 @@ class CelyLoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton?
     @IBOutlet var textFields: [UITextField]?
     @IBOutlet fileprivate weak var bottomLayoutConstraint: NSLayoutConstraint!
+
     // MARK: - Variables
 
 
@@ -40,20 +41,53 @@ class CelyLoginViewController: UIViewController {
     }
 
     func didPressLogin() {
-        if let fields = textFields,
-            fields.flatMap({$0}).reduce(true, {$0 && !$1.text!.isEmpty}) {
-
-            if let username = usernameField?.text, let password = passwordField?.text {
-                Cely.loginCompletionBlock?(username, password)
-            }
-
-            usernameField?.text = ""
-            passwordField?.text = ""
+        if let username = usernameField?.text, let password = passwordField?.text {
+            Cely.loginCompletionBlock?(username, password)
         }
+
+        usernameField?.text = ""
+        passwordField?.text = ""
+    }
+}
+
+internal extension CelyLoginViewController {
+
+    func keyboardWillShowNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotification(notification: notification)
     }
 
-    deinit {
-        print("CelyLoginViewController released!!")
+    func keyboardWillHideNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotification(notification: notification)
+    }
+
+    // MARK: - Private
+
+    fileprivate func setUpKeyboardNotification() {
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(keyboardWillShowNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(keyboardWillHideNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    fileprivate func updateBottomLayoutConstraintWithNotification(notification: NSNotification) {
+        let userInfo = notification.userInfo!
+
+        guard let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
+            let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+            let rawCurve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as? NSNumber else { return }
+
+        let animationDuration = (duration).doubleValue
+        let keyboardEndFrame = (endFrame).cgRectValue
+        let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
+        let rawAnimationCurve = (rawCurve).uint32Value << 16
+        let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
+
+        let newConstraint = view.bounds.maxY - convertedKeyboardEndFrame.minY
+        bottomLayoutConstraint.constant = newConstraint == 0 ? 206 : newConstraint
+
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
 }
 
