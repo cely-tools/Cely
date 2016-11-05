@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aIY-uz-m5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aIY-uz-m5q">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,23 +19,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvi-Hw-TgH">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-aU-c4H">
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" image="CelyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uGl-qw-sCA"/>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7sb-5Z-aFS">
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5m-uC-019">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5m-uC-019">
+                                        <color key="backgroundColor" white="1" alpha="0.40019415680473375" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Wyg-rM-bxY"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4r-kd-DwE">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4r-kd-DwE">
+                                        <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ED2-Ic-dPH"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -45,10 +49,11 @@
                         <color key="backgroundColor" red="0.16078431372549018" green="0.50196078431372548" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qqQ-aU-c4H" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="1K7-rV-Cb3"/>
-                            <constraint firstItem="o0h-7c-xO5" firstAttribute="top" secondItem="7sb-5Z-aFS" secondAttribute="bottom" constant="206" id="5fo-fT-BR2"/>
-                            <constraint firstItem="gvi-Hw-TgH" firstAttribute="top" secondItem="wmr-7t-K4E" secondAttribute="bottom" constant="100" id="PbQ-xB-fW4"/>
+                            <constraint firstItem="o0h-7c-xO5" firstAttribute="top" secondItem="7sb-5Z-aFS" secondAttribute="bottom" constant="294" id="5fo-fT-BR2"/>
+                            <constraint firstItem="uGl-qw-sCA" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="UnL-lI-Ddj"/>
                             <constraint firstItem="7sb-5Z-aFS" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="Wx8-iO-nq8"/>
-                            <constraint firstItem="gvi-Hw-TgH" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="jhR-qd-VTr"/>
+                            <constraint firstItem="uGl-qw-sCA" firstAttribute="top" secondItem="wmr-7t-K4E" secondAttribute="bottom" constant="92" id="Xdd-3S-FgQ"/>
+                            <constraint firstItem="uGl-qw-sCA" firstAttribute="leading" secondItem="bxO-0I-Ha5" secondAttribute="leadingMargin" id="dv3-J4-H23"/>
                             <constraint firstItem="o0h-7c-xO5" firstAttribute="top" secondItem="qqQ-aU-c4H" secondAttribute="bottom" constant="96" id="oJt-FJ-5ew"/>
                             <constraint firstItem="7sb-5Z-aFS" firstAttribute="leading" secondItem="bxO-0I-Ha5" secondAttribute="leadingMargin" constant="20" id="wn2-8Z-f8S"/>
                         </constraints>
@@ -68,4 +73,7 @@
             <point key="canvasLocation" x="740" y="338"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CelyLogo" width="459" height="219"/>
+    </resources>
 </document>

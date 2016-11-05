@@ -21,10 +21,13 @@ public enum CelyStatus: CelyCommands {
     case LoggedOut = "CelyStatus.LoggedOut.user"
 }
 
-/// Protocol for model class to implements
-public protocol CelyUser {
-    /// Enum of all the properties you would like to save for a model
-    associatedtype Property : RawRepresentable
+/// Options that you can pass into Cely on `Cely.setup(_:)`
+public enum CelyOptions {
+    case Storage
+    case HomeStoryboard
+    case LoginStoryboard
+    case LoginCompletionBlock
+    case LoginStyle
 }
 
 // enum result on whether or not Cely successfully saved your data
@@ -44,19 +47,4 @@ public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
     default:
         return false
     }
-}
-
-/// Options that you can pass into Cely on `Cely.setup(_:)`
-public enum CelyOptions {
-    case Storage
-    case HomeStoryboard
-    case LoginStoryboard
-    case LoginCompletionBlock
-}
-
-/// Protocol a storage class must abide by in order for Cely to use it
-public protocol CelyStorageProtocol {
-    func set(_ value: Any?, forKey key: String, securely secure: Bool) -> StorageResult
-    func get(_ key: String) -> Any?
-    func removeAllData()
 }
