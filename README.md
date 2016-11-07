@@ -19,7 +19,9 @@ Whether you're building an app for a client or for a hackathon, building a login
 What does Cely does for you? 
 
 1. Simple API to store user creditials and information **securely**
-2. Manages switching between your app's Home Screen and Login Screen
+ - `Cely.save("SUPER_SECRET_STRING", forKey: "token", securely: true)`
+2. Manages switching between your app's Home Screen and Login Screen with:
+ - `Cely.changeStatus(to: .loggedIn) // or .loggedOut`
 3. Customizable starter Login screen(or you can use your login screen)
  
 What Cely **does not do** for you? 
@@ -83,7 +85,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-**Hit RUN!!**
+<h3 style="text-align: center">Hit RUN!!</h3>
 
 ### CelyOptions
 #### Handle Login Credentials
