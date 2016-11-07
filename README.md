@@ -274,9 +274,9 @@ Cely.setup(with: window, forModel: User(), requiredProperties:[.token])
 // or 
 
 Cely.setup(with: window, forModel: User(), requiredProperties:[.token], withOptions:[
-	.LoginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
+	.loginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
 	.HomeStoryboard: UIStoryboard(name: "My_NonMain_Storyboard", bundle: nil),
-	.LoginCompletionBlock: { (username: String, password: String) in
+	.loginCompletionBlock: { (username: String, password: String) in
         if username == "asdf" && password == "asdf" {
             print("username: \(username): password: \(password)")
         }
@@ -323,7 +323,7 @@ Key | Type| Required? | Description
 
 Type| Description
 ----|------
-[`CelyStatus`](#Cely.CelyStatus) | If `requiredProperties` are all in store, it will return `.LoggedIn`, else `.LoggedOut`
+[`CelyStatus`](#Cely.CelyStatus) | If `requiredProperties` are all in store, it will return `.loggedIn`, else `.loggedOut`
 
 </details>
 
@@ -402,7 +402,7 @@ Perform action like `LoggedIn` or `LoggedOut`.
 <summary>Example</summary>
 
 ```swift
-changeStatus(to: .LoggedOut)
+changeStatus(to: .loggedOut)
 ```
 </details>
 <details>
@@ -417,7 +417,7 @@ Key | Type| Required? | Description
 
 <div id="Cely.logout"></div>
 ##### `logout(usesStorage:)`
-Convenience method to logout user. Is equivalent to `changeStatus(to: .LoggedOut)`
+Convenience method to logout user. Is equivalent to `changeStatus(to: .loggedOut)`
 <details>
 <summary>Example</summary>
 
