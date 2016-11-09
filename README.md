@@ -50,7 +50,7 @@ Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1
 
 ## Usage
 
-###Setup(20 seconds)
+###Setup(30 seconds)
 
 #### User Model (`User.swift`)
 Let's start by creating a `User` model that conforms to the [`CelyUser`](#Cely.CelyUser) Protocol:
