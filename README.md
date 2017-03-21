@@ -15,7 +15,7 @@ Whether you're building an app for a client or for a hackathon, building a login
 
 
 
-###Details:
+### Details:
 What does Cely does for you? 
 
 1. Simple API to store user creditials and information **securely**
@@ -36,7 +36,7 @@ What Cely **does not do** for you?
 
 ## Installation
 
-###Carthage
+### Carthage
 ```
 github "ChaiOne/Cely"
 ```
@@ -45,12 +45,12 @@ Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith)
 > $(SRCROOT)/Carthage/Build/iOS/Cely.framework  
 > $(SRCROOT)/Carthage/Build/iOS/Locksmith.framework
 
-####Keychain entitlement Part(Xcode 8 bug?)
+#### Keychain entitlement Part(Xcode 8 bug?)
 Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
 
 ## Usage
 
-###Setup(30 seconds)
+### Setup(30 seconds)
 
 #### User Model (`User.swift`)
 Let's start by creating a `User` model that conforms to the [`CelyUser`](#Cely.CelyUser) Protocol:
@@ -62,13 +62,13 @@ import Cely
 
 struct User: CelyUser {
 
-	enum Property: CelyProperty {
-		case token = "token"
-	}
+  enum Property: CelyProperty {
+    case token = "token"
+  }
 }
 
 ```
-####Login redirect(`AppDelegate.swift`)
+#### Login redirect(`AppDelegate.swift`)
 
 Cely's **Simple Setup** function will get you up and running in a matter of seconds. Inside of your `AppDelegate.swift` simply `import Cely` and call the [`setup(_:)`](#Cely.setup) function inside of your `didFinishLaunchingWithOptions` method.
 
@@ -78,10 +78,10 @@ Cely's **Simple Setup** function will get you up and running in a matter of seco
 import Cely
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
-	
-	Cely.setup(with: window, forModel: User(), requiredProperties: [.token])
-	
-	...
+  
+  Cely.setup(with: window, forModel: User(), requiredProperties: [.token])
+  
+  ...
 }
 ```
 
@@ -122,7 +122,7 @@ struct CottonCandy: CelyStyle {
         return .white
     }
     func buttonBackgroundColor() -> UIColor {
-    	 return UIColor(red: 253/255, green: 108/255, blue: 179/255, alpha: 1) // Changing Color
+       return UIColor(red: 253/255, green: 108/255, blue: 179/255, alpha: 1) // Changing Color
     }
     func textFieldBackgroundColor() -> UIColor {
         return UIColor.white.withAlphaComponent(0.4)
@@ -171,7 +171,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ```
 
-###Recommended User Pattern
+### Recommended User Pattern
 
 ```swift
 import Cely
@@ -237,10 +237,10 @@ The reason for this pattern is to make saving data as easy as:
 ```swift
 // Pseudo network code, NOT REAL CODE!!!
 ApiManager.logUserIn("username", "password") { json in
-	let apiToken = json["token"].string
-	
-	// REAL CODE!!!
-	User.save(apiToken, as: .token)
+  let apiToken = json["token"].string
+  
+  // REAL CODE!!!
+  User.save(apiToken, as: .token)
 }
 
 ```
@@ -250,9 +250,9 @@ and getting data as simple as:
 let token = User.get(.token)
 ```
 
-##API
+## API
 
-###Cely
+### Cely
 Cely was made to help handle user credentials and handling login with ease. Below you will find documentation for Cely's Framework. **Please do not hesitate to open an issue if something is unclear or is missing.** 
 #### Variables
 <div id="Cely.store"></div>
@@ -274,9 +274,9 @@ Cely.setup(with: window, forModel: User(), requiredProperties:[.token])
 // or 
 
 Cely.setup(with: window, forModel: User(), requiredProperties:[.token], withOptions:[
-	.loginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
-	.HomeStoryboard: UIStoryboard(name: "My_NonMain_Storyboard", bundle: nil),
-	.loginCompletionBlock: { (username: String, password: String) in
+  .loginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
+  .HomeStoryboard: UIStoryboard(name: "My_NonMain_Storyboard", bundle: nil),
+  .loginCompletionBlock: { (username: String, password: String) in
         if username == "asdf" && password == "asdf" {
             print("username: \(username): password: \(password)")
         }
