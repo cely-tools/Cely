@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Locksmith
 
 internal let kCelyDomain = "cely.storage"
 internal let kCelyLocksmithAccount = "cely.secure.storage"
@@ -34,7 +33,7 @@ public class CelyStorage: CelyStorageProtocol {
 
             // Clear Locksmith
             do {
-                try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+                try CelySecureStorage.deleteDataForAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
             } catch {}
         }
 
@@ -52,7 +51,7 @@ public class CelyStorage: CelyStorageProtocol {
     }
 
     fileprivate func setupSecureStorage() {
-        if let userData = Locksmith.loadDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService) {
+        if let userData = CelySecureStorage.loadDataForAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService) {
             secureStorage = userData
         }
     }
@@ -64,7 +63,7 @@ public class CelyStorage: CelyStorageProtocol {
         UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
         UserDefaults.standard.synchronize()
         do {
-            try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+            try CelySecureStorage.deleteDataForAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
         } catch {
             // handle the error
             print("error: \(error.localizedDescription)")
@@ -88,13 +87,13 @@ public class CelyStorage: CelyStorageProtocol {
             do {
                 // If testing, user `saveData` instead of `updateData`
                 if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
-                    try Locksmith.saveData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+                    try CelySecureStorage.saveData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
                     return .success
                 }
 
-                try Locksmith.updateData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
+                try CelySecureStorage.updateData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
                 return .success
-            } catch let storageError as LocksmithError {
+            } catch let storageError as CelySecureStorageError {
                 return .fail(storageError)
             } catch {
                 return .fail(.undefined)

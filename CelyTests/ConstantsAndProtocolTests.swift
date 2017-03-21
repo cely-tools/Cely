@@ -75,4 +75,3 @@ extension ConstantsAndProtocolTests {
         XCTAssertEqual(testDummy.appLogo(), nil, "appLogo() was supposed to return nil")
     }
 }
-

@@ -8,7 +8,6 @@
 
 import UIKit
 import Cely
-import Locksmith
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

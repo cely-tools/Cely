@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Locksmith
 
 /// `String` type alias. Is used in User model
 public typealias CelyProperty = String
@@ -33,7 +32,7 @@ public enum CelyOptions {
 // enum result on whether or not Cely successfully saved your data
 public enum StorageResult: Equatable {
     case success
-    case fail(LocksmithError)
+    case fail(CelySecureStorageError)
 }
 
 public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
