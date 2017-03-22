@@ -96,6 +96,11 @@ public extension Dictionary {
 
 public extension UIWindow {
     func setCurrentViewController(to viewController: UIViewController?) {
+        let previousViewController = rootViewController
         rootViewController = viewController
+
+        if let previousViewController = previousViewController {
+            previousViewController.dismiss(animated: false)
+        }
     }
 }
