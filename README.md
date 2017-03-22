@@ -40,10 +40,9 @@ What Cely **does not do** for you?
 ```
 github "ChaiOne/Cely"
 ```
-Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith) when you import it into your project, so be sure to add `Locksmith` in your copy phase script.
+Be sure to add `Cely` in your carthage copy phase script.
 
 > $(SRCROOT)/Carthage/Build/iOS/Cely.framework  
-> $(SRCROOT)/Carthage/Build/iOS/Locksmith.framework
 
 #### Keychain entitlement Part(Xcode 8 bug?)
 Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
