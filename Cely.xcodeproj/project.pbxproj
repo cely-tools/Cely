@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F0C13351DB188AB00AC1C94 /* CelyStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */; };
+		1F73784D1E82CF620082D425 /* LocksmithSecurityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73784C1E82CF620082D425 /* LocksmithSecurityClass.swift */; };
+		1F73784F1E82CF7C0082D425 /* LocksmithAccessibleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73784E1E82CF7C0082D425 /* LocksmithAccessibleOption.swift */; };
+		1F7378511E82CFD90082D425 /* LocksmithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7378501E82CFD90082D425 /* LocksmithError.swift */; };
 		1F801A1B1DB141C100187FA6 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */; };
 		1F801A201DB143C100187FA6 /* CelyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1F1DB143C100187FA6 /* CelyConstants.swift */; };
 		1F801A221DB1473A00187FA6 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A211DB1473A00187FA6 /* CelyStorage.swift */; };
@@ -16,10 +19,11 @@
 		1FABFAED1DBE727F0096DD36 /* TestMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */; };
 		1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2B23E1DB1751600716E80 /* CelyTests.swift */; };
 		1FB2B2411DB1751600716E80 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAA023C1D4E7B5B00A6D209 /* Cely.framework */; };
+		1FD162311E81D1300048AFAB /* CelyLocksmithTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD162301E81D1300048AFAB /* CelyLocksmithTests.swift */; };
 		1FDAB4DA1D4E7BC9003AC5EE /* Cely.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */; };
 		1FDAB4DC1D4E7BDC003AC5EE /* CelyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */; };
 		1FDAB4DE1D4E7BE4003AC5EE /* Cely.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */; };
-		1FE37A2F1E81A0FB006FF2A4 /* CelySecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE37A2E1E81A0FB006FF2A4 /* CelySecureStorage.swift */; };
+		1FE37A2F1E81A0FB006FF2A4 /* Locksmith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE37A2E1E81A0FB006FF2A4 /* Locksmith.swift */; };
 		311B1F271DB31FC6005A155B /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAA023C1D4E7B5B00A6D209 /* Cely.framework */; };
 		311B1F281DB31FC6005A155B /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAA023C1D4E7B5B00A6D209 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		311B1F2C1DB31FF6005A155B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B1F2B1DB31FF6005A155B /* User.swift */; };
@@ -88,6 +92,9 @@
 
 /* Begin PBXFileReference section */
 		1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyStorageTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		1F73784C1E82CF620082D425 /* LocksmithSecurityClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithSecurityClass.swift; sourceTree = "<group>"; };
+		1F73784E1E82CF7C0082D425 /* LocksmithAccessibleOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithAccessibleOption.swift; sourceTree = "<group>"; };
+		1F7378501E82CFD90082D425 /* LocksmithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithError.swift; sourceTree = "<group>"; };
 		1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyWindowManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1F801A1F1DB143C100187FA6 /* CelyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyConstants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1F801A211DB1473A00187FA6 /* CelyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyStorage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -99,10 +106,11 @@
 		1FB2B23C1DB1751600716E80 /* CelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB2B23E1DB1751600716E80 /* CelyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1FB2B2401DB1751600716E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FD162301E81D1300048AFAB /* CelyLocksmithTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyLocksmithTests.swift; sourceTree = "<group>"; };
 		1FDAB4D91D4E7BC9003AC5EE /* Cely.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Cely.storyboard; path = "Supporting Files/Cely.storyboard"; sourceTree = "<group>"; };
 		1FDAB4DB1D4E7BDC003AC5EE /* CelyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CelyLoginViewController.swift; path = "Supporting Files/CelyLoginViewController.swift"; sourceTree = "<group>"; };
 		1FDAB4DD1D4E7BE4003AC5EE /* Cely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cely.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		1FE37A2E1E81A0FB006FF2A4 /* CelySecureStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelySecureStorage.swift; sourceTree = "<group>"; };
+		1FE37A2E1E81A0FB006FF2A4 /* Locksmith.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locksmith.swift; sourceTree = "<group>"; };
 		311B1F2B1DB31FF6005A155B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		311B1F2D1DB3230F005A155B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		311B1F351DB3302B005A155B /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
@@ -150,6 +158,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F73784B1E82CF4E0082D425 /* Locksmith */ = {
+			isa = PBXGroup;
+			children = (
+				1F73784E1E82CF7C0082D425 /* LocksmithAccessibleOption.swift */,
+				1F7378501E82CFD90082D425 /* LocksmithError.swift */,
+				1FE37A2E1E81A0FB006FF2A4 /* Locksmith.swift */,
+				1F73784C1E82CF620082D425 /* LocksmithSecurityClass.swift */,
+			);
+			name = Locksmith;
+			sourceTree = "<group>";
+		};
+		1FA780A01E82DE0C001DC03B /* Locksmith Test */ = {
+			isa = PBXGroup;
+			children = (
+				1FD162301E81D1300048AFAB /* CelyLocksmithTests.swift */,
+			);
+			name = "Locksmith Test";
+			sourceTree = "<group>";
+		};
+		1FA780A11E82DE3D001DC03B /* Cely Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1FB2B23E1DB1751600716E80 /* CelyTests.swift */,
+				1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */,
+				31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */,
+				1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */,
+				31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */,
+			);
+			name = "Cely Tests";
+			sourceTree = "<group>";
+		};
+		1FA780A21E82DE49001DC03B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */,
+				1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */,
+				1FB2B2401DB1751600716E80 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		1FAA02321D4E7B5B00A6D209 = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +228,7 @@
 				1F801A1F1DB143C100187FA6 /* CelyConstants.swift */,
 				31D9B96B1DCD72700039BCB8 /* CelyProtocols.swift */,
 				1F801A211DB1473A00187FA6 /* CelyStorage.swift */,
-				1FE37A2E1E81A0FB006FF2A4 /* CelySecureStorage.swift */,
+				1F73784B1E82CF4E0082D425 /* Locksmith */,
 				1F801A1A1DB141C100187FA6 /* CelyWindowManager.swift */,
 				1FB2B24A1DB1754B00716E80 /* Supporting Files */,
 				1FAA023D1D4E7B5B00A6D209 /* Products */,
@@ -190,14 +239,9 @@
 		1FB2B23D1DB1751600716E80 /* CelyTests */ = {
 			isa = PBXGroup;
 			children = (
-				31DB1FEC1DCE132200BE1D1A /* ChaiOneLogo.png */,
-				1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */,
-				1FB2B23E1DB1751600716E80 /* CelyTests.swift */,
-				1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */,
-				31DB1FEE1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift */,
-				1F0C13341DB188AB00AC1C94 /* CelyStorageTests.swift */,
-				31DAA33D1DB289220040B266 /* CelyWindowManagerTest.swift */,
-				1FB2B2401DB1751600716E80 /* Info.plist */,
+				1FA780A11E82DE3D001DC03B /* Cely Tests */,
+				1FA780A01E82DE0C001DC03B /* Locksmith Test */,
+				1FA780A21E82DE49001DC03B /* Supporting Files */,
 			);
 			path = CelyTests;
 			sourceTree = "<group>";
@@ -326,7 +370,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Fabian Buentello";
 				TargetAttributes = {
 					1FAA023B1D4E7B5B00A6D209 = {
@@ -339,6 +383,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = K83DSSAEPP;
 						ProvisioningStyle = Automatic;
+						TestTargetID = 31358EA61DB31BC400AC7119;
 					};
 					31358EA61DB31BC400AC7119 = {
 						CreatedOnToolsVersion = 8.0;
@@ -427,10 +472,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F73784F1E82CF7C0082D425 /* LocksmithAccessibleOption.swift in Sources */,
 				31D9B96C1DCD72700039BCB8 /* CelyProtocols.swift in Sources */,
 				1F801A201DB143C100187FA6 /* CelyConstants.swift in Sources */,
 				1FDAB4DE1D4E7BE4003AC5EE /* Cely.swift in Sources */,
-				1FE37A2F1E81A0FB006FF2A4 /* CelySecureStorage.swift in Sources */,
+				1F73784D1E82CF620082D425 /* LocksmithSecurityClass.swift in Sources */,
+				1F7378511E82CFD90082D425 /* LocksmithError.swift in Sources */,
+				1FE37A2F1E81A0FB006FF2A4 /* Locksmith.swift in Sources */,
 				1FDAB4DC1D4E7BDC003AC5EE /* CelyLoginViewController.swift in Sources */,
 				1F801A221DB1473A00187FA6 /* CelyStorage.swift in Sources */,
 				1F801A1B1DB141C100187FA6 /* CelyWindowManager.swift in Sources */,
@@ -446,6 +494,7 @@
 				1F0C13351DB188AB00AC1C94 /* CelyStorageTests.swift in Sources */,
 				1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */,
 				31DAA33E1DB289220040B266 /* CelyWindowManagerTest.swift in Sources */,
+				1FD162311E81D1300048AFAB /* CelyLocksmithTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +638,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -602,7 +650,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -618,7 +666,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -628,7 +675,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -644,6 +691,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -660,6 +708,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cely Demo.app/Cely Demo";
 			};
 			name = Debug;
 		};
@@ -673,7 +722,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cely Demo.app/Cely Demo";
 			};
 			name = Release;
 		};

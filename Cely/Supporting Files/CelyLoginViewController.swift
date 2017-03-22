@@ -12,7 +12,7 @@ class CelyLoginViewController: UIViewController {
 
     // MARK: - IBOutlets
 
-    @IBOutlet weak var appImageView: UIImageView!
+    @IBOutlet weak var appImageView: UIImageView?
     @IBOutlet weak var usernameField: UITextField?
     @IBOutlet weak var passwordField: UITextField?
     @IBOutlet weak var loginButton: UIButton?
@@ -42,7 +42,7 @@ class CelyLoginViewController: UIViewController {
         loginButton?.backgroundColor = styles.buttonBackgroundColor()
         textFields?.forEach({$0.backgroundColor = styles.textFieldBackgroundColor()})
         if let image = styles.appLogo() {
-            appImageView.image = image
+            appImageView?.image = image
         }
     }
 

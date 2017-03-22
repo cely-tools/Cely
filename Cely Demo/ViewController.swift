@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     }
 
     deinit {
-        // TODO: Need to be able to release the homeviewcontroller
         print("released homeviewcontroller")
     }
 }

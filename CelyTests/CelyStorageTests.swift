@@ -99,7 +99,8 @@ class StorageTests: XCTestCase {
         dummyData.forEach { dummy in
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
             if dummy.value != nil {
-                XCTAssert(success == StorageResult.success, dummy.failedToSet())
+                let successStatus = success == StorageResult.success || success == StorageResult.fail(LocksmithError.duplicate)
+                XCTAssert(successStatus, dummy.failedToSet())
             } else {
                 XCTAssert(StorageResult.fail(.undefined) == success, "You're not supposed to be able to set nil in the storage.")
             }

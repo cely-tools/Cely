@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Cely.setup(with: window!, forModel: User(), requiredProperties: [.token], withOptions: [
             .loginCompletionBlock: { (username: String, password: String) in
                 if username == "asdf" && password == "asdf" {
-                    Cely.save(username, forKey: "username")
-                    Cely.save("FAKETOKEN:\(username)\(password)", forKey: "token", securely: true)
+                    User.save("FAKETOKEN:\(username)\(password)", as: .token)
                     Cely.changeStatus(to: .loggedIn)
                 }
             }
