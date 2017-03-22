@@ -15,6 +15,9 @@
 		1F801A201DB143C100187FA6 /* CelyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A1F1DB143C100187FA6 /* CelyConstants.swift */; };
 		1F801A221DB1473A00187FA6 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F801A211DB1473A00187FA6 /* CelyStorage.swift */; };
 		1F9E55C31DC2426000435B52 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */; };
+		1FA780A41E82DEA3001DC03B /* LocksmithSecurityClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA780A31E82DEA3001DC03B /* LocksmithSecurityClassTests.swift */; };
+		1FA780A61E82E0CA001DC03B /* LocksmithAccessibleOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA780A51E82E0CA001DC03B /* LocksmithAccessibleOptionTests.swift */; };
+		1FA780A81E82E2D7001DC03B /* LocksmithErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA780A71E82E2D7001DC03B /* LocksmithErrorTests.swift */; };
 		1FAA02401D4E7B5B00A6D209 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FAA023F1D4E7B5B00A6D209 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FABFAED1DBE727F0096DD36 /* TestMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FABFAEC1DBE727F0096DD36 /* TestMain.storyboard */; };
 		1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB2B23E1DB1751600716E80 /* CelyTests.swift */; };
@@ -99,6 +102,9 @@
 		1F801A1F1DB143C100187FA6 /* CelyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyConstants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1F801A211DB1473A00187FA6 /* CelyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CelyStorage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1F9E55C21DC2426000435B52 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		1FA780A31E82DEA3001DC03B /* LocksmithSecurityClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithSecurityClassTests.swift; sourceTree = "<group>"; };
+		1FA780A51E82E0CA001DC03B /* LocksmithAccessibleOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithAccessibleOptionTests.swift; sourceTree = "<group>"; };
+		1FA780A71E82E2D7001DC03B /* LocksmithErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithErrorTests.swift; sourceTree = "<group>"; };
 		1FAA023C1D4E7B5B00A6D209 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAA023F1D4E7B5B00A6D209 /* Cely.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cely.h; sourceTree = "<group>"; };
 		1FAA02411D4E7B5B00A6D209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
@@ -173,6 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				1FD162301E81D1300048AFAB /* CelyLocksmithTests.swift */,
+				1FA780A31E82DEA3001DC03B /* LocksmithSecurityClassTests.swift */,
+				1FA780A51E82E0CA001DC03B /* LocksmithAccessibleOptionTests.swift */,
+				1FA780A71E82E2D7001DC03B /* LocksmithErrorTests.swift */,
 			);
 			name = "Locksmith Test";
 			sourceTree = "<group>";
@@ -490,11 +499,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DB1FEF1DCE226700BE1D1A /* ConstantsAndProtocolTests.swift in Sources */,
+				1FA780A41E82DEA3001DC03B /* LocksmithSecurityClassTests.swift in Sources */,
 				1F9E55C31DC2426000435B52 /* LoginViewControllerTests.swift in Sources */,
+				1FA780A81E82E2D7001DC03B /* LocksmithErrorTests.swift in Sources */,
 				1F0C13351DB188AB00AC1C94 /* CelyStorageTests.swift in Sources */,
 				1FB2B23F1DB1751600716E80 /* CelyTests.swift in Sources */,
 				31DAA33E1DB289220040B266 /* CelyWindowManagerTest.swift in Sources */,
 				1FD162311E81D1300048AFAB /* CelyLocksmithTests.swift in Sources */,
+				1FA780A61E82E0CA001DC03B /* LocksmithAccessibleOptionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
