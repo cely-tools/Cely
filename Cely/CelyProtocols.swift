@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Protocol for model class to implements
+/// Protocol for model classd to implements
 public protocol CelyUser {
     /// Enum of all the properties you would like to save for a model
     associatedtype Property : RawRepresentable
@@ -21,6 +21,7 @@ public protocol CelyStorageProtocol {
     func removeAllData()
 }
 
+/// Protocol that allows styles to be applied to Cely's default LoginViewController
 public protocol CelyStyle {
     func backgroundColor() -> UIColor
     func textFieldBackgroundColor() -> UIColor
@@ -68,3 +69,18 @@ public extension CelyStyle {
 }
 
 struct DefaultSyle: CelyStyle {}
+
+/// Handles Animations between Home and Login ViewControllers
+public protocol CelyAnimator {
+    func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow)
+    func logoutTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow)
+}
+
+struct DefaultAnimator: CelyAnimator {
+    func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
+        celyWindow.setCurrentViewController(to: destinationVC)
+    }
+    func logoutTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
+        celyWindow.setCurrentViewController(to: destinationVC)
+    }
+}
