@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Locksmith
 
 internal let kCelyDomain = "cely.storage"
 internal let kCelyLocksmithAccount = "cely.secure.storage"

@@ -40,10 +40,9 @@ What Cely **does not do** for you?
 ```
 github "ChaiOne/Cely"
 ```
-Cely will also include [`Locksmith`](https://github.com/matthewpalmer/Locksmith) when you import it into your project, so be sure to add `Locksmith` in your copy phase script.
+Be sure to add `Cely` in your carthage copy phase script.
 
 > $(SRCROOT)/Carthage/Build/iOS/Cely.framework  
-> $(SRCROOT)/Carthage/Build/iOS/Locksmith.framework
 
 #### Keychain entitlement Part(Xcode 8 bug?)
 Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
@@ -256,14 +255,18 @@ let token = User.get(.token)
 Cely was made to help handle user credentials and handling login with ease. Below you will find documentation for Cely's Framework. **Please do not hesitate to open an issue if something is unclear or is missing.** 
 #### Variables
 <div id="Cely.store"></div>
+
 ##### `store`
+
 A class that conforms to the [`CelyStorageProtocol`](#Cely.CelyStorageProtocol) protocol. By default is set to a singleton instance of `CelyStorage`.
 
 
 #### Methods
 
 <div id="Cely.setup"></div>
+
 ##### `setup(with:forModel:requiredProperties:withOptions:)`
+
 Sets up Cely within your application
 <details>
 <summary>Example</summary>
@@ -298,7 +301,9 @@ Key | Type| Required? | Description
 
 
 <div id="Cely.currentLoginStatus"></div>
+
 ##### `currentLoginStatus(requiredProperties:fromStorage:)`
+
 Will return the `CelyStatus` of the current user.
 <details>
 <summary>Example</summary>
@@ -329,7 +334,9 @@ Type| Description
 
 
 <div id="Cely.get"></div>
+
 ##### `get(_:fromStorage:)`
+
 Returns stored data for key.
 <details>
 <summary>Example</summary>
@@ -361,7 +368,9 @@ Type| Description
 
 
 <div id="Cely.save"></div>
+
 ##### `save(_:forKey:toStorage:securely:persisted:)`
+
 Saves data in store
 <details>
 <summary>Example</summary>
@@ -396,7 +405,9 @@ Type| Description
 
 
 <div id="Cely.changeStatus"></div>
+
 ##### `changeStatus(to:)`
+
 Perform action like `LoggedIn` or `LoggedOut`.
 <details>
 <summary>Example</summary>
@@ -416,7 +427,9 @@ Key | Type| Required? | Description
 
 
 <div id="Cely.logout"></div>
+
 ##### `logout(usesStorage:)`
+
 Convenience method to logout user. Is equivalent to `changeStatus(to: .loggedOut)`
 <details>
 <summary>Example</summary>
@@ -437,7 +450,9 @@ Key | Type| Required? | Description
 
 
 <div id="Cely.isLoggedIn"></div>
+
 ##### `isLoggedIn()`
+
 Returns whether or not the user is logged in
 <details>
 <summary>Example</summary>
@@ -459,7 +474,9 @@ Type| Description
 ### Constants
 #### Protocols
 <div id="Cely.CelyUser"></div>
+
 ##### `CelyUser `
+
 `protocol` for model class to implements
 
 <details>
@@ -472,7 +489,9 @@ value | Type| Description
 </details>
 
 <div id="Cely.CelyStorageProtocol"></div>
+
 ##### `CelyStorageProtocol `
+
 `protocol` a storage class must abide by in order for Cely to use it
 
 <details>
@@ -487,7 +506,10 @@ func removeAllData()
 </details>
 
 <div id="Cely.CelyStyle"></div>
+
+
 ##### `CelyStyle`
+
 The `protocol` an object must conform to in order to customize Cely's default login screen. Since all methods are optional, Cely will use the default value for any unimplemented methods.
 
 <details>
@@ -505,23 +527,29 @@ func appLogo() -> UIImage?
 
 #### Typealias
 <div id="Cely.CelyProperty"></div>
+
 ##### `CelyProperty `
+
 `String` type alias. Is used in User model
 
 <div id="Cely.CelyCommands"></div>
+
 ##### `CelyCommands `
+
 `String` type alias. Command for cely to execute
 
 #### enums
 <div id="Cely.CelyOptions"></div>
+
 ##### `CelyOptions`
+
 `enum` Options that you can pass into Cely on [`setup(with:forModel:requiredProperties:withOptions:)`](#Cely.setup)
 
 <details>
 <summary>Options</summary>
 
-Case ||
-----|------|
+Case | Description
+----|------
 `storage ` | Pass in you're own storage class if you wish not to use Cely's default storage. Class must conform to the `CelyStorage` protocol.
 `homeStoryboard ` | Pass in your app's default storyboard if it is not named "Main"
 `loginStoryboard ` | Pass in your own login storyboard.
@@ -530,28 +558,32 @@ Case ||
 
 </details>
 <div id="Cely.CelyStatus"></div>
+
 ##### `CelyStatus`
+
 `enum` Statuses for Cely to perform actions on
 
 <details>
 <summary>Statuses</summary>
 
-Case ||
-----|------|
+Case | Description
+----|------
 `loggedIn ` | Indicates user is now logged in.
 `loggedOut ` | Indicates user is now logged out.
 
 </details>
 
 <div id="Cely.StorageResult"></div>
+
 ##### `StorageResult `
+
 `enum` result on whether or not Cely successfully saved your data.
 
 <details>
 <summary>Results</summary>
 
-Case ||
-----|------|
+Case| Description
+----|------
 `success ` | Successfully saved your data
 `fail(error) ` | Failed to save data along with a `LocksmithError`. 
 

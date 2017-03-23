@@ -32,7 +32,7 @@ class DummyStorage: CelyStorageProtocol {
     }
 
     func get(_ key: String) -> Any? {
-        return dummyStorage[key]
+        return dummyStorage[key] ?? nil
     }
 
     func removeAllData() {

@@ -3,7 +3,7 @@ disabled_rules: # rule identifiers to exclude from running
   - variable_name
   - force_cast
   - type_name
-
+  - nesting
 opt_in_rules:
   - missing-docs
 

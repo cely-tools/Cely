@@ -166,7 +166,7 @@ extension LoginViewControllerTests {
         XCTAssertEqual(converted?.animationCurve, UIViewAnimationOptions(rawValue: UInt(30) << 16), "failed to set duration")
         XCTAssert(type(of: converted!.animationCurve) == UIViewAnimationOptions.self, "animationCurve is not of type UIViewAnimationOptions.")
 
-        print(converted)
+        print(converted ?? "failed to convert")
     }
 
     func testKeyboardNotification_Success() {

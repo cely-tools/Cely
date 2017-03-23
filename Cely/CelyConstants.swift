@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Locksmith
 
 /// `String` type alias. Is used in User model
 public typealias CelyProperty = String
@@ -60,6 +59,37 @@ internal extension UITextField {
         } set {
             leftViewMode = .always
             leftView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
+        }
+    }
+}
+
+
+public extension Dictionary {
+    init(withoutOptionalValues initial: Dictionary<Key, Value?>) {
+        self = [Key: Value]()
+        for pair in initial {
+            if pair.1 != nil {
+                self[pair.0] = pair.1!
+            }
+        }
+    }
+
+    init(pairs: [(Key, Value)]) {
+        self = [Key: Value]()
+        pairs.forEach { (k, v) -> () in
+            self[k] = v
+        }
+    }
+
+    init(initial: Dictionary<Key, Value>, toMerge: Dictionary<Key, Value>) {
+        self = Dictionary<Key, Value>()
+
+        for pair in initial {
+            self[pair.0] = pair.1
+        }
+
+        for pair in toMerge {
+            self[pair.0] = pair.1
         }
     }
 }
