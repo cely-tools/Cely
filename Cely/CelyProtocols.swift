@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Protocol for model classd to implements
+/// Protocol for model class to implements
 public protocol CelyUser {
     /// Enum of all the properties you would like to save for a model
     associatedtype Property : RawRepresentable
