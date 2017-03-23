@@ -326,7 +326,6 @@ public extension SecureStorable where Self : GenericPasswordSecureStorable {
             dictionary = Dictionary(initial: dictionary, toMerge: dict)
         }
 
-        print(dictionary)
         return Dictionary(withoutOptionalValues: dictionary)
     }
 }
@@ -375,7 +374,6 @@ public extension ReadableSecureStorable where Self : GenericPasswordSecureStorab
         old[String(kSecReturnData)] = kCFBooleanTrue
         old[String(kSecMatchLimit)] = kSecMatchLimitOne
         old[String(kSecReturnAttributes)] = kCFBooleanTrue
-        print(old)
         return old
     }
 }
