@@ -1,0 +1,8 @@
+lane :version_bump do |options|
+  increment_version_number(
+    bump_type: options[:type] # patch, minor, major
+  )
+  commit_version_bump(
+    message: "Version Bump",
+  )
+end
