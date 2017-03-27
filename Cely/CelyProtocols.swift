@@ -78,36 +78,34 @@ public protocol CelyAnimator {
 
 struct DefaultAnimator: CelyAnimator {
     func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
-        guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
-            return
+        if let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) {
+            destinationVC?.view.addSubview(snapshot)
+            celyWindow.setCurrentViewController(to: destinationVC)
+
+
+            UIView.animate(withDuration: 0.5, animations: {
+                snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
+            }, completion: {
+                (value: Bool) in
+                snapshot.removeFromSuperview()
+            })
         }
-
-        destinationVC?.view.addSubview(snapshot)
-        celyWindow.setCurrentViewController(to: destinationVC)
-
-
-        UIView.animate(withDuration: 0.5, animations: {
-            snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
-        }, completion: {
-            (value: Bool) in
-            snapshot.removeFromSuperview()
-        })
     }
 
     func logoutTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
-        guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
-            return
+        if let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) {
+
+            destinationVC?.view.addSubview(snapshot)
+            celyWindow.setCurrentViewController(to: destinationVC)
+
+
+            UIView.animate(withDuration: 0.5, animations: {
+                snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
+            }, completion: {
+                (value: Bool) in
+                snapshot.removeFromSuperview()
+            })
+
         }
-
-        destinationVC?.view.addSubview(snapshot)
-        celyWindow.setCurrentViewController(to: destinationVC)
-
-
-        UIView.animate(withDuration: 0.5, animations: {
-            snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
-        }, completion: {
-            (value: Bool) in
-            snapshot.removeFromSuperview()
-        })
     }
 }
