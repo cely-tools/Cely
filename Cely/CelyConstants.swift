@@ -27,6 +27,7 @@ public enum CelyOptions {
     case loginStoryboard
     case loginCompletionBlock
     case loginStyle
+    case celyAnimator
 }
 
 // enum result on whether or not Cely successfully saved your data
@@ -63,7 +64,6 @@ internal extension UITextField {
     }
 }
 
-
 public extension Dictionary {
     init(withoutOptionalValues initial: Dictionary<Key, Value?>) {
         self = [Key: Value]()
@@ -90,6 +90,17 @@ public extension Dictionary {
 
         for pair in toMerge {
             self[pair.0] = pair.1
+        }
+    }
+}
+
+public extension UIWindow {
+    func setCurrentViewController(to viewController: UIViewController?) {
+        let previousViewController = rootViewController
+        rootViewController = viewController
+
+        if let previousViewController = previousViewController {
+            previousViewController.dismiss(animated: false)
         }
     }
 }

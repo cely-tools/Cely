@@ -17,6 +17,7 @@ public class CelyWindowManager {
     public var loginStoryboard: UIStoryboard!
     public var homeStoryboard: UIStoryboard!
     public var loginStyle: CelyStyle!
+    public var celyAnimator: CelyAnimator!
 
     private init() {
         let notTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil
@@ -39,6 +40,9 @@ public class CelyWindowManager {
         // Set the LoginStoryboard
         CelyWindowManager.setLoginStoryboard(options?[.loginStoryboard] as? UIStoryboard)
 
+        // Set the Transition Animator
+        CelyWindowManager.manager.celyAnimator = options?[.celyAnimator] as? CelyAnimator ?? DefaultAnimator()
+
         CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .loggedIn)
         CelyWindowManager.manager.addObserver(#selector(showScreenWith), action: .loggedOut)
     }
@@ -58,9 +62,15 @@ public class CelyWindowManager {
     @objc func showScreenWith(notification: NSNotification) {
         if let status = notification.object as? CelyStatus {
             if status == .loggedIn {
-                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.homeStoryboard.instantiateInitialViewController()
+                CelyWindowManager.manager.celyAnimator.loginTransition(
+                    to: CelyWindowManager.manager.homeStoryboard.instantiateInitialViewController(),
+                    with: CelyWindowManager.manager.window
+                )
             } else {
-                CelyWindowManager.manager.window.rootViewController = CelyWindowManager.manager.loginStoryboard.instantiateInitialViewController()
+                CelyWindowManager.manager.celyAnimator.logoutTransition(
+                    to: CelyWindowManager.manager.loginStoryboard.instantiateInitialViewController(),
+                    with: CelyWindowManager.manager.window
+                )
             }
         }
     }

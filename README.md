@@ -10,10 +10,10 @@
 ## Overview
 Cely's goal is to add a login system into your app in under 30 seconds! 
 
+<div style="text-align:center; background-color: #8B9DFC"><img style="height: 600px" src ="Images/cely_login.gif" /></div>
+
 ## Background
 Whether you're building an app for a client or for a hackathon, building a login system, no matter how basic it is, can be very tedious and time-consuming. Cely's architecture has been battle tested on countless apps, and Cely guarantees you a fully functional login system in a fraction of the time. You can trust Cely is handling login credentials correctly as well since Cely is built on top of [Locksmith](https://github.com/matthewpalmer/Locksmith), swift's most popular Keychain wrapper. 
-
-
 
 ### Details:
 What does Cely does for you? 
@@ -146,6 +146,67 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 
 ```
+
+#### Customize Transitions
+In order to create a custom transition, create an object that conforms to [`CelyAnimator`](#Cely.CelyAnimator) protocol and set it to `.celyAnimator` inside of the [`CelyOption`](#Cely.CelyOptions) dictionary when calling Cely's [`setup(_:)`](#Cely.setup) method.
+
+```swift
+struct DefaultAnimator: CelyAnimator {
+    func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
+        guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
+            return
+        }
+
+        destinationVC?.view.addSubview(snapshot)
+        // Set the rootViewController of the `celyWindow` object
+        celyWindow.setCurrentViewController(to: destinationVC)
+
+		// Below here here is where you can create your own animations
+        UIView.animate(withDuration: 0.5, animations: {
+        	 // Slide login screen to left
+            snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
+        }, completion: {
+            (value: Bool) in
+            snapshot.removeFromSuperview()
+        })
+    }
+
+    func logoutTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
+        guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
+            return
+        }
+
+        destinationVC?.view.addSubview(snapshot)
+        // Set the rootViewController of the `celyWindow` object
+        celyWindow.setCurrentViewController(to: destinationVC)
+
+		// Below here here is where you can create your own animations
+        UIView.animate(withDuration: 0.5, animations: {
+        	 // Slide home screen to right
+            snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
+        }, completion: {
+            (value: Bool) in
+            snapshot.removeFromSuperview()
+        })
+    }
+}
+
+...
+
+// AppDelegate.swift
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+    Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.token], withOptions: [
+		.celyAnimator: CustomAnimator(), // <--- HERE!!
+		.loginCompletionBlock: { ... }        
+    ])
+
+    return true
+}
+
+```
+
 
 #### Use your own Screens
 To use your own login screen, simply create a storyboard that contains your login screen and pass that in as `.loginStoryboard` inside of the [`CelyOptions`](#Cely.CelyOptions) dictionary when calling Cely's [`setup(_:)`](#Cely.setup) method. 
@@ -525,6 +586,23 @@ func appLogo() -> UIImage?
 ```    
 </details>
 
+<div id="Cely.CelyAnimator"></div>
+
+
+##### `CelyAnimator`
+
+The `protocol` an object must conform to in order to customize transitions between home and login screens.
+
+<details>
+<summary>Methods</summary>
+
+```swift
+func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow)
+func logoutTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow)
+
+```    
+</details>
+
 #### Typealias
 <div id="Cely.CelyProperty"></div>
 
@@ -555,6 +633,7 @@ Case | Description
 `loginStoryboard ` | Pass in your own login storyboard.
 `loginStyle` | Pass in an object that conforms to [`CelyStyle`](#Cely.CelyStyle) to customize the default login screen.
 `loginCompletionBlock ` | `(String,String) -> Void` block of code that will run once the Login button is pressed on Cely's default login Controller
+`celyAnimator` | Pass in an object that conforms to [`CelyAnimator`](#Cely.CelyAnimator) to customize the default login screen.
 
 </details>
 <div id="Cely.CelyStatus"></div>

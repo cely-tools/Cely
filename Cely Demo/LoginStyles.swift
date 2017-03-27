@@ -15,3 +15,39 @@ struct LoginStyles: CelyStyle {
         return UIImage(named: "ChaiOneLogo")
     }
 }
+
+struct CustomAnimator: CelyAnimator {
+    func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
+        guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
+            return
+        }
+
+        destinationVC?.view.addSubview(snapshot)
+        celyWindow.setCurrentViewController(to: destinationVC)
+
+
+        UIView.animate(withDuration: 0.5, animations: {
+            snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
+        }, completion: {
+            (value: Bool) in
+            snapshot.removeFromSuperview()
+        })
+    }
+
+    func logoutTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
+        guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
+            return
+        }
+
+        destinationVC?.view.addSubview(snapshot)
+        celyWindow.setCurrentViewController(to: destinationVC)
+
+
+        UIView.animate(withDuration: 0.5, animations: {
+            snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
+        }, completion: {
+            (value: Bool) in
+            snapshot.removeFromSuperview()
+        })
+    }
+}

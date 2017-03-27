@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     User.save("FAKETOKEN:\(username)\(password)", as: .token)
                     Cely.changeStatus(to: .loggedIn)
                 }
-            }
+            },
+            .celyAnimator: CustomAnimator()
             ])
 
         return true
