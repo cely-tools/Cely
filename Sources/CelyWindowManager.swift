@@ -19,14 +19,7 @@ public class CelyWindowManager {
     public var loginStyle: CelyStyle!
     public var celyAnimator: CelyAnimator!
 
-    private init() {
-        let notTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil
-
-        loginStoryboard = UIStoryboard(name: "Cely", bundle: Bundle(for: type(of: self)))
-        homeStoryboard = notTesting ?
-            UIStoryboard(name: "Main", bundle: Bundle.main) :
-            UIStoryboard(name: "TestMain", bundle: Bundle(for: type(of: self)))
-    }
+    public init() {}
 
     static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
         CelyWindowManager.manager.window = _window
@@ -76,11 +69,11 @@ public class CelyWindowManager {
     }
 
     static func setHomeStoryboard(_ storyboard: UIStoryboard?) {
-        CelyWindowManager.manager.homeStoryboard = storyboard ?? CelyWindowManager.manager.homeStoryboard
+        CelyWindowManager.manager.homeStoryboard = storyboard ?? UIStoryboard(name: "Main", bundle: Bundle.main)
     }
 
     static func setLoginStoryboard(_ storyboard: UIStoryboard?) {
-        CelyWindowManager.manager.loginStoryboard = storyboard ?? CelyWindowManager.manager.loginStoryboard
+        CelyWindowManager.manager.loginStoryboard = storyboard ?? UIStoryboard(name: "Cely", bundle: Bundle(for: CelyWindowManager.self))
     }
 
     deinit {

@@ -70,6 +70,8 @@ class StorageTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        UserDefaults.standard.setPersistentDomain(["store": [:], "persisted": [:]], forName: kCelyDomain)
+        UserDefaults.standard.synchronize()
 
         store = CelyStorage.sharedInstance
 
@@ -92,9 +94,11 @@ class StorageTests: XCTestCase {
 
     override func tearDown() {
         dummyData = nil
+        UserDefaults.standard.setPersistentDomain(["store": [:], "persisted": [:]], forName: kCelyDomain)
+        UserDefaults.standard.synchronize()
         super.tearDown()
     }
-
+    
     func testSavingData() {
         dummyData.forEach { dummy in
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)

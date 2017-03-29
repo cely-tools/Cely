@@ -85,14 +85,9 @@ public class CelyStorage: CelyStorageProtocol {
             currentStorage[key] = val
             CelyStorage.sharedInstance.secureStorage = currentStorage
             do {
-                // If testing, user `saveData` instead of `updateData`
-                if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
-                    try Locksmith.saveData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-                    return .success
-                }
-
                 try Locksmith.updateData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
                 return .success
+                
             } catch let storageError as LocksmithError {
                 return .fail(storageError)
             } catch {

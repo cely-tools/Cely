@@ -74,13 +74,6 @@ public extension Dictionary {
         }
     }
 
-    init(pairs: [(Key, Value)]) {
-        self = [Key: Value]()
-        pairs.forEach { (k, v) -> () in
-            self[k] = v
-        }
-    }
-
     init(initial: Dictionary<Key, Value>, toMerge: Dictionary<Key, Value>) {
         self = Dictionary<Key, Value>()
 

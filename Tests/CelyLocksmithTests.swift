@@ -313,4 +313,17 @@ class LocksmithTests: XCTestCase {
 
         waitForExpectations(timeout: 0.1, handler: nil)
     }
+    
+    func testDefaultStorages() {
+        struct DummyReadableSecureStorage: ReadableSecureStorable {}
+        let dummyStorage = DummyReadableSecureStorage()
+        XCTAssertNil(dummyStorage.readFromSecureStore(),"`readFromSecureStore` is supposed to return `nil`.")
+
+        struct DummySecureStorageResultType: SecureStorableResultType {}
+        let dummyResultType = DummySecureStorageResultType()
+        XCTAssertEqual(dummyResultType.resultDictionary.count, 0,"`resultDictionary.count` is supposed to return `0`.")
+
+        XCTAssertNil(dummyResultType.data,"`data` is supposed to return `nil`.")
+    }
+
 }

@@ -85,8 +85,7 @@ struct DefaultAnimator: CelyAnimator {
 
             UIView.animate(withDuration: 0.5, animations: {
                 snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
-            }, completion: {
-                (value: Bool) in
+            }, completion: { (value: Bool) in
                 snapshot.removeFromSuperview()
             })
         }
@@ -100,8 +99,7 @@ struct DefaultAnimator: CelyAnimator {
 
             UIView.animate(withDuration: 0.5, animations: {
                 snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
-            }, completion: {
-                (value: Bool) in
+            }, completion: {(value: Bool) in
                 snapshot.removeFromSuperview()
             })
         }

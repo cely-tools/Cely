@@ -186,7 +186,7 @@ extension LoginViewControllerTests {
         loginVC.keyboardNotification(notification: fakeNotification)
 
         // I simply ran this and paused inside of `keyboardNotification` to find value
-        let correctValue: CGFloat = 467
+        let correctValue: CGFloat = loginVC.view.bounds.maxY - 200
 
         XCTAssertEqual(loginVC.bottomLayoutConstraint.constant, correctValue, "bottomLayoutConstraint is supposed to be \(correctValue)")
     }

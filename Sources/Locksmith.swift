@@ -200,14 +200,6 @@ public extension LabellableSecureStorable {
     }
 }
 
-public protocol LabellableSecureStorableResultType: LabellableSecureStorable, SecureStorableResultType {}
-
-public extension LabellableSecureStorableResultType {
-    var label: String? {
-        return resultDictionary[String(kSecAttrLabel)] as? String
-    }
-}
-
 public protocol TypeDesignatableSecureStorable {
     /// The type of the stored item
     var type: UInt? { get }
@@ -218,14 +210,6 @@ public extension TypeDesignatableSecureStorable {
 
     fileprivate var typeDesignatableSecureStoragePropertyDictionary: [String: Any] {
         return Dictionary(withoutOptionalValues: [String(kSecAttrType): type])
-    }
-}
-
-public protocol TypeDesignatableSecureStorableResultType: TypeDesignatableSecureStorable, SecureStorableResultType {}
-
-public extension TypeDesignatableSecureStorableResultType {
-    var type: UInt? {
-        return resultDictionary[String(kSecAttrType)] as? UInt
     }
 }
 
@@ -261,15 +245,6 @@ public extension IsNegativeAssignableSecureStorable {
     }
 }
 
-public protocol IsNegativeAssignableSecureStorableResultType: IsNegativeAssignableSecureStorable, SecureStorableResultType {
-}
-
-public extension IsNegativeAssignableSecureStorableResultType {
-    var isNegative: Bool? {
-        return resultDictionary[String(kSecAttrIsNegative)] as? Bool
-    }
-}
-
 // MARK: - GenericPasswordSecureStorable
 /// The protocol that indicates a type conforms to the requirements of a generic password item in a secure storage container.
 /// Generic passwords are the most common types of things that are stored securely.
@@ -288,7 +263,7 @@ public extension GenericPasswordSecureStorable {
 }
 
 // dear god what have i done...
-public protocol GenericPasswordSecureStorableResultType: GenericPasswordSecureStorable, SecureStorableResultType, AccountBasedSecureStorableResultType, DescribableSecureStorableResultType, CommentableSecureStorableResultType, CreatorDesignatableSecureStorableResultType, LabellableSecureStorableResultType, TypeDesignatableSecureStorableResultType, IsInvisibleAssignableSecureStorableResultType, IsNegativeAssignableSecureStorableResultType {}
+public protocol GenericPasswordSecureStorableResultType: GenericPasswordSecureStorable, SecureStorableResultType, AccountBasedSecureStorableResultType, DescribableSecureStorableResultType, CommentableSecureStorableResultType, CreatorDesignatableSecureStorableResultType, IsInvisibleAssignableSecureStorableResultType {}
 
 public extension GenericPasswordSecureStorableResultType {
     var service: String {
