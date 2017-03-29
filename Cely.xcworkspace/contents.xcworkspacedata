@@ -5,9 +5,6 @@
       location = "group:Cely.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Cely.playground">
-   </FileRef>
-   <FileRef
       location = "group:scripts">
    </FileRef>
    <FileRef
