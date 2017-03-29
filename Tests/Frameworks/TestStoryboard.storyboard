@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yEH-qu-maY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cely Login View Controller-->
+        <scene sceneID="Y8j-dR-EkN">
+            <objects>
+                <viewController id="yEH-qu-maY" customClass="CelyLoginViewController" customModule="CelyTests_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w74-af-gCu"/>
+                        <viewControllerLayoutGuide type="bottom" id="GoA-jc-q5O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0YW-7y-Ijq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1A-TK-gbt">
+                                <rect key="frame" x="138" y="100" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="t4f-Hq-v0K">
+                                <rect key="frame" x="36" y="161" width="303" height="80"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ESR-Ja-cSq">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dFu-mV-WTh">
+                                        <rect key="frame" x="0.0" y="50" width="303" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xa-fj-DFp">
+                                <rect key="frame" x="169" y="341" width="38" height="30"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60784313729999995" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Xa-fj-DFp" firstAttribute="top" secondItem="t4f-Hq-v0K" secondAttribute="bottom" constant="100" id="DRw-lj-m66"/>
+                            <constraint firstItem="h1A-TK-gbt" firstAttribute="centerX" secondItem="0YW-7y-Ijq" secondAttribute="centerX" id="Wyg-ZY-TlS"/>
+                            <constraint firstItem="5Xa-fj-DFp" firstAttribute="centerX" secondItem="0YW-7y-Ijq" secondAttribute="centerX" id="cDR-Ys-9nt"/>
+                            <constraint firstItem="h1A-TK-gbt" firstAttribute="top" secondItem="w74-af-gCu" secondAttribute="bottom" constant="100" id="cgh-S4-pIn"/>
+                            <constraint firstItem="t4f-Hq-v0K" firstAttribute="top" secondItem="h1A-TK-gbt" secondAttribute="bottom" constant="40" id="fAX-JB-JVx"/>
+                            <constraint firstItem="t4f-Hq-v0K" firstAttribute="centerX" secondItem="0YW-7y-Ijq" secondAttribute="centerX" id="h2S-xS-2b2"/>
+                            <constraint firstItem="t4f-Hq-v0K" firstAttribute="leading" secondItem="0YW-7y-Ijq" secondAttribute="leadingMargin" constant="20" id="jco-NK-bIu"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7t7-6S-Tne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="23" y="139"/>
+        </scene>
+    </scenes>
+</document>
