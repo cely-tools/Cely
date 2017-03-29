@@ -12,9 +12,7 @@ Pod::Spec.new do |s|
 
  s.default_subspec = "Core"
  s.subspec "Core" do |ss|
-     ss.resource_bundles = {
-         s.name => 'Sources/Supporting Files/*.{storyboard,xib,xcassets,json,imageset,png}'
-     }
+     ss.resources = 'Sources/Supporting Files/*.{storyboard,xib,xcassets,json,imageset,png}'
      ss.source_files  = "Sources/*.swift"
      ss.framework  = "Foundation"
  end
