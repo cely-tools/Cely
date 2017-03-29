@@ -106,8 +106,6 @@
 		1F68B0451E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
 		1F68B0461E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
 		1F68B0471E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
-		1FAFF8A21E8BEB9400F4FE47 /* Assets.xcassets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F68B0011E895069001A0161 /* Assets.xcassets */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		1FAFF8A31E8BEB9400F4FE47 /* Cely.storyboard in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F68B0021E895069001A0161 /* Cely.storyboard */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3549BB501DA38A2000C63030 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3549BB511DA38A2000C63030 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3549BB521DA38A2100C63030 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -323,20 +321,6 @@
 			remoteInfo = "Nimble-tvOS";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1FAFF8951E8BEB6400F4FE47 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				1FAFF8A21E8BEB9400F4FE47 /* Assets.xcassets in CopyFiles */,
-				1FAFF8A31E8BEB9400F4FE47 /* Cely.storyboard in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F28642B1E89578700EE8180 /* Cely Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cely Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -801,7 +785,6 @@
 				3549BB1D1DA389CD00C63030 /* Frameworks */,
 				3549BB1E1DA389CD00C63030 /* Headers */,
 				3549BB1F1DA389CD00C63030 /* Resources */,
-				1FAFF8951E8BEB6400F4FE47 /* CopyFiles */,
 			);
 			buildRules = (
 			);
