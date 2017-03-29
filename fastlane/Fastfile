@@ -1,10 +1,13 @@
 lane :version_bump do |options|
   increment_version_number(
-    bump_type: options[:type] # patch, minor, major
+    bump_type: options[:type], # patch, minor, major
+    xcodeproj: 'Cely.xcodeproj'
   )
   commit_version_bump(
     message: "Version Bump",
+    xcodeproj: 'Cely.xcodeproj'
   )
-
-  add_git_tag(tag: get_version_number)
+  version_number = get_version_number(xcodeproj: 'Cely.xcodeproj')
+  puts version_number
+  add_git_tag(tag: version_number)
 end

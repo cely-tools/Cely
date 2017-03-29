@@ -3,7 +3,6 @@
 <div style="text-align:center"><img src ="Images/READMEHeader.png" /></div>
 
 ![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)
-[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Cely.svg)](https://cocoapods.org/pods/Cely)
 [![Cookiecutter-Swift](https://img.shields.io/badge/cookiecutter--swift-framework-red.svg)](http://github.com/cookiecutter-swift/Framework)
@@ -679,7 +678,7 @@ Case| Description
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1.0+ is required to build Cely 1.1.0+.
+> CocoaPods 1.1.0+ is required to build Cely 2.0.0+.
 
 To integrate Cely into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -688,7 +687,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Cely', '~> 1.1.0'
+pod 'Cely', '~> 2.0.0'
 ```
 
 Then, run the following command:
@@ -711,21 +710,7 @@ $ brew install carthage
 To integrate Cely into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Cely/Cely" ~> 1.1.0
-```
-### Swift Package Manager
-
-To use Cely as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
-
-``` swift
-import PackageDescription
-
-let package = Package(
-    name: "HelloCely",
-    dependencies: [
-        .Package(url: "https://github.com/ChaiOne/Cely.git", "1.1.0")
-    ]
-)
+github "Cely/Cely" ~> 2.0.0
 ```
 
 ### Manually
