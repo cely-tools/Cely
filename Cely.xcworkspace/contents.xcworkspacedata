@@ -8,12 +8,6 @@
       location = "group:scripts">
    </FileRef>
    <FileRef
-      location = "group:Cartfile">
-   </FileRef>
-   <FileRef
-      location = "group:Cartfile.private">
-   </FileRef>
-   <FileRef
       location = "group:Cely.podspec"
       assignedFileDataType = "public.ruby-script">
    </FileRef>
