@@ -183,6 +183,7 @@
 		1F68B01B1E89519A001A0161 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		1F68B01C1E89519A001A0161 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
+		1F9D24071E8D49C700FB4BE6 /* Cely Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cely Demo.entitlements"; sourceTree = "<group>"; };
 		3549BB171DA3890B00C63030 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3549BB181DA3890B00C63030 /* Cely.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cely.h; sourceTree = "<group>"; };
 		3549BB211DA389CD00C63030 /* Cely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +290,7 @@
 		1F28642C1E89578700EE8180 /* Cely Demo */ = {
 			isa = PBXGroup;
 			children = (
+				1F9D24071E8D49C700FB4BE6 /* Cely Demo.entitlements */,
 				1F28642D1E89578700EE8180 /* AppDelegate.swift */,
 				1F2864311E89578700EE8180 /* Main.storyboard */,
 				1F2864521E895C4B00EE8180 /* TestStoryboard.storyboard */,
@@ -696,7 +698,13 @@
 				TargetAttributes = {
 					1F28642A1E89578700EE8180 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 7CX9JN6SPG;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					3549BB201DA389CD00C63030 = {
 						CreatedOnToolsVersion = 8.0;
@@ -1024,7 +1032,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1038,7 +1048,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7CX9JN6SPG;
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
