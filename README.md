@@ -1,5 +1,3 @@
-## Cely
-
 <div style="text-align:center"><img src ="Images/READMEHeader.png" /></div>
 
 ![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)
