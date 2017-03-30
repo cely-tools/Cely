@@ -42,7 +42,7 @@ What Cely **does not do** for you?
 
 ## Requirements
 
-- iOS 9.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- iOS 9.0+ <!-- / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+ -->
 - Xcode 8.0+
 
 ## Usage
@@ -159,9 +159,9 @@ struct DefaultAnimator: CelyAnimator {
         // Set the rootViewController of the `celyWindow` object
         celyWindow.setCurrentViewController(to: destinationVC)
 
-    // Below here here is where you can create your own animations
+        // Below here is where you can create your own animations
         UIView.animate(withDuration: 0.5, animations: {
-           // Slide login screen to left
+            // Slide login screen to left
             snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
         }, completion: {
             (value: Bool) in
@@ -178,9 +178,9 @@ struct DefaultAnimator: CelyAnimator {
         // Set the rootViewController of the `celyWindow` object
         celyWindow.setCurrentViewController(to: destinationVC)
 
-    // Below here here is where you can create your own animations
+        // Below here is where you can create your own animations
         UIView.animate(withDuration: 0.5, animations: {
-           // Slide home screen to right
+            // Slide home screen to right
             snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
         }, completion: {
             (value: Bool) in
@@ -537,6 +537,20 @@ Type| Description
 ##### `CelyUser `
 
 `protocol` for model class to implements
+<details>
+<summary>Example</summary>
+
+```swift
+import Cely
+
+struct User: CelyUser {
+
+  enum Property: CelyProperty {
+    case token = "token"
+  }
+}
+```
+</details>
 
 <details>
 <summary>Required</summary>
