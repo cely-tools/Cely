@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Cely Demo
 //
-//  Created by Fabian Buentello on 10/15/16.
-//  Copyright © 2016 Fabian Buentello. All rights reserved.
+//  Created by Fabian Buentello on 3/27/17.
+//  Copyright © 2017 ChaiOne. All rights reserved.
 //
 
 import UIKit

@@ -1,21 +1,33 @@
+## Cely
+
 <div style="text-align:center"><img src ="Images/READMEHeader.png" /></div>
 
 ![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)
-![bitrise status](https://www.bitrise.io/app/aff729145cb46dfe.svg?token=YUV0bymd7P_w2tdiKw2xOQ&branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Cely.svg)](https://cocoapods.org/pods/Cely)
+[![Cookiecutter-Swift](https://img.shields.io/badge/cookiecutter--swift-framework-red.svg)](http://github.com/cookiecutter-swift/Framework)
+![bitrise status](https://www.bitrise.io/app/aff729145cb46dfe.svg?token=YUV0bymd7P_w2tdiKw2xOQ&branch=master)
 [![codecov](https://codecov.io/gh/chaione/cely/branch/master/graph/badge.svg)](https://codecov.io/gh/chaione/cely)
-
 > Prounounced Cell-Lee
+
+Cely’s goal is to add a login system into your app in under 30 seconds!
+
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [API](#api)
+- [Installation](#installation)
+- [License](#license)
 
 ## Overview
 Cely's goal is to add a login system into your app in under 30 seconds! 
 
 <div style="text-align:center; background-color: #8B9DFC"><img style="height: 600px" src ="Images/cely_login.gif" /></div>
 
-## Background
+### Background
 Whether you're building an app for a client or for a hackathon, building a login system, no matter how basic it is, can be very tedious and time-consuming. Cely's architecture has been battle tested on countless apps, and Cely guarantees you a fully functional login system in a fraction of the time. You can trust Cely is handling login credentials correctly as well since Cely is built on top of [Locksmith](https://github.com/matthewpalmer/Locksmith), swift's most popular Keychain wrapper. 
 
-### Details:
+#### Details:
 What does Cely does for you? 
 
 1. Simple API to store user creditials and information **securely**
@@ -31,21 +43,9 @@ What Cely **does not do** for you?
 3. Anything with the network 
 
 ## Requirements
-- Xcode 8
-- swift 3.0
 
-## Installation
-
-### Carthage
-```
-github "ChaiOne/Cely"
-```
-Be sure to add `Cely` in your carthage copy phase script.
-
-> $(SRCROOT)/Carthage/Build/iOS/Cely.framework  
-
-#### Keychain entitlement Part(Xcode 8 bug?)
-Be sure to [turn on Keychain entitlements](http://stackoverflow.com/a/31421742/1973339) for your app, not doing so will prevent Cely from saving data to the keychain. 
+- iOS 9.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 8.0+
 
 ## Usage
 
@@ -161,9 +161,9 @@ struct DefaultAnimator: CelyAnimator {
         // Set the rootViewController of the `celyWindow` object
         celyWindow.setCurrentViewController(to: destinationVC)
 
-		// Below here here is where you can create your own animations
+    // Below here here is where you can create your own animations
         UIView.animate(withDuration: 0.5, animations: {
-        	 // Slide login screen to left
+           // Slide login screen to left
             snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
         }, completion: {
             (value: Bool) in
@@ -180,9 +180,9 @@ struct DefaultAnimator: CelyAnimator {
         // Set the rootViewController of the `celyWindow` object
         celyWindow.setCurrentViewController(to: destinationVC)
 
-		// Below here here is where you can create your own animations
+    // Below here here is where you can create your own animations
         UIView.animate(withDuration: 0.5, animations: {
-        	 // Slide home screen to right
+           // Slide home screen to right
             snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
         }, completion: {
             (value: Bool) in
@@ -198,8 +198,8 @@ struct DefaultAnimator: CelyAnimator {
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.token], withOptions: [
-		.celyAnimator: CustomAnimator(), // <--- HERE!!
-		.loginCompletionBlock: { ... }        
+    .celyAnimator: CustomAnimator(), // <--- HERE!!
+    .loginCompletionBlock: { ... }        
     ])
 
     return true
@@ -667,6 +667,97 @@ Case| Description
 `fail(error) ` | Failed to save data along with a `LocksmithError`. 
 
 </details>
+
+## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+> CocoaPods 1.1.0+ is required to build Cely 2.0.0+.
+
+To integrate Cely into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Cely', '~> 2.0.0'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate Cely into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "Cely/Cely" ~> 2.0.0
+```
+
+### Manually
+
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Cely into your project manually.
+
+#### Git Submodules
+
+- Open up Terminal, `cd` into your top-level project directory, and run the following command "if" your project is not initialized as a git repository:
+
+```bash
+$ git init
+```
+
+- Add Cely as a git [submodule](http://git-scm.com/docs/git-submodule) by running the following command:
+
+```bash
+$ git submodule add https://github.com/ChaiOne/Cely.git
+$ git submodule update --init --recursive
+```
+
+- Open the new `Cely` folder, and drag the `Cely.xcodeproj` into the Project Navigator of your application's Xcode project.
+
+    > It should appear nested underneath your application's blue project icon. Whether it is above or below all the other Xcode groups does not matter.
+
+- Select the `Cely.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
+- Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
+- In the tab bar at the top of that window, open the "General" panel.
+- Click on the `+` button under the "Embedded Binaries" section.
+- You will see two different `Cely.xcodeproj` folders each with two different versions of the `Cely.framework` nested inside a `Products` folder.
+
+    > It does not matter which `Products` folder you choose from.
+
+- Select the `Cely.framework`.
+
+- And that's it!
+
+> The `Cely.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
+
+#### Embeded Binaries
+
+- Download the latest release from https://github.com/ChaiOne/Cely/releases
+- Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
+- In the tab bar at the top of that window, open the "General" panel.
+- Click on the `+` button under the "Embedded Binaries" section.
+- Add the downloaded `Cely.framework`.
+- And that's it!
 
 ## License
 

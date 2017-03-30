@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aIY-uz-m5q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cely Login View Controller-->
+        <scene sceneID="TOV-Ih-1Yc">
+            <objects>
+                <viewController id="aIY-uz-m5q" customClass="CelyLoginViewController" customModule="Cely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wmr-7t-K4E"/>
+                        <viewControllerLayoutGuide type="bottom" id="o0h-7c-xO5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bxO-0I-Ha5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-md-qOh">
+                                <rect key="frame" x="16" y="134" width="343" height="400"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" image="CelyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uGl-qw-sCA">
+                                        <rect key="frame" x="52" y="0.0" width="239" height="128"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-U6-Ba0">
+                                        <rect key="frame" x="0.0" y="240" width="343" height="160"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7sb-5Z-aFS">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5m-uC-019">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                                        <color key="backgroundColor" white="1" alpha="0.40019415680473375" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Wyg-rM-bxY"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftSpacer">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4r-kd-DwE">
+                                                        <rect key="frame" x="0.0" y="60" width="343" height="40"/>
+                                                        <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="ED2-Ic-dPH"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftSpacer">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-aU-c4H">
+                                                <rect key="frame" x="0.0" y="120" width="343" height="40"/>
+                                                <color key="backgroundColor" red="0.33725490200000002" green="0.79607843140000001" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="dBC-z2-hBe"/>
+                                                </constraints>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="uGl-qw-sCA" firstAttribute="leading" secondItem="BQV-md-qOh" secondAttribute="leading" constant="52" id="8oo-eF-lD7"/>
+                                    <constraint firstItem="cXi-U6-Ba0" firstAttribute="width" secondItem="BQV-md-qOh" secondAttribute="width" id="AJt-rv-ATI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BQV-md-qOh" firstAttribute="centerX" secondItem="bxO-0I-Ha5" secondAttribute="centerX" id="9Bz-F1-FZi"/>
+                            <constraint firstItem="BQV-md-qOh" firstAttribute="leading" secondItem="bxO-0I-Ha5" secondAttribute="leadingMargin" id="LX6-bA-Sxn"/>
+                            <constraint firstItem="o0h-7c-xO5" firstAttribute="top" secondItem="BQV-md-qOh" secondAttribute="bottom" constant="133" id="WYL-6b-SR0"/>
+                            <constraint firstItem="BQV-md-qOh" firstAttribute="height" secondItem="bxO-0I-Ha5" secondAttribute="height" multiplier="0.6" id="ve8-1f-wFI"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="appImageView" destination="uGl-qw-sCA" id="8zD-aD-0A8"/>
+                        <outlet property="bottomLayoutConstraint" destination="WYL-6b-SR0" id="7ag-nW-7Ym"/>
+                        <outlet property="loginButton" destination="qqQ-aU-c4H" id="6wr-rR-gvu"/>
+                        <outlet property="passwordField" destination="h4r-kd-DwE" id="4Po-h7-Tev"/>
+                        <outlet property="usernameField" destination="I5m-uC-019" id="Kvb-jc-hPC"/>
+                        <outletCollection property="textFields" destination="I5m-uC-019" collectionClass="NSMutableArray" id="TcM-A0-M7b"/>
+                        <outletCollection property="textFields" destination="h4r-kd-DwE" collectionClass="NSMutableArray" id="HM1-cw-u7L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KID-oM-kvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="338"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CelyLogo" width="459" height="219"/>
+    </resources>
+</document>

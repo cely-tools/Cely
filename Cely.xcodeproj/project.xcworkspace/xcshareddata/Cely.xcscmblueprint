@@ -1,0 +1,22 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "66E0E1E46B02A35D7DE3EB00037D076F8781D731",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54593014-011C-4F00-BE65-05C0A9A2ED26",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "66E0E1E46B02A35D7DE3EB00037D076F8781D731" : "Cely\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Cely",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Cely.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:initFabian\/Cely.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "66E0E1E46B02A35D7DE3EB00037D076F8781D731"
+    }
+  ]
+}

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Cely
 
 struct LoginStyles: CelyStyle {
