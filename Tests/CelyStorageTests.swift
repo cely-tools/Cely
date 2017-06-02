@@ -24,7 +24,7 @@ struct Dummy {
     }
 
     func failedMessage(returnedValue: Any?) -> String {
-        return "\(key!) failed! It's supposed to equal '\(value)'. Not '\(returnedValue)'."
+        return "\(key!) failed! It's supposed to equal '\(String(describing: value))'. Not '\(String(describing: returnedValue))'."
     }
     func failedToSet() -> String {
         return "[\(key!), securely: \(storeSecurely!)]: failed to set in storage!"
@@ -57,7 +57,7 @@ struct Dummy {
             return val.elementsEqual(_vals)
 
         default:
-            print("value = \(value), _value = \(_value)")
+            print("value = \(String(describing: value)), _value = \(String(describing: _value))")
             return false
         }
     }
