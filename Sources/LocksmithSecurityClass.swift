@@ -1,3 +1,11 @@
+//
+//  LocksmithSecurityClass.swift
+//  Cely
+//
+//  Created by Matthew Palmer on 7/31/16.
+//  Copyright © 2016 Matthew Palmer. All rights reserved.
+//
+
 import Foundation
 
 // With thanks to http://iosdeveloperzone.com/2014/10/22/taming-foundation-constants-into-swift-enums/

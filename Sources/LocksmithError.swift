@@ -1,3 +1,11 @@
+//
+//  LocksmithError.swift
+//  Cely
+//
+//  Created by Matthew Palmer on 7/31/16.
+//  Copyright © 2016 Matthew Palmer. All rights reserved.
+//
+
 import Foundation
 
 // MARK: Locksmith Error
