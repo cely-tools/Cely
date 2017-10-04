@@ -20,9 +20,7 @@ Cely’s goal is to add a login system into your app in under 30 seconds!
 ## Overview
 Cely's goal is to add a login system into your app in under 30 seconds! 
 
-<div style="text-align:center; background-color: rgb(139, 157, 252)">
-<img src="https://raw.githubusercontent.com/chaione/Cely/fix-Swift-4-compiler-crash/Images/cely_login.gif" style="max-height: 600px"></a>
-</div>
+<img style="height: 600px" src ="Images/cely_login.gif" />
 
 ### Background
 Whether you're building an app for a client or for a hackathon, building a login system, no matter how basic it is, can be very tedious and time-consuming. Cely's architecture has been battle tested on countless apps, and Cely guarantees you a fully functional login system in a fraction of the time. You can trust Cely is handling login credentials correctly as well since Cely is built on top of [Locksmith](https://github.com/matthewpalmer/Locksmith), swift's most popular Keychain wrapper. 
