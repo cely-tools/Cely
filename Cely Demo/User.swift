@@ -49,7 +49,7 @@ struct User: CelyUser {
 extension User {
 
     static func save(_ value: Any, as property: Property) {
-        property.save(value: value)
+		property.save(value)
     }
 
     static func save(_ data: [Property : Any]) {

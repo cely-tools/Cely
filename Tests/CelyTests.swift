@@ -84,7 +84,7 @@ class CelyTests: XCTestCase {
 
 
     func testSetup() {
-        let testRequiredProperties = _properties.flatMap({"\($0.rawValue)"})
+        let testRequiredProperties: [String] = _properties.flatMap({"\($0.rawValue)"})
         XCTAssert(Cely.requiredProperties == testRequiredProperties, "Cely does not match the mock results")
     }
 

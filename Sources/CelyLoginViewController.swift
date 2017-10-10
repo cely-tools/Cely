@@ -57,7 +57,7 @@ class CelyLoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    func didPressLogin() {
+    @objc func didPressLogin() {
         if let username = usernameField?.text, let password = passwordField?.text {
             Cely.loginCompletionBlock?(username, password)
         }
@@ -89,7 +89,7 @@ internal extension CelyLoginViewController {
         return (duration, endFrame, animationCurve)
     }
 
-    func keyboardNotification(notification: NSNotification) {
+    @objc func keyboardNotification(notification: NSNotification) {
 
         guard let (duration, endFrame, animationCurve) = convertNotification(notification: notification) else {
             return

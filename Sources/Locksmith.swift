@@ -271,7 +271,7 @@ public extension GenericPasswordSecureStorable {
 }
 
 // dear god what have i done...
-public protocol GenericPasswordSecureStorableResultType: GenericPasswordSecureStorable, SecureStorableResultType, AccountBasedSecureStorableResultType, DescribableSecureStorableResultType, CommentableSecureStorableResultType, CreatorDesignatableSecureStorableResultType, IsInvisibleAssignableSecureStorableResultType {}
+public protocol GenericPasswordSecureStorableResultType: GenericPasswordSecureStorable, AccountBasedSecureStorableResultType, DescribableSecureStorableResultType, CommentableSecureStorableResultType, CreatorDesignatableSecureStorableResultType, IsInvisibleAssignableSecureStorableResultType {}
 
 public extension GenericPasswordSecureStorableResultType {
     var service: String {
