@@ -1,6 +1,6 @@
 <div style="text-align:center"><img src ="Images/READMEHeader.png" /></div>
 
-![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)
+![Swift 4.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Cely.svg)](https://cocoapods.org/pods/Cely)
 [![Cookiecutter-Swift](https://img.shields.io/badge/cookiecutter--swift-framework-red.svg)](http://github.com/cookiecutter-swift/Framework)
@@ -44,6 +44,7 @@ What Cely **does not do** for you?
 
 - iOS 9.0+ <!-- / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+ -->
 - Xcode 8.0+
+- Swift 4.0+
 
 ## Usage
 
