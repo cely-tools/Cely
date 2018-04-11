@@ -30,7 +30,13 @@ public struct Cely {
     /// - parameter withOptions:         Dictionary of options to pass into cely upon setup. Please refer to `CelyOptions` to view all options.
     public static func setup<T: CelyUser, U>(with window: UIWindow?, forModel: T, requiredProperties:[U] = [], withOptions options: [CelyOptions : Any?]? = [:]) where T.Property == U {
 
-        Cely.requiredProperties = requiredProperties.map({"\($0.rawValue)"})
+        #if swift(>=4.1)
+        Cely.requiredProperties = requiredProperties.compactMap({"\($0.rawValue)"})
+        #else
+        Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
+        #endif
+
+
 
         Cely.loginCompletionBlock = options?[.loginCompletionBlock] as? CelyLoginCompletion
         store = options?[.storage] as? CelyStorageProtocol ?? store

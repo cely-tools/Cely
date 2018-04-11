@@ -125,10 +125,18 @@ class StorageTests: XCTestCase {
     func testRemoveAllData() {
         testSavingData()
         var secureCount = store.secureStorage.count
-        var storageCount = dummyData.flatMap({ dummy -> Any? in
+        #if swift(>=4.1)
+        var storageCount = dummyData.compactMap({ dummy -> Any? in
             guard !dummy.storeSecurely, !dummy.persisted else { return nil }
             return store.get(dummy.key)
         }).count
+        #else
+        var storageCount = dummyData.flatMap({ dummy -> Any? in
+        guard !dummy.storeSecurely, !dummy.persisted else { return nil }
+        return store.get(dummy.key)
+        }).count
+        #endif
+
 
         XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage'")
         XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage'")
@@ -136,10 +144,18 @@ class StorageTests: XCTestCase {
         store.removeAllData()
 
         secureCount = store.secureStorage.count
-        storageCount = dummyData.flatMap({ dummy -> Any? in
+
+        #if swift(>=4.1)
+        storageCount = dummyData.compactMap({ dummy -> Any? in
             guard !dummy.storeSecurely, !dummy.persisted else { return nil }
             return store.get(dummy.key)
         }).count
+        #else
+        storageCount = dummyData.flatMap({ dummy -> Any? in
+        guard !dummy.storeSecurely, !dummy.persisted else { return nil }
+        return store.get(dummy.key)
+        }).count
+        #endif
 
         XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage'")
         XCTAssert(storageCount == 1, "Did not remove all entries inside of 'storage'")
