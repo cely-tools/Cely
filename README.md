@@ -42,8 +42,8 @@ What Cely **does not do** for you?
 
 ## Requirements
 
-- iOS 9.0+ <!-- / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+ -->
-- Xcode 8.0+
+- iOS 11.0+ <!-- / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+ -->
+- Xcode 9.0+
 - Swift 4.0+
 
 ## Usage
