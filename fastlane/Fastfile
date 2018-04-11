@@ -10,4 +10,6 @@ lane :version_bump do |options|
   version_number = get_version_number(xcodeproj: 'Cely.xcodeproj')
   puts version_number
   add_git_tag(tag: version_number)
+  # Dont forget to update version on podspec
+  # and run `pod trunk push Cely.podspec`
 end

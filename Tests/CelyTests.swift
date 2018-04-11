@@ -45,7 +45,12 @@ class DummyStorage: CelyStorageProtocol {
 class CelyTests: XCTestCase {
     var _properties: [DummyUser.Property]!
     var raw_properties: [CelyProperty] {
+        #if swift(>=4.1)
+        return _properties.compactMap({"\($0.rawValue)"})
+        #else
         return _properties.flatMap({"\($0.rawValue)"})
+        #endif
+
     }
     var triggeredNotification: String!
     override func setUp() {
@@ -84,7 +89,12 @@ class CelyTests: XCTestCase {
 
 
     func testSetup() {
+        #if swift(>=4.1)
+        let testRequiredProperties: [String] = _properties.compactMap({"\($0.rawValue)"})
+        #else
         let testRequiredProperties: [String] = _properties.flatMap({"\($0.rawValue)"})
+        #endif
+
         XCTAssert(Cely.requiredProperties == testRequiredProperties, "Cely does not match the mock results")
     }
 
