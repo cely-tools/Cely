@@ -700,7 +700,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Cely', '~> 2.0.0'
+pod 'Cely', '~> 2.0'
 ```
 
 Then, run the following command:
@@ -723,7 +723,7 @@ $ brew install carthage
 To integrate Cely into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "chaione/Cely" ~> 2.0.0
+github "chaione/Cely" ~> 2.0
 ```
 
 ### Manually
