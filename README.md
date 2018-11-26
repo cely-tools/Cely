@@ -4,7 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Cely.svg)](https://cocoapods.org/pods/Cely)
 [![Cookiecutter-Swift](https://img.shields.io/badge/cookiecutter--swift-framework-red.svg)](http://github.com/cookiecutter-swift/Framework)
-![bitrise status](https://www.bitrise.io/app/aff729145cb46dfe.svg?token=YUV0bymd7P_w2tdiKw2xOQ&branch=master)
+[![Build Status](https://app.bitrise.io/app/aff729145cb46dfe/status.svg?token=YUV0bymd7P_w2tdiKw2xOQ&branch=master)](https://app.bitrise.io/app/aff729145cb46dfe)
 [![codecov](https://codecov.io/gh/initFabian/Cely/branch/master/graph/badge.svg)](https://codecov.io/gh/initFabian/Cely)
 > Prounounced Cell-Lee
 
