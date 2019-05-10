@@ -37,9 +37,12 @@ class LoginViewControllerTests: XCTestCase {
         CelyWindowManager.manager.loginStyle = DummyStyles()
         loginVC = CelyLoginViewController()
 
-        loginVC.usernameField = UITextField()
+        let usernameTextField = UITextField()
+		let passwordTextField = UITextField()
+		
+		loginVC.usernameField = usernameTextField
         loginVC.usernameField?.tag = 0
-        loginVC.passwordField = UITextField()
+        loginVC.passwordField = passwordTextField
         loginVC.passwordField?.tag = 1
         loginVC.textFields = [loginVC.usernameField!, loginVC.passwordField!]
         loginVC.viewDidLoad()
@@ -133,12 +136,12 @@ extension LoginViewControllerTests {
 
     func testConvertNotification_Failure() {
         let fakeUserInfo: [AnyHashable : Any] = [
-            UIKeyboardAnimationDurationUserInfoKey : "FORCE FAIL",
-            UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: .zero),
-            UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+            UIResponder.keyboardAnimationDurationUserInfoKey : "FORCE FAIL",
+            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: .zero),
+            UIWindow.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
         ]
 
-        let fakeNotification = NSNotification(name: .UIKeyboardWillChangeFrame, object: nil, userInfo: fakeUserInfo)
+        let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
 
         let converted = loginVC.convertNotification(notification: fakeNotification)
 
@@ -148,12 +151,12 @@ extension LoginViewControllerTests {
     func testConvertNotification_Success() {
 
         let fakeUserInfo: [AnyHashable : Any] = [
-            UIKeyboardAnimationDurationUserInfoKey : NSNumber(value: 20),
-            UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: .zero),
-            UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+            UIResponder.keyboardAnimationDurationUserInfoKey : NSNumber(value: 20),
+            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: .zero),
+            UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
         ]
 
-        let fakeNotification = NSNotification(name: .UIKeyboardWillChangeFrame, object: nil, userInfo: fakeUserInfo)
+        let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
 
         let converted = loginVC.convertNotification(notification: fakeNotification)
 
@@ -163,8 +166,8 @@ extension LoginViewControllerTests {
         XCTAssertEqual(converted?.endFrame, .zero, "failed to set endFrame")
         XCTAssert(type(of: converted!.endFrame) == CGRect.self, "endFrame is not of type CGRect.")
 
-        XCTAssertEqual(converted?.animationCurve, UIViewAnimationOptions(rawValue: UInt(30) << 16), "failed to set duration")
-        XCTAssert(type(of: converted!.animationCurve) == UIViewAnimationOptions.self, "animationCurve is not of type UIViewAnimationOptions.")
+        XCTAssertEqual(converted?.animationCurve, UIView.AnimationOptions(rawValue: UInt(30) << 16), "failed to set duration")
+        XCTAssert(type(of: converted!.animationCurve) == UIView.AnimationOptions.self, "animationCurve is not of type UIViewAnimationOptions.")
 
         print(converted ?? "failed to convert")
     }
@@ -176,12 +179,12 @@ extension LoginViewControllerTests {
         loginVC.bottomLayoutConstraint.constant = 20
 
         let fakeUserInfo: [AnyHashable : Any] = [
-            UIKeyboardAnimationDurationUserInfoKey : NSNumber(value: 20),
-            UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
-            UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+            UIResponder.keyboardAnimationDurationUserInfoKey : NSNumber(value: 20),
+            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
+            UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
         ]
 
-        let fakeNotification = NSNotification(name: .UIKeyboardWillChangeFrame, object: nil, userInfo: fakeUserInfo)
+        let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
 
         loginVC.keyboardNotification(notification: fakeNotification)
 
@@ -198,12 +201,12 @@ extension LoginViewControllerTests {
         loginVC.bottomLayoutConstraint.constant = 20
 
         let fakeUserInfo: [AnyHashable : Any] = [
-            UIKeyboardAnimationDurationUserInfoKey : "FORCE FAIL",
-            UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
-            UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+            UIResponder.keyboardAnimationDurationUserInfoKey : "FORCE FAIL",
+            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
+            UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
         ]
 
-        let fakeNotification = NSNotification(name: .UIKeyboardWillChangeFrame, object: nil, userInfo: fakeUserInfo)
+        let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
 
         loginVC.keyboardNotification(notification: fakeNotification)
 
