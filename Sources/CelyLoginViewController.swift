@@ -73,18 +73,18 @@ internal extension CelyLoginViewController {
 
     fileprivate func setUpKeyboardNotification() {
          NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)),
-                                                name: .UIKeyboardWillChangeFrame, object: nil)
+                                                name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
-    func convertNotification(notification: NSNotification) -> (duration: Double, endFrame: CGRect, animationCurve: UIViewAnimationOptions)? {
+    func convertNotification(notification: NSNotification) -> (duration: Double, endFrame: CGRect, animationCurve: UIView.AnimationOptions)? {
 
         guard let userInfo = notification.userInfo,
-            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let rawCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.uint32Value else { return nil }
+            let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let rawCurve = (notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.uint32Value else { return nil }
 
         let rawAnimationCurve = rawCurve << 16
-        let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
+        let animationCurve = UIView.AnimationOptions(rawValue: UInt(rawAnimationCurve))
 
         return (duration, endFrame, animationCurve)
     }
