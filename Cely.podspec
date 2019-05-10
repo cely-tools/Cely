@@ -1,20 +1,21 @@
-Pod::Spec.new do |s|
- s.name = 'Cely'
- s.version = '2.0.3'
- s.license = { :type => "MIT", :file => "LICENSE" }
- s.summary = 'Cely’s goal is to add a login system into your app in under 30 seconds!'
- s.homepage = 'https://chaione.com/'
- s.social_media_url = 'https://twitter.com/initfabian'
- s.authors = { "Fabian Buentello" => "fabian.buentello@gmail.com" }
- s.source = { :git => "https://github.com/ChaiOne/Cely.git", :tag => s.version.to_s }
- s.platforms     = { :ios => "9.0" }
- s.requires_arc = true
+Pod::Spec.new do |spec|
+  spec.swift_version = '4.2'
+  spec.name = 'Cely'
+  spec.version = '2.1.0'
+  spec.license = { :type => "MIT", :file => "LICENSE" }
+  spec.summary = 'Cely’s goal is to add a login system into your app in under 30 seconds!'
+  spec.homepage = 'https://github.com/initFabian/Cely'
+  spec.social_media_url = 'https://twitter.com/initfabian'
+  spec.authors = { "Fabian Buentello" => "fabian.buentello@gmail.com" }
+  spec.source = { :git => "https://github.com/initFabian/Cely.git", :tag => spec.version.to_s }
+  spec.platforms     = { :ios => "10.3" }
+  spec.requires_arc = true
 
- s.default_subspec = "Core"
- s.subspec "Core" do |ss|
-     ss.resources = 'Sources/Supporting Files/*.{storyboard,xib,xcassets,json,imageset,png}'
-     ss.source_files  = "Sources/*.swift"
-     ss.framework  = "Foundation"
- end
+  spec.default_subspec = "Core"
+  spec.subspec "Core" do |subspec|
+    subspec.resources = 'Sources/Supporting Files/*.{storyboard,xib,xcassets,json,imageset,png}'
+    subspec.source_files  = "Sources/*.swift"
+    subspec.framework  = "Foundation"
+  end
 
 end
