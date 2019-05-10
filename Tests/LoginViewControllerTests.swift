@@ -37,9 +37,12 @@ class LoginViewControllerTests: XCTestCase {
         CelyWindowManager.manager.loginStyle = DummyStyles()
         loginVC = CelyLoginViewController()
 
-        loginVC.usernameField = UITextField()
+        let usernameTextField = UITextField()
+		let passwordTextField = UITextField()
+		
+		loginVC.usernameField = usernameTextField
         loginVC.usernameField?.tag = 0
-        loginVC.passwordField = UITextField()
+        loginVC.passwordField = passwordTextField
         loginVC.passwordField?.tag = 1
         loginVC.textFields = [loginVC.usernameField!, loginVC.passwordField!]
         loginVC.viewDidLoad()
