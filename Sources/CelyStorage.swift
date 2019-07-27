@@ -9,8 +9,6 @@
 import Foundation
 
 internal let kCelyDomain = "cely.storage"
-internal let kCelyLocksmithAccount = "cely.secure.storage"
-internal let kCelyLocksmithService = "cely.secure.service"
 internal let kStore = "store"
 internal let kPersisted = "persisted"
 internal let kLaunchedBefore = "launchedBefore"
@@ -19,7 +17,12 @@ public class CelyStorage: CelyStorageProtocol {
     // MARK: - Variables
     static let sharedInstance = CelyStorage()
 
-    var secureStorage: [String : Any] = [:]
+    fileprivate let secureStore = CelySecureStorage()
+    
+    var secureStorage: [String : Any] {
+        return secureStore.store
+    }
+    
     var storage: [String : [String : Any]]  = [:]
     public init() {
 
@@ -31,14 +34,11 @@ public class CelyStorage: CelyStorageProtocol {
             UserDefaults.standard.setPersistentDomain([kStore: [:], kPersisted: [kLaunchedBefore:true]], forName: kCelyDomain)
             UserDefaults.standard.synchronize()
 
-            // Clear Locksmith
-            do {
-                try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-            } catch {}
+            // Clear Secure Storage
+            secureStore.clearStorage()
         }
 
         setupStorage()
-        setupSecureStorage()
     }
 
     fileprivate func setupStorage() {
@@ -50,24 +50,12 @@ public class CelyStorage: CelyStorageProtocol {
         }
     }
 
-    fileprivate func setupSecureStorage() {
-        if let userData = Locksmith.loadDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService) {
-            secureStorage = userData
-        }
-    }
-
     /// Removes all data from both `secureStorage` and regular `storage`
     public func removeAllData() {
-        CelyStorage.sharedInstance.secureStorage = [:]
         CelyStorage.sharedInstance.storage[kStore] = [:]
         UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
         UserDefaults.standard.synchronize()
-        do {
-            try Locksmith.deleteDataForUserAccount(userAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-        } catch {
-            // handle the error
-            print("error: \(error.localizedDescription)")
-        }
+        CelyStorage.sharedInstance.secureStore.clearStorage()
     }
 
     /// Saves data to storage
@@ -81,18 +69,7 @@ public class CelyStorage: CelyStorageProtocol {
     public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {
         guard let val = value else { return .fail(.undefined) }
         if secure {
-            var currentStorage = CelyStorage.sharedInstance.secureStorage
-            currentStorage[key] = val
-            CelyStorage.sharedInstance.secureStorage = currentStorage
-            do {
-                try Locksmith.updateData(data: currentStorage, forUserAccount: kCelyLocksmithAccount, inService: kCelyLocksmithService)
-                return .success
-                
-            } catch let storageError as LocksmithError {
-                return .fail(storageError)
-            } catch {
-                return .fail(.undefined)
-            }
+            return secureStore.set(val, forKey: key)
         } else {
             if persisted {
                 CelyStorage.sharedInstance.storage[kPersisted]?[key] = val
@@ -113,7 +90,7 @@ public class CelyStorage: CelyStorageProtocol {
     ///
     /// - returns: Data For key value
     public func get(_ key: String) -> Any? {
-        if let value = CelyStorage.sharedInstance.secureStorage[key] {
+        if let value = CelyStorage.sharedInstance.secureStore.get(key) {
             return value
         } else if let value = CelyStorage.sharedInstance.storage[kStore]?[key] {
             return value
