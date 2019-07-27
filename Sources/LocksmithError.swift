@@ -27,6 +27,8 @@ public enum LocksmithError: String, Error {
 
     public init?(fromStatusCode code: Int) {
         switch code {
+        case Int(errSecSuccess):
+            self = .noError
         case Int(errSecAllocate):
             self = .allocate
         case Int(errSecAuthFailed):

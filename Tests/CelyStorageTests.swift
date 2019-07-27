@@ -138,8 +138,8 @@ class StorageTests: XCTestCase {
         #endif
 
 
-        XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage'")
-        XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage'")
+        XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage': \(secureCount)")
+        XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage': \(storageCount)")
 
         store.removeAllData()
 
@@ -157,7 +157,7 @@ class StorageTests: XCTestCase {
         }).count
         #endif
 
-        XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage'")
-        XCTAssert(storageCount == 1, "Did not remove all entries inside of 'storage'")
+        XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage': \(secureCount)")
+        XCTAssert(storageCount == 1, "Did not remove all entries inside of 'storage': \(storageCount)")
     }
 }
