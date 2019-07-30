@@ -45,8 +45,8 @@ internal class CelySecureStorage {
         
         var item: CFTypeRef?
         let statusCode = SecItemCopyMatching(query as CFDictionary, &item)
-        let status = LocksmithError(fromStatusCode: Int(statusCode))
-        guard let code = status, code == .noError else {
+        let status = CelyKeychainStatus(rawValue: statusCode)
+        guard let code = status, code == .success else {
             return nil
         }
         
@@ -87,7 +87,7 @@ internal class CelySecureStorage {
         } else if status == errSecDuplicateItem {
             return update(value, forKey: key)
         } else {
-            return .fail(LocksmithError(fromStatusCode: Int(status))!)
+            return .fail(CelyKeychainStatus(rawValue: status) ?? .unexpectedError)
         }
     }
 
@@ -105,7 +105,7 @@ internal class CelySecureStorage {
             store[key] = value
             return .success
         } else {
-            let err = LocksmithError(fromStatusCode: Int(status))!
+            let err = CelyKeychainStatus(rawValue: status) ?? .unexpectedError
             return .fail(err)
         }
     }

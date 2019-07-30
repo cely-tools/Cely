@@ -33,7 +33,7 @@ public enum CelyOptions {
 // enum result on whether or not Cely successfully saved your data
 public enum StorageResult: Equatable {
     case success
-    case fail(LocksmithError)
+    case fail(CelyKeychainStatus)
 }
 
 public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {

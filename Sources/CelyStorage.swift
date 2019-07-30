@@ -67,7 +67,7 @@ public class CelyStorage: CelyStorageProtocol {
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
     public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {
-        guard let val = value else { return .fail(.undefined) }
+        guard let val = value else { return .fail(.unexpectedError) }
         if secure {
             return secureStore.set(val, forKey: key)
         } else {

@@ -46,7 +46,7 @@ extension ConstantsAndProtocolTests {
 
     func testStorageResultEquatable() {
         let successResult = StorageResult.success
-        let failureResult = StorageResult.fail(.undefined)
+        let failureResult = StorageResult.fail(.unexpectedError)
 
         XCTAssertNotEqual(successResult, failureResult, "Results were not supposed to be equal")
     }
