@@ -1006,7 +1006,7 @@
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chaione.Cely-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Cely.Cely-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
@@ -1023,7 +1023,7 @@
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chaione.Cely-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Cely.Cely-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
@@ -1158,7 +1158,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1182,7 +1182,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1204,7 +1204,7 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1229,7 +1229,7 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1255,7 +1255,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1280,7 +1280,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1301,7 +1301,7 @@
 				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1325,7 +1325,7 @@
 				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
 				PRODUCT_NAME = Cely;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1347,7 +1347,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG -D TEST";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -1366,7 +1366,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cely Demo.app/Cely Demo";
@@ -1382,7 +1382,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1400,7 +1400,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
@@ -1420,7 +1420,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1440,7 +1440,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 3.0;

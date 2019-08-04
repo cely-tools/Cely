@@ -12,7 +12,7 @@ import Cely
 struct LoginStyles: CelyStyle {
 
     func appLogo() -> UIImage? {
-        return UIImage(named: "ChaiOneLogo")
+        return UIImage(named: "Cely")
     }
 }
 
