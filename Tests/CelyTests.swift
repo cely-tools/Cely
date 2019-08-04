@@ -26,7 +26,7 @@ class DummyStorage: CelyStorageProtocol {
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
     func set(_ value: Any?, forKey key: String, securely secure: Bool = true, persisted: Bool = false) -> StorageResult {
-        if value == nil { return .fail(.unexpectedError) }
+        if value == nil { return .fail(.undefined) }
         DummyStorage.successful_setCalls += 1
         return .success
     }
@@ -141,7 +141,7 @@ class CelyTests: XCTestCase {
     func testSaveProperty() {
         XCTAssert(Cely.save(3, forKey: "number") == StorageResult.success, "failed to save Number")
         XCTAssert(Cely.save("string", forKey: "string") == StorageResult.success, "failed to save string")
-        XCTAssert(Cely.save(nil, forKey: "nilValue") == StorageResult.fail(.unexpectedError), "failed to save nilValue")
+        XCTAssert(Cely.save(nil, forKey: "nilValue") == StorageResult.fail(.undefined), "failed to save nilValue")
         XCTAssert(Cely.save("token", forKey: "tokenString") == StorageResult.success, "failed to save tokenString")
 
         XCTAssert(DummyStorage.successful_setCalls == 3, "`Cely.store` and `DummyStorage` are not consistent")
