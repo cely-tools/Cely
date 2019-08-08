@@ -25,7 +25,7 @@ public enum LocksmithError: String, Error {
     case undefined = "An undefined error occurred"
     case unimplemented = "Function or operation not implemented."
 
-    public init?(fromStatusCode code: Int) {
+    public init(fromStatusCode code: Int) {
         switch code {
         case Int(errSecSuccess):
             self = .noError
@@ -48,7 +48,7 @@ public enum LocksmithError: String, Error {
         case Int(errSecUnimplemented):
             self = .unimplemented
         default:
-            return nil
+            self = .undefined
         }
     }
 }
