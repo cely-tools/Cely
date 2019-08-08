@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         Cely.setup(with: window!, forModel: User(), requiredProperties: [.token], withOptions: [
+            .appEntryViewController: UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController"),
+//            .loginViewController: UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateInitialViewController(),
             .loginCompletionBlock: { (username: String, password: String) in
                 if username == "asdf" && password == "asdf" {
                     User.save("FAKETOKEN:\(username)\(password)", as: .token)

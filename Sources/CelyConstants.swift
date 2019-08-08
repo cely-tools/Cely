@@ -23,8 +23,10 @@ public enum CelyStatus: CelyCommands {
 /// Options that you can pass into Cely on `Cely.setup(_:)`
 public enum CelyOptions {
     case storage
-    case homeStoryboard
-    case loginStoryboard
+//    case homeStoryboard
+//    case loginStoryboard
+    case appEntryViewController
+    case loginViewController
     case loginCompletionBlock
     case loginStyle
     case celyAnimator
