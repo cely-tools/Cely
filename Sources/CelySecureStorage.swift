@@ -45,10 +45,6 @@ internal class CelySecureStorage {
     }
 
     func get(_ key: String) -> Any? {
-        if let value = store[key] {
-            return value
-        }
-
-        return nil
+        return store[key]
     }
 }

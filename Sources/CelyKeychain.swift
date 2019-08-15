@@ -3,7 +3,7 @@
 //  Cely-iOS
 //
 //  Created by Fabian Buentello on 8/7/19.
-//  Copyright © 2019 ChaiOne. All rights reserved.
+//  Copyright © 2019 Fabian Buentello. All rights reserved.
 //
 
 import Foundation
