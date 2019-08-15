@@ -4,7 +4,7 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.chaione.Cely-Demo</string>
+		<string>$(AppIdentifierPrefix)com.cely.Cely-Demo</string>
 	</array>
 </dict>
 </plist>

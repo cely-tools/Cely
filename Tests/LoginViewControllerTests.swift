@@ -23,7 +23,7 @@ struct DummyStyles: CelyStyle {
         return .yellow
     }
     func appLogo() -> UIImage? {
-        return UIImage(named: "ChaiOneLogo.png")
+        return UIImage(named: "Cely.png")
     }
 }
 

@@ -3,7 +3,7 @@
 //  Cely Demo
 //
 //  Created by Fabian Buentello on 3/27/17.
-//  Copyright © 2017 ChaiOne. All rights reserved.
+//  Copyright © 2017 Cely. All rights reserved.
 //
 
 import UIKit

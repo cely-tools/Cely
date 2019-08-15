@@ -103,7 +103,7 @@ class StorageTests: XCTestCase {
         dummyData.forEach { dummy in
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
             if dummy.value != nil {
-                let successStatus = success == StorageResult.success || success == StorageResult.fail(LocksmithError.duplicate)
+                let successStatus = success == StorageResult.success
                 XCTAssert(successStatus, dummy.failedToSet())
             } else {
                 XCTAssert(StorageResult.fail(.undefined) == success, "You're not supposed to be able to set nil in the storage.")
@@ -138,8 +138,8 @@ class StorageTests: XCTestCase {
         #endif
 
 
-        XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage'")
-        XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage'")
+        XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage': \(secureCount)")
+        XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage': \(storageCount)")
 
         store.removeAllData()
 
@@ -157,7 +157,7 @@ class StorageTests: XCTestCase {
         }).count
         #endif
 
-        XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage'")
-        XCTAssert(storageCount == 1, "Did not remove all entries inside of 'storage'")
+        XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage': \(secureCount)")
+        XCTAssert(storageCount == 1, "Did not remove all entries inside of 'storage': \(storageCount)")
     }
 }
