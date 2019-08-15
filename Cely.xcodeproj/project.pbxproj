@@ -728,7 +728,7 @@
 					};
 					3549BB601DA38ADB00C63030 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Manual;
 						TestTargetID = 1F28642A1E89578700EE8180;
 					};
@@ -746,10 +746,9 @@
 			};
 			buildConfigurationList = 3549BAFF1DA387DB00C63030 /* Build configuration list for PBXProject "Cely" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -1381,7 +1380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cely Demo.app/Cely Demo";
 			};
 			name = Debug;
@@ -1399,7 +1398,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chaione.Cely.CelyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cely Demo.app/Cely Demo";
 			};
 			name = Release;
