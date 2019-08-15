@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
-  spec.swift_version = '4.2'
+  spec.swift_version = '5.0'
   spec.name = 'Cely'
-  spec.version = '2.1.0'
+  spec.version = '2.1.1'
   spec.license = { :type => "MIT", :file => "LICENSE" }
   spec.summary = 'Cely’s goal is to add a login system into your app in under 30 seconds!'
   spec.homepage = 'https://github.com/initFabian/Cely'
