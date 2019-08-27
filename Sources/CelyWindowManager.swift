@@ -14,10 +14,8 @@ public class CelyWindowManager {
     static let manager = CelyWindowManager()
     internal var window: UIWindow!
 
-//    public var loginStoryboard: UIStoryboard!
-//    public var homeStoryboard: UIStoryboard!
     internal var loginViewController: UIViewController!
-    internal var appEntryViewController: UIViewController!
+    internal var homeViewController: UIViewController!
     public var loginStyle: CelyStyle!
     public var celyAnimator: CelyAnimator!
 
@@ -29,13 +27,10 @@ public class CelyWindowManager {
         // Set the login Styles
         CelyWindowManager.manager.loginStyle = options?[.loginStyle] as? CelyStyle ?? DefaultSyle()
 
-        // Set the HomeStoryboard
-//        CelyWindowManager.setHomeStoryboard(options?[.homeStoryboard] as? UIStoryboard)
-        CelyWindowManager.setAppEntryViewController(options?[.appEntryViewController] as? UIViewController)
+        // Set the HomeViewController
+        CelyWindowManager.setAppEntryViewController(options?[.homeViewController] as? UIViewController)
         
-        // Set the LoginStoryboard
-//        CelyWindowManager.setLoginStoryboard(options?[.loginStoryboard] as? UIStoryboard)
-
+        // Set the LoginViewController
         CelyWindowManager.setLoginViewController(options?[.loginViewController] as? UIViewController)
         
         // Set the Transition Animator
@@ -61,29 +56,21 @@ public class CelyWindowManager {
         if let status = notification.object as? CelyStatus {
             if status == .loggedIn {
                 CelyWindowManager.manager.celyAnimator.loginTransition(
-                    to: CelyWindowManager.manager.appEntryViewController, //CelyWindowManager.manager.homeStoryboard.instantiateInitialViewController(),
+                    to: CelyWindowManager.manager.homeViewController,
                     with: CelyWindowManager.manager.window
                 )
             } else {
                 CelyWindowManager.manager.celyAnimator.logoutTransition(
-                    to: CelyWindowManager.manager.loginViewController, //CelyWindowManager.manager.loginStoryboard.instantiateInitialViewController(),
+                    to: CelyWindowManager.manager.loginViewController,
                     with: CelyWindowManager.manager.window
                 )
             }
         }
     }
-
-//    static func setHomeStoryboard(_ storyboard: UIStoryboard?) {
-//        CelyWindowManager.manager.homeStoryboard = storyboard ?? UIStoryboard(name: "Main", bundle: Bundle.main)
-//    }
     
     static func setAppEntryViewController(_ viewController: UIViewController?) {
-        CelyWindowManager.manager.appEntryViewController = viewController ?? UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+        CelyWindowManager.manager.homeViewController = viewController ?? UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
     }
-
-//    static func setLoginStoryboard(_ storyboard: UIStoryboard?) {
-//        CelyWindowManager.manager.loginStoryboard = storyboard ?? UIStoryboard(name: "Cely", bundle: Bundle(for: CelyWindowManager.self))
-//    }
 
     static func setLoginViewController(_ viewController: UIViewController?) {
         CelyWindowManager.manager.loginViewController = viewController ?? UIStoryboard(name: "Cely", bundle: Bundle(for: CelyWindowManager.self)).instantiateInitialViewController()

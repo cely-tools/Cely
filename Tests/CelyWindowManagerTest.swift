@@ -40,7 +40,7 @@ class CelyWindowManagerTest: XCTestCase {
     override func setUp() {
         super.setUp()
         CelyWindowManager.setup(window: testWindow, withOptions: [
-            .appEntryViewController: testAppEntryViewController,
+            .homeViewController: testAppEntryViewController,
             .loginViewController: testLoginViewController
         ])
     }
@@ -61,7 +61,7 @@ class CelyWindowManagerTest: XCTestCase {
 
     func testMatchingHomeScreens() {
         CelyWindowManager.setAppEntryViewController(testAppEntryViewController)
-        XCTAssert(CelyWindowManager.manager.appEntryViewController == testAppEntryViewController, "did not properly set manager's home storyboard")
+        XCTAssert(CelyWindowManager.manager.homeViewController == testAppEntryViewController, "did not properly set manager's home storyboard")
     }
 
     func testShowScreen() {
