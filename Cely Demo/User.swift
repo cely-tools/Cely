@@ -34,8 +34,8 @@ struct User: CelyUser {
             }
         }
 
-        func save(_ value: Any) {
-            Cely.save(value, forKey: rawValue, securely: securely(), persisted: persisted())
+        @discardableResult func save(_ value: Any) -> StorageResult {
+            return Cely.save(value, forKey: rawValue, securely: securely(), persisted: persisted())
         }
 
         func get() -> Any? {
@@ -48,8 +48,8 @@ struct User: CelyUser {
 
 extension User {
 
-    static func save(_ value: Any, as property: Property) {
-		property.save(value)
+    @discardableResult static func save(_ value: Any, as property: Property) -> StorageResult {
+        return property.save(value)
     }
 
     static func save(_ data: [Property : Any]) {
