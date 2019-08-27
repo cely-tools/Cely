@@ -21,6 +21,7 @@ internal struct CelyKeychain {
         var queryCopy = baseQuery
         queryCopy[kSecMatchLimit as String] = kSecMatchLimitOne
         queryCopy[kSecReturnAttributes as String] = true
+        queryCopy[kSecReturnData as String] = true
         return queryCopy
     }
     
@@ -56,7 +57,7 @@ internal struct CelyKeychain {
         let status: OSStatus = SecItemAdd(queryCopy as CFDictionary, nil)
         let err = LocksmithError(fromStatusCode: Int(status))
         if err == .noError {
-         return .success
+            return .success
         } else if err == .duplicate {
             // already exists, should update instead
             return update(secrets: secrets)
