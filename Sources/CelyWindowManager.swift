@@ -28,7 +28,7 @@ public class CelyWindowManager {
         CelyWindowManager.manager.loginStyle = options?[.loginStyle] as? CelyStyle ?? DefaultSyle()
 
         // Set the HomeViewController
-        CelyWindowManager.setAppEntryViewController(options?[.homeViewController] as? UIViewController)
+        CelyWindowManager.setHomeViewController(options?[.homeViewController] as? UIViewController)
         
         // Set the LoginViewController
         CelyWindowManager.setLoginViewController(options?[.loginViewController] as? UIViewController)
@@ -68,7 +68,7 @@ public class CelyWindowManager {
         }
     }
     
-    static func setAppEntryViewController(_ viewController: UIViewController?) {
+    static func setHomeViewController(_ viewController: UIViewController?) {
         CelyWindowManager.manager.homeViewController = viewController ?? UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
     }
 
