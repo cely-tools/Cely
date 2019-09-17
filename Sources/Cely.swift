@@ -89,7 +89,7 @@ extension Cely {
     /// - parameter persist: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> StorageResult {
+    @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> Result<Void, CelyStorageError> {
         return store.set(value, forKey: key, securely: secure, persisted: persist)
     }
 

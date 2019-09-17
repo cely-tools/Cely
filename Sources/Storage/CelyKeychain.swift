@@ -46,7 +46,7 @@ internal struct CelyKeychain {
         }
     }
 
-    func set(_ secrets: [String: Any]) -> StorageResult {
+    func set(_ secrets: [String: Any]) -> Result<Void, CelyStorageError> {
         var queryCopy = baseQuery
         let storeData = NSKeyedArchiver.archivedData(withRootObject: secrets)
         queryCopy[kSecValueData as String] = storeData
@@ -54,24 +54,24 @@ internal struct CelyKeychain {
         // try adding first
         let status: OSStatus = SecItemAdd(queryCopy as CFDictionary, nil)
         let code = CelyStorageError(status: status)
-        if code == .success {
-            return .success
-        } else if code == .duplicateItem {
-            // already exists, should update instead
+        switch code {
+        case .success:
+            return .success(())
+        case .duplicateItem:
             return update(secrets: secrets)
+        default:
+            return .failure(code)
         }
-
-        return .fail(code)
     }
 
-    private func update(secrets: [String: Any]) -> StorageResult {
+    private func update(secrets: [String: Any]) -> Result<Void, CelyStorageError> {
         let secretData = NSKeyedArchiver.archivedData(withRootObject: secrets)
         let updateDictionary = [kSecValueData as String: secretData]
         let status: OSStatus = SecItemUpdate(baseQuery as CFDictionary, updateDictionary as CFDictionary)
         let code = CelyStorageError(status: status)
         if code == .success {
-            return .success
+            return .success(())
         }
-        return .fail(code)
+        return .failure(code)
     }
 }

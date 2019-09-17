@@ -31,14 +31,17 @@ internal class CelySecureStorage {
         }
     }
 
-    func set(_ value: Any, forKey key: String) -> StorageResult {
+    func set(_ value: Any, forKey key: String) -> Result<Void, CelyStorageError> {
         var storeCopy = store
         storeCopy[key] = value
         let result = _celyKeychain.set(storeCopy)
-        if result == .success {
+        switch result {
+        case .success:
             store[key] = value
+            return .success(())
+        default:
+            return result
         }
-        return result
     }
 
     func get(_ key: String) -> Any? {

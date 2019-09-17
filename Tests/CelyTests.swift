@@ -24,10 +24,10 @@ class DummyStorage: CelyStorageProtocol {
 
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
-    func set(_ value: Any?, forKey _: String, securely _: Bool = true, persisted _: Bool = false) -> StorageResult {
-        if value == nil { return .fail(.param) }
+    func set(_ value: Any?, forKey _: String, securely _: Bool = true, persisted _: Bool = false) -> Result<Void, CelyStorageError> {
+        if value == nil { return .failure(.param) }
         DummyStorage.successful_setCalls += 1
-        return .success
+        return .success(())
     }
 
     func get(_ key: String) -> Any? {
@@ -135,10 +135,23 @@ class CelyTests: XCTestCase {
     }
 
     func testSaveProperty() {
-        XCTAssert(Cely.save(3, forKey: "number") == StorageResult.success, "failed to save Number")
-        XCTAssert(Cely.save("string", forKey: "string") == StorageResult.success, "failed to save string")
-        XCTAssert(Cely.save(nil, forKey: "nilValue") == StorageResult.fail(.param), "failed to save nilValue")
-        XCTAssert(Cely.save("token", forKey: "tokenString") == StorageResult.success, "failed to save tokenString")
+        do {
+            try Cely.save(3, forKey: "number").get()
+        } catch {
+            XCTFail("failed to save Number")
+        }
+
+        do {
+            try Cely.save("string", forKey: "string").get()
+        } catch {
+            XCTFail("failed to save string")
+        }
+
+        do {
+            try Cely.save("token", forKey: "tokenString").get()
+        } catch {
+            XCTFail("failed to save tokenString")
+        }
 
         XCTAssert(DummyStorage.successful_setCalls == 3, "`Cely.store` and `DummyStorage` are not consistent")
     }

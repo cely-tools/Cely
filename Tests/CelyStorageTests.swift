@@ -83,8 +83,6 @@ class StorageTests: XCTestCase {
             Dummy(key: "testFloat_secure", value: 1.058, storeSecurely: true),
             Dummy(key: "testInt", value: 100, storeSecurely: false),
             Dummy(key: "testInt_secure", value: 100, storeSecurely: true),
-            Dummy(key: "testNil", value: nil, storeSecurely: false),
-            Dummy(key: "testNil_secure", value: nil, storeSecurely: true),
             Dummy(key: "testArrayOfStrings", value: ["string1 success", "string2 success"], storeSecurely: false),
             Dummy(key: "testArrayOfStrings_secure", value: ["string1 success", "string2 success"], storeSecurely: true),
             Dummy(key: "testArrayOfNumbers", value: [50, 48.5, 895.5], storeSecurely: false),
@@ -101,12 +99,10 @@ class StorageTests: XCTestCase {
     
     func testSavingData() {
         dummyData.forEach { dummy in
-            let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
-            if dummy.value != nil {
-                let successStatus = success == StorageResult.success
-                XCTAssert(successStatus, dummy.failedToSet())
+            let status = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
+            if case .success = status {
             } else {
-                XCTAssert(StorageResult.fail(.param) == success, "You're not supposed to be able to set nil in the storage.")
+                XCTFail(dummy.failedToSet())
             }
         }
     }

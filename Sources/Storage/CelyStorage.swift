@@ -66,8 +66,8 @@ public class CelyStorage: CelyStorageProtocol {
     /// - parameter persisted: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
-    public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {
-        guard let val = value else { return .fail(.param) }
+    public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> Result<Void, CelyStorageError> {
+        guard let val = value else { return .failure(.param) }
         if secure {
             return secureStore.set(val, forKey: key)
         } else {
@@ -81,7 +81,7 @@ public class CelyStorage: CelyStorageProtocol {
             UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
             UserDefaults.standard.synchronize()
         }
-        return .success
+        return .success(())
     }
 
     /// Retrieve user data from key
