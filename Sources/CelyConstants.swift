@@ -63,29 +63,6 @@ internal extension UITextField {
     }
 }
 
-public extension Dictionary {
-    init(withoutOptionalValues initial: [Key: Value?]) {
-        self = [Key: Value]()
-        for pair in initial {
-            if pair.1 != nil {
-                self[pair.0] = pair.1!
-            }
-        }
-    }
-
-    init(initial: [Key: Value], toMerge: [Key: Value]) {
-        self = [Key: Value]()
-
-        for pair in initial {
-            self[pair.0] = pair.1
-        }
-
-        for pair in toMerge {
-            self[pair.0] = pair.1
-        }
-    }
-}
-
 public extension UIWindow {
     func setCurrentViewController(to viewController: UIViewController?) {
         let previousViewController = rootViewController
