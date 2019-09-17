@@ -24,12 +24,11 @@ internal struct CelyKeychain {
         return queryCopy
     }
 
-    func clearKeychain() -> StorageResult {
+    func clearKeychain() -> Result<Void, CelyStorageError> {
         let status = SecItemDelete(baseQuery as CFDictionary)
         let errorStatus = CelyStorageError(status: status)
-        guard errorStatus == .success
-        else { return StorageResult.fail(errorStatus) }
-        return .success
+        guard errorStatus == .noError else { return .failure(errorStatus) }
+        return .success(())
     }
 
     func getCredentials() throws -> [String: Any] {
@@ -55,7 +54,7 @@ internal struct CelyKeychain {
         let status: OSStatus = SecItemAdd(queryCopy as CFDictionary, nil)
         let code = CelyStorageError(status: status)
         switch code {
-        case .success:
+        case .noError:
             return .success(())
         case .duplicateItem:
             return update(secrets: secrets)
@@ -69,7 +68,7 @@ internal struct CelyKeychain {
         let updateDictionary = [kSecValueData as String: secretData]
         let status: OSStatus = SecItemUpdate(baseQuery as CFDictionary, updateDictionary as CFDictionary)
         let code = CelyStorageError(status: status)
-        if code == .success {
+        if code == .noError {
             return .success(())
         }
         return .failure(code)

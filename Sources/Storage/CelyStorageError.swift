@@ -11,7 +11,7 @@ import Foundation
 // https://github.com/kishikawakatsumi/KeychainAccess/blob/3a9c83cf8b8cfaecd1097916fae803e1b1d6447f/Lib/KeychainAccess/Keychain.swift#L1695
 
 public enum CelyStorageError: OSStatus, Error {
-    case success = 0
+    case noError = 0
     case unimplemented = -4
     case diskFull = -34
     case io = -36
@@ -427,7 +427,7 @@ extension CelyStorageError: RawRepresentable, CustomStringConvertible {
 
     public var description: String {
         switch self {
-        case .success:
+        case .noError:
             return "No error."
         case .unimplemented:
             return "Function or operation not implemented."

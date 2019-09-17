@@ -30,25 +30,6 @@ public enum CelyOptions {
     case celyAnimator
 }
 
-// enum result on whether or not Cely successfully saved your data
-public enum StorageResult: Equatable {
-    case success
-    case fail(CelyStorageError)
-}
-
-public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
-    switch (lhs, rhs) {
-    case (let .fail(error1), let .fail(error2)):
-        return error1 == error2
-
-    case (.success, .success):
-        return true
-
-    default:
-        return false
-    }
-}
-
 internal extension UITextField {
 
     @IBInspectable var leftSpacer: CGFloat {

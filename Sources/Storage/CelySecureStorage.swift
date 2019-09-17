@@ -22,13 +22,13 @@ internal class CelySecureStorage {
         }
     }
     
-    func clearStorage() {
-        let status = _celyKeychain.clearKeychain()
-        if status != .success {
-            print("Failed to clear keychain, error: \(status)")
-        } else {
+    @discardableResult func clearStorage() -> Result<Void, CelyStorageError> {
+        let result = _celyKeychain.clearKeychain()
+        if case .success = result {
             store = [:]
+            return .success(())
         }
+        return result
     }
 
     func set(_ value: Any, forKey key: String) -> Result<Void, CelyStorageError> {
