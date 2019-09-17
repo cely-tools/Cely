@@ -106,7 +106,7 @@ class StorageTests: XCTestCase {
                 let successStatus = success == StorageResult.success
                 XCTAssert(successStatus, dummy.failedToSet())
             } else {
-                XCTAssert(StorageResult.fail(.undefined) == success, "You're not supposed to be able to set nil in the storage.")
+                XCTAssert(StorageResult.fail(.param) == success, "You're not supposed to be able to set nil in the storage.")
             }
         }
     }

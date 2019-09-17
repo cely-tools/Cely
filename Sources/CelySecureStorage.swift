@@ -16,9 +16,6 @@ internal class CelySecureStorage {
         do {
             let credentials = try _celyKeychain.getCredentials()
             store = credentials
-        } catch let error as LocksmithError {
-            print("Failed to retrieve store from keychain")
-            print(error)
         } catch {
             print("Failed to retrieve store from keychain")
             print(error)

@@ -43,13 +43,6 @@ extension ConstantsAndProtocolTests {
 
         XCTAssertEqual(fakeTextField.leftSpacer, 0, "leftSpacer was supposed to return 0")
     }
-
-    func testStorageResultEquatable() {
-        let successResult = StorageResult.success
-        let failureResult = StorageResult.fail(.undefined)
-
-        XCTAssertNotEqual(successResult, failureResult, "Results were not supposed to be equal")
-    }
 }
 
 // MARK: - Test Protocols
