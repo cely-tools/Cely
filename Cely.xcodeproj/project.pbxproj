@@ -81,7 +81,8 @@
 		1F68B0451E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
 		1F68B0461E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
 		1F68B0471E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
-		1FB2CEF11E8D3E2D00E1A5F6 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; };
+		31238F162331019400D6CBC3 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; };
+		31238F172331019400D6CBC3 /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31817D1122FBCA15004FF30F /* CelyKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31817D1022FBCA15004FF30F /* CelyKeychain.swift */; };
 		31FAEB8022ECC4DD003EC60A /* CelySecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */; };
 		3549BB501DA38A2000C63030 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +124,20 @@
 			remoteInfo = "Cely-macOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		31238F182331019400D6CBC3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				31238F172331019400D6CBC3 /* Cely.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F28642B1E89578700EE8180 /* Cely Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cely Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FB2CEF11E8D3E2D00E1A5F6 /* Cely.framework in Frameworks */,
+				31238F162331019400D6CBC3 /* Cely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +531,7 @@
 				1F2864271E89578700EE8180 /* Sources */,
 				1F2864281E89578700EE8180 /* Frameworks */,
 				1F2864291E89578700EE8180 /* Resources */,
+				31238F182331019400D6CBC3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
