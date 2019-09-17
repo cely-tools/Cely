@@ -37,9 +37,6 @@
 		1F68AFE71E89505A001A0161 /* CelyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD61E89505A001A0161 /* CelyProtocols.swift */; };
 		1F68AFE81E89505A001A0161 /* CelyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD61E89505A001A0161 /* CelyProtocols.swift */; };
 		1F68AFE91E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
-		1F68AFEA1E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
-		1F68AFEB1E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
-		1F68AFEC1E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
 		1F68AFED1E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
 		1F68AFEE1E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
 		1F68AFEF1E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
@@ -166,7 +163,7 @@
 		1F68B01C1E89519A001A0161 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
 		1F9D24071E8D49C700FB4BE6 /* Cely Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cely Demo.entitlements"; sourceTree = "<group>"; };
-		31238F19233103D500D6CBC3 /* CelySecureStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CelySecureStatus.swift; path = Storage/CelySecureStatus.swift; sourceTree = "<group>"; };
+		31238F19233103D500D6CBC3 /* CelySecureStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelySecureStatus.swift; sourceTree = "<group>"; };
 		31817D1022FBCA15004FF30F /* CelyKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelyKeychain.swift; sourceTree = "<group>"; };
 		31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelySecureStorage.swift; sourceTree = "<group>"; };
 		3549BB171DA3890B00C63030 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -289,6 +286,17 @@
 			path = "Cely Demo";
 			sourceTree = "<group>";
 		};
+		311B5E3023310901002166E1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1F68AFD71E89505A001A0161 /* CelyStorage.swift */,
+				31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */,
+				31817D1022FBCA15004FF30F /* CelyKeychain.swift */,
+				31238F19233103D500D6CBC3 /* CelySecureStatus.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		3549BAFB1DA387DB00C63030 = {
 			isa = PBXGroup;
 			children = (
@@ -367,14 +375,11 @@
 		3549BB5C1DA38AA500C63030 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				311B5E3023310901002166E1 /* Storage */,
 				1F68AFD41E89505A001A0161 /* Cely.swift */,
 				1F68AFD51E89505A001A0161 /* CelyConstants.swift */,
-				31238F19233103D500D6CBC3 /* CelySecureStatus.swift */,
 				1F68AFD61E89505A001A0161 /* CelyProtocols.swift */,
-				1F68AFD71E89505A001A0161 /* CelyStorage.swift */,
-				31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */,
 				1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */,
-				31817D1022FBCA15004FF30F /* CelyKeychain.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -889,7 +894,6 @@
 				1F68AFE81E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE41E89505A001A0161 /* CelyConstants.swift in Sources */,
 				1F68B00F1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
-				1F68AFEC1E89505A001A0161 /* CelyStorage.swift in Sources */,
 				1F68AFF01E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFE01E89505A001A0161 /* Cely.swift in Sources */,
 			);
@@ -902,7 +906,6 @@
 				1F68AFE61E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE21E89505A001A0161 /* CelyConstants.swift in Sources */,
 				1F68B00D1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
-				1F68AFEA1E89505A001A0161 /* CelyStorage.swift in Sources */,
 				1F68AFEE1E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFDE1E89505A001A0161 /* Cely.swift in Sources */,
 			);
@@ -915,7 +918,6 @@
 				1F68AFE71E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE31E89505A001A0161 /* CelyConstants.swift in Sources */,
 				1F68B00E1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
-				1F68AFEB1E89505A001A0161 /* CelyStorage.swift in Sources */,
 				1F68AFEF1E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFDF1E89505A001A0161 /* Cely.swift in Sources */,
 			);
