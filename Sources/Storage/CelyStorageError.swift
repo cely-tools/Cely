@@ -1,5 +1,5 @@
 //
-//  CelySecureStatus.swift
+//  CelyStorageError.swift
 //  Cely-iOS
 //
 //  Created by Fabian Buentello on 9/17/19.
@@ -10,7 +10,7 @@ import Foundation
 
 // https://github.com/kishikawakatsumi/KeychainAccess/blob/3a9c83cf8b8cfaecd1097916fae803e1b1d6447f/Lib/KeychainAccess/Keychain.swift#L1695
 
-public enum CelySecureStatus: OSStatus, Error {
+public enum CelyStorageError: OSStatus, Error {
     case success = 0
     case unimplemented = -4
     case diskFull = -34
@@ -416,9 +416,9 @@ public enum CelySecureStatus: OSStatus, Error {
     case unexpectedError = -99999
 }
 
-extension CelySecureStatus: RawRepresentable, CustomStringConvertible {
+extension CelyStorageError: RawRepresentable, CustomStringConvertible {
     public init(status: OSStatus) {
-        if let mappedStatus = CelySecureStatus(rawValue: status) {
+        if let mappedStatus = CelyStorageError(rawValue: status) {
             self = mappedStatus
         } else {
             self = .unexpectedError
@@ -1239,7 +1239,7 @@ extension CelySecureStatus: RawRepresentable, CustomStringConvertible {
 
 let KeychainAccessErrorDomain = "com.cely-tools.Cely.error"
 
-extension CelySecureStatus: CustomNSError {
+extension CelyStorageError: CustomNSError {
     public static let errorDomain = KeychainAccessErrorDomain
 
     public var errorCode: Int {

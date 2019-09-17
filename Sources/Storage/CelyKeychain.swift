@@ -26,7 +26,7 @@ internal struct CelyKeychain {
 
     func clearKeychain() -> StorageResult {
         let status = SecItemDelete(baseQuery as CFDictionary)
-        let errorStatus = CelySecureStatus(status: status)
+        let errorStatus = CelyStorageError(status: status)
         guard errorStatus == .success
         else { return StorageResult.fail(errorStatus) }
         return .success
@@ -35,13 +35,13 @@ internal struct CelyKeychain {
     func getCredentials() throws -> [String: Any] {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(searchQuery as CFDictionary, &item)
-        guard status == errSecSuccess else { throw CelySecureStatus(status: status) }
+        guard status == errSecSuccess else { throw CelyStorageError(status: status) }
 
         do {
             guard let existingItem = item as? [String: Any],
                 let secureData = existingItem[kSecValueData as String] as? Data,
                 let loadedDictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(secureData) as? [String: Any]
-            else { throw CelySecureStatus.decode }
+            else { throw CelyStorageError.decode }
             return loadedDictionary
         }
     }
@@ -53,7 +53,7 @@ internal struct CelyKeychain {
 
         // try adding first
         let status: OSStatus = SecItemAdd(queryCopy as CFDictionary, nil)
-        let code = CelySecureStatus(status: status)
+        let code = CelyStorageError(status: status)
         if code == .success {
             return .success
         } else if code == .duplicateItem {
@@ -68,7 +68,7 @@ internal struct CelyKeychain {
         let secretData = NSKeyedArchiver.archivedData(withRootObject: secrets)
         let updateDictionary = [kSecValueData as String: secretData]
         let status: OSStatus = SecItemUpdate(baseQuery as CFDictionary, updateDictionary as CFDictionary)
-        let code = CelySecureStatus(status: status)
+        let code = CelyStorageError(status: status)
         if code == .success {
             return .success
         }
