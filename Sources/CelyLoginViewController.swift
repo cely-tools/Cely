@@ -9,7 +9,6 @@
 import UIKit
 
 class CelyLoginViewController: UIViewController {
-
     // MARK: - IBOutlets
 
     @IBOutlet weak var appImageView: UIImageView?
@@ -20,10 +19,12 @@ class CelyLoginViewController: UIViewController {
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
     // MARK: - Variables
+
     var initialBottomConstant: CGFloat!
     var styles: CelyStyle!
 
     // MARK: - ViewController Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameField?.delegate = self
@@ -34,13 +35,12 @@ class CelyLoginViewController: UIViewController {
     }
 
     private func setupStyle() {
-
         styles = CelyWindowManager.manager.loginStyle
 
         view.backgroundColor = styles.backgroundColor()
         loginButton?.setTitleColor(styles.buttonTextColor(), for: .normal)
         loginButton?.backgroundColor = styles.buttonBackgroundColor()
-        textFields?.forEach({$0.backgroundColor = styles.textFieldBackgroundColor()})
+        textFields?.forEach { $0.backgroundColor = styles.textFieldBackgroundColor() }
         if let image = styles.appLogo() {
             appImageView?.image = image
         }
@@ -68,16 +68,14 @@ class CelyLoginViewController: UIViewController {
 }
 
 internal extension CelyLoginViewController {
-
     // MARK: - Private
 
     fileprivate func setUpKeyboardNotification() {
-         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)),
-                                                name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
     func convertNotification(notification: NSNotification) -> (duration: Double, endFrame: CGRect, animationCurve: UIView.AnimationOptions)? {
-
         guard let userInfo = notification.userInfo,
             let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
             let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
@@ -90,7 +88,6 @@ internal extension CelyLoginViewController {
     }
 
     @objc func keyboardNotification(notification: NSNotification) {
-
         guard let (duration, endFrame, animationCurve) = convertNotification(notification: notification) else {
             return
         }
@@ -103,17 +100,16 @@ internal extension CelyLoginViewController {
                        delay: 0.0,
                        options: [.beginFromCurrentState, animationCurve],
                        animations: {
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+                           self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
 
 extension CelyLoginViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
 
-        if let next = textFields?.filter({$0.tag == nextTag}).first {
+        if let next = textFields?.filter({ $0.tag == nextTag }).first {
             next.becomeFirstResponder()
             return true
         }

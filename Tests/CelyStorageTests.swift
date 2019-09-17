@@ -6,11 +6,10 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import XCTest
 @testable import Cely
+import XCTest
 
 struct Dummy {
-
     var key: String!
     var value: Any?
     var storeSecurely: Bool!
@@ -26,6 +25,7 @@ struct Dummy {
     func failedMessage(returnedValue: Any?) -> String {
         return "\(key!) failed! It's supposed to equal '\(String(describing: value))'. Not '\(String(describing: returnedValue))'."
     }
+
     func failedToSet() -> String {
         return "[\(key!), securely: \(storeSecurely!)]: failed to set in storage!"
     }
@@ -64,7 +64,6 @@ struct Dummy {
 }
 
 class StorageTests: XCTestCase {
-
     var dummyData: [Dummy]!
     var store: CelyStorage!
 
@@ -88,7 +87,7 @@ class StorageTests: XCTestCase {
             Dummy(key: "testArrayOfStrings", value: ["string1 success", "string2 success"], storeSecurely: false),
             Dummy(key: "testArrayOfStrings_secure", value: ["string1 success", "string2 success"], storeSecurely: true),
             Dummy(key: "testArrayOfNumbers", value: [50, 48.5, 895.5], storeSecurely: false),
-            Dummy(key: "testArrayOfNumbers_secure", value: [50, 48.5, 895.5], storeSecurely: true)
+            Dummy(key: "testArrayOfNumbers_secure", value: [50, 48.5, 895.5], storeSecurely: true),
         ]
     }
 
@@ -98,7 +97,7 @@ class StorageTests: XCTestCase {
         UserDefaults.standard.synchronize()
         super.tearDown()
     }
-    
+
     func testSavingData() {
         dummyData.forEach { dummy in
             let success = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
@@ -126,17 +125,16 @@ class StorageTests: XCTestCase {
         testSavingData()
         var secureCount = store.secureStorage.count
         #if swift(>=4.1)
-        var storageCount = dummyData.compactMap({ dummy -> Any? in
-            guard !dummy.storeSecurely, !dummy.persisted else { return nil }
-            return store.get(dummy.key)
-        }).count
+            var storageCount = dummyData.compactMap { dummy -> Any? in
+                guard !dummy.storeSecurely, !dummy.persisted else { return nil }
+                return store.get(dummy.key)
+            }.count
         #else
-        var storageCount = dummyData.flatMap({ dummy -> Any? in
-        guard !dummy.storeSecurely, !dummy.persisted else { return nil }
-        return store.get(dummy.key)
-        }).count
+            var storageCount = dummyData.flatMap { dummy -> Any? in
+                guard !dummy.storeSecurely, !dummy.persisted else { return nil }
+                return store.get(dummy.key)
+            }.count
         #endif
-
 
         XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage': \(secureCount)")
         XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage': \(storageCount)")
@@ -146,15 +144,15 @@ class StorageTests: XCTestCase {
         secureCount = store.secureStorage.count
 
         #if swift(>=4.1)
-        storageCount = dummyData.compactMap({ dummy -> Any? in
-            guard !dummy.storeSecurely, !dummy.persisted else { return nil }
-            return store.get(dummy.key)
-        }).count
+            storageCount = dummyData.compactMap { dummy -> Any? in
+                guard !dummy.storeSecurely, !dummy.persisted else { return nil }
+                return store.get(dummy.key)
+            }.count
         #else
-        storageCount = dummyData.flatMap({ dummy -> Any? in
-        guard !dummy.storeSecurely, !dummy.persisted else { return nil }
-        return store.get(dummy.key)
-        }).count
+            storageCount = dummyData.flatMap { dummy -> Any? in
+                guard !dummy.storeSecurely, !dummy.persisted else { return nil }
+                return store.get(dummy.key)
+            }.count
         #endif
 
         XCTAssert(secureCount == 0, "Did not remove all entries inside of 'secureStorage': \(secureCount)")

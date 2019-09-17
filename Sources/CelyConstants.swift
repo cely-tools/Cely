@@ -38,7 +38,7 @@ public enum StorageResult: Equatable {
 
 public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
     switch (lhs, rhs) {
-    case (let .fail(error1), let .fail(error2)):
+    case let (.fail(error1), .fail(error2)):
         return error1 == error2
 
     case (.success, .success):
@@ -50,7 +50,6 @@ public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
 }
 
 internal extension UITextField {
-
     @IBInspectable var leftSpacer: CGFloat {
         get {
             if let l = leftView {
@@ -65,7 +64,7 @@ internal extension UITextField {
 }
 
 public extension Dictionary {
-    init(withoutOptionalValues initial: Dictionary<Key, Value?>) {
+    init(withoutOptionalValues initial: [Key: Value?]) {
         self = [Key: Value]()
         for pair in initial {
             if pair.1 != nil {
@@ -74,8 +73,8 @@ public extension Dictionary {
         }
     }
 
-    init(initial: Dictionary<Key, Value>, toMerge: Dictionary<Key, Value>) {
-        self = Dictionary<Key, Value>()
+    init(initial: [Key: Value], toMerge: [Key: Value]) {
+        self = [Key: Value]()
 
         for pair in initial {
             self[pair.0] = pair.1

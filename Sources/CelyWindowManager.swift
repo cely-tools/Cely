@@ -9,8 +9,8 @@
 import UIKit
 
 public class CelyWindowManager {
-
     // MARK: - Variables
+
     static let manager = CelyWindowManager()
     internal var window: UIWindow!
 
@@ -21,7 +21,7 @@ public class CelyWindowManager {
 
     public init() {}
 
-    static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
+    static func setup(window _window: UIWindow, withOptions options: [CelyOptions: Any?]? = [:]) {
         CelyWindowManager.manager.window = _window
 
         // Set the login Styles
