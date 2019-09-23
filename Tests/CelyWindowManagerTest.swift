@@ -34,14 +34,14 @@ class DummyCelyWindowManager: CelyWindowManager {
 class CelyWindowManagerTest: XCTestCase {
 
     let testWindow = UIWindow()
-    let testHomeStoryboard = UIStoryboard()
-    var testLoginStoryboard = UIStoryboard()
+    let testAppEntryViewController = UIViewController()
+    var testLoginViewController = UIViewController()
 
     override func setUp() {
         super.setUp()
         CelyWindowManager.setup(window: testWindow, withOptions: [
-            .homeStoryboard: testHomeStoryboard,
-            .loginStoryboard: testLoginStoryboard
+            .homeViewController: testAppEntryViewController,
+            .loginViewController: testLoginViewController
         ])
     }
 
@@ -55,22 +55,22 @@ class CelyWindowManagerTest: XCTestCase {
     }
 
     func testMatchingLoginScreens() {
-        CelyWindowManager.setLoginStoryboard(testLoginStoryboard)
-        XCTAssert(CelyWindowManager.manager.loginStoryboard == testLoginStoryboard, "did not properly set manager's login storyboard")
+        CelyWindowManager.setLoginViewController(testLoginViewController)
+        XCTAssert(CelyWindowManager.manager.loginViewController == testLoginViewController, "did not properly set manager's login storyboard")
     }
 
     func testMatchingHomeScreens() {
-        CelyWindowManager.setHomeStoryboard(testHomeStoryboard)
-        XCTAssert(CelyWindowManager.manager.homeStoryboard == testHomeStoryboard, "did not properly set manager's home storyboard")
+        CelyWindowManager.setHomeViewController(testAppEntryViewController)
+        XCTAssert(CelyWindowManager.manager.homeViewController == testAppEntryViewController, "did not properly set manager's home storyboard")
     }
 
     func testShowScreen() {
         testMatchingHomeScreens()
         Cely.changeStatus(to: .loggedIn)
-        XCTAssert(CelyWindowManager.manager.window.rootViewController == testHomeStoryboard.instantiateInitialViewController(), "did not properly set manager's home storyboard")
+        XCTAssert(CelyWindowManager.manager.window.rootViewController == testAppEntryViewController, "did not properly set manager's home storyboard")
 
         Cely.changeStatus(to: .loggedOut)
-        XCTAssert(CelyWindowManager.manager.window.rootViewController == testLoginStoryboard.instantiateInitialViewController(), "did not properly set manager's login storyboard")
+        XCTAssert(CelyWindowManager.manager.window.rootViewController == testLoginViewController, "did not properly set manager's login storyboard")
     }
     
     func testNotificationRemoveObserver() {
