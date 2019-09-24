@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="svJ-It-h7B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="svJ-It-h7B">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,9 +27,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rRA-t9-7xr" kind="show" id="SLb-KR-rFl">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="rRA-t9-7xr" kind="show" id="SLb-KR-rFl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CJ-Uc-HQ6">
-                                <rect key="frame" x="164" y="319" width="48" height="30"/>
+                                <rect key="frame" x="163.5" y="318.5" width="48" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -77,6 +74,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVe-ha-LY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="788" y="28"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CJD-T7-i5b">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" id="fcy-JF-Mxc" customClass="ViewController" customModule="Cely_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FnL-dC-bR2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ret-hq-C3a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q6t-17-K1g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjC-PT-mCd">
+                                <rect key="frame" x="16" y="20" width="57" height="30"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.011802669964655354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OjC-PT-mCd" firstAttribute="top" secondItem="FnL-dC-bR2" secondAttribute="bottom" id="FZw-fL-8F8"/>
+                            <constraint firstItem="OjC-PT-mCd" firstAttribute="leading" secondItem="Q6t-17-K1g" secondAttribute="leadingMargin" id="v4l-I2-117"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yc-Ke-H6A" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="743"/>
         </scene>
     </scenes>
 </document>
