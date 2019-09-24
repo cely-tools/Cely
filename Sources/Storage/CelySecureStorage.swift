@@ -14,11 +14,13 @@ internal class CelySecureStorage {
 
     init() {
         do {
-            let credentials = try _celyKeychain.getCredentials()
-            store = credentials
+            let currentProtectedData = try _celyKeychain.getProtectedData()
+            store = currentProtectedData
+        } catch let error as CelyStorageError {
+            // Expect this error to happen if first keychain is empty :)
+            Cely.debugPrint(str: error.description)
         } catch {
-            print("Failed to retrieve store from keychain")
-            print(error)
+            Cely.debugPrint(str: error.localizedDescription)
         }
     }
 

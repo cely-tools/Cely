@@ -31,16 +31,20 @@ internal struct CelyKeychain {
         return .success(())
     }
 
-    func getCredentials() throws -> [String: Any] {
+    func getProtectedData() throws -> [String: Any] {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(searchQuery as CFDictionary, &item)
-        guard status == errSecSuccess else { throw CelyStorageError(status: status) }
+        guard status == errSecSuccess else {
+            throw CelyStorageError(status: status)
+        }
 
         do {
             guard let existingItem = item as? [String: Any],
                 let secureData = existingItem[kSecValueData as String] as? Data,
                 let loadedDictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(secureData) as? [String: Any]
-            else { throw CelyStorageError.decode }
+            else {
+                throw CelyStorageError.missingValue
+            }
             return loadedDictionary
         }
     }
