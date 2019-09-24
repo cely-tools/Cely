@@ -64,3 +64,5 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 docs/
+
+Cely.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist

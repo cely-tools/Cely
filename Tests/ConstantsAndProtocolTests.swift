@@ -6,13 +6,12 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import XCTest
 @testable import Cely
+import XCTest
 
 struct DefaultStyleTest: CelyStyle {}
 
 class ConstantsAndProtocolTests: XCTestCase {
-
     let testDummy = DefaultStyleTest()
 
     override func setUp() {
@@ -27,8 +26,8 @@ class ConstantsAndProtocolTests: XCTestCase {
 }
 
 // MARK: - Test Constants
-extension ConstantsAndProtocolTests {
 
+extension ConstantsAndProtocolTests {
     func testLeftSpace_WithFrame() {
         let fakeTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         fakeTextField.leftSpacer = 20
@@ -46,8 +45,8 @@ extension ConstantsAndProtocolTests {
 }
 
 // MARK: - Test Protocols
-extension ConstantsAndProtocolTests {
 
+extension ConstantsAndProtocolTests {
     func testViewBackgroundColor() {
         XCTAssertEqual(testDummy.backgroundColor(), .white, "backgroundColor() was supposed to return .white")
     }
@@ -57,7 +56,7 @@ extension ConstantsAndProtocolTests {
     }
 
     func testButtonBackgroundColor() {
-        XCTAssertEqual(testDummy.buttonBackgroundColor(), UIColor(red: 86/255, green: 203/255, blue: 249/255, alpha: 1), "buttonBackgroundColor() was supposed to return a light blue color")
+        XCTAssertEqual(testDummy.buttonBackgroundColor(), UIColor(red: 86 / 255, green: 203 / 255, blue: 249 / 255, alpha: 1), "buttonBackgroundColor() was supposed to return a light blue color")
     }
 
     func testButtonTextColor() {

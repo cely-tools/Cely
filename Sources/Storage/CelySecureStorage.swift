@@ -9,9 +9,9 @@
 import Foundation
 
 internal class CelySecureStorage {
-    var store: [String : Any] = [:]
+    var store: [String: Any] = [:]
     private let _celyKeychain = CelyKeychain()
-    
+
     init() {
         do {
             let credentials = try _celyKeychain.getCredentials()
@@ -21,7 +21,7 @@ internal class CelySecureStorage {
             print(error)
         }
     }
-    
+
     @discardableResult func clearStorage() -> Result<Void, CelyStorageError> {
         let result = _celyKeychain.clearKeychain()
         if case .success = result {

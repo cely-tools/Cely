@@ -6,11 +6,10 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import Foundation
 import Cely
+import Foundation
 
 struct User: CelyUser {
-
     enum Property: CelyProperty {
         case username = "username"
         case email = "email"
@@ -47,12 +46,11 @@ struct User: CelyUser {
 // MARK: - Save/Get User Properties
 
 extension User {
-
     @discardableResult static func save(_ value: Any, as property: Property) -> Result<Void, CelyStorageError> {
         return property.save(value)
     }
 
-    static func save(_ data: [Property : Any]) {
+    static func save(_ data: [Property: Any]) {
         data.forEach { property, value in
             property.save(value)
         }

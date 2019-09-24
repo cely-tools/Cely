@@ -15,10 +15,6 @@
 		1F2864431E89593500EE8180 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B01C1E89519A001A0161 /* Main.storyboard */; };
 		1F2864441E89593500EE8180 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B01C1E89519A001A0161 /* Main.storyboard */; };
 		1F2864451E89593700EE8180 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B01C1E89519A001A0161 /* Main.storyboard */; };
-		1F2864461E89594700EE8180 /* ChaiOneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0141E89519A001A0161 /* ChaiOneLogo.png */; };
-		1F2864471E89594800EE8180 /* ChaiOneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0141E89519A001A0161 /* ChaiOneLogo.png */; };
-		1F2864481E89594900EE8180 /* ChaiOneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0141E89519A001A0161 /* ChaiOneLogo.png */; };
-		1F2864491E89594A00EE8180 /* ChaiOneLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0141E89519A001A0161 /* ChaiOneLogo.png */; };
 		1F28644E1E895C2100EE8180 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F28644A1E895C2100EE8180 /* User.swift */; };
 		1F28644F1E895C2100EE8180 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F28644B1E895C2100EE8180 /* ViewController.swift */; };
 		1F2864501E895C2100EE8180 /* LoginStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F28644C1E895C2100EE8180 /* LoginStyles.swift */; };
@@ -65,9 +61,6 @@
 		1F68B02C1E89519A001A0161 /* ConstantsAndProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B0151E89519A001A0161 /* ConstantsAndProtocolTests.swift */; };
 		1F68B02D1E89519A001A0161 /* ConstantsAndProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B0151E89519A001A0161 /* ConstantsAndProtocolTests.swift */; };
 		1F68B02E1E89519A001A0161 /* ConstantsAndProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B0151E89519A001A0161 /* ConstantsAndProtocolTests.swift */; };
-		1F68B03B1E89519A001A0161 /* LoginStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B01A1E89519A001A0161 /* LoginStyleTests.swift */; };
-		1F68B03C1E89519A001A0161 /* LoginStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B01A1E89519A001A0161 /* LoginStyleTests.swift */; };
-		1F68B03D1E89519A001A0161 /* LoginStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B01A1E89519A001A0161 /* LoginStyleTests.swift */; };
 		1F68B03E1E89519A001A0161 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B01B1E89519A001A0161 /* LoginViewControllerTests.swift */; };
 		1F68B03F1E89519A001A0161 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B01B1E89519A001A0161 /* LoginViewControllerTests.swift */; };
 		1F68B0401E89519A001A0161 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68B01B1E89519A001A0161 /* LoginViewControllerTests.swift */; };
@@ -156,9 +149,7 @@
 		1F68B0111E89519A001A0161 /* CelyStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyStorageTests.swift; sourceTree = "<group>"; };
 		1F68B0121E89519A001A0161 /* CelyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyTests.swift; sourceTree = "<group>"; };
 		1F68B0131E89519A001A0161 /* CelyWindowManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManagerTest.swift; sourceTree = "<group>"; };
-		1F68B0141E89519A001A0161 /* ChaiOneLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChaiOneLogo.png; sourceTree = "<group>"; };
 		1F68B0151E89519A001A0161 /* ConstantsAndProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsAndProtocolTests.swift; sourceTree = "<group>"; };
-		1F68B01A1E89519A001A0161 /* LoginStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginStyleTests.swift; sourceTree = "<group>"; };
 		1F68B01B1E89519A001A0161 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		1F68B01C1E89519A001A0161 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
@@ -340,9 +331,7 @@
 				1F68B0121E89519A001A0161 /* CelyTests.swift */,
 				1F68B0131E89519A001A0161 /* CelyWindowManagerTest.swift */,
 				1F68B0151E89519A001A0161 /* ConstantsAndProtocolTests.swift */,
-				1F68B0141E89519A001A0161 /* ChaiOneLogo.png */,
 				1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */,
-				1F68B01A1E89519A001A0161 /* LoginStyleTests.swift */,
 				1F68B01B1E89519A001A0161 /* LoginViewControllerTests.swift */,
 				1F68B01C1E89519A001A0161 /* Main.storyboard */,
 				3549BB5B1DA38A8C00C63030 /* Supporting Files */,
@@ -774,7 +763,6 @@
 			files = (
 				1F68B0041E895069001A0161 /* Assets.xcassets in Resources */,
 				1F68B0081E895069001A0161 /* Cely.storyboard in Resources */,
-				1F2864461E89594700EE8180 /* ChaiOneLogo.png in Resources */,
 				1F2864451E89593700EE8180 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,7 +773,6 @@
 			files = (
 				1F68B0071E895069001A0161 /* Assets.xcassets in Resources */,
 				1F68B00B1E895069001A0161 /* Cely.storyboard in Resources */,
-				1F2864491E89594A00EE8180 /* ChaiOneLogo.png in Resources */,
 				1F2864421E89593400EE8180 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -796,7 +783,6 @@
 			files = (
 				1F68B0051E895069001A0161 /* Assets.xcassets in Resources */,
 				1F68B0091E895069001A0161 /* Cely.storyboard in Resources */,
-				1F2864471E89594800EE8180 /* ChaiOneLogo.png in Resources */,
 				1F2864441E89593500EE8180 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -807,7 +793,6 @@
 			files = (
 				1F68B0061E895069001A0161 /* Assets.xcassets in Resources */,
 				1F68B00A1E895069001A0161 /* Cely.storyboard in Resources */,
-				1F2864481E89594900EE8180 /* ChaiOneLogo.png in Resources */,
 				1F2864431E89593500EE8180 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,7 +839,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if which swiftformat >/dev/null; then\n#    swiftformat .\n#else\n#    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n#fi\n";
+			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat . --disable strongOutlets\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -932,7 +917,6 @@
 				1F68B02C1E89519A001A0161 /* ConstantsAndProtocolTests.swift in Sources */,
 				1F68B0201E89519A001A0161 /* CelyStorageTests.swift in Sources */,
 				1F68B0261E89519A001A0161 /* CelyWindowManagerTest.swift in Sources */,
-				1F68B03B1E89519A001A0161 /* LoginStyleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,7 +929,6 @@
 				1F68B02E1E89519A001A0161 /* ConstantsAndProtocolTests.swift in Sources */,
 				1F68B0221E89519A001A0161 /* CelyStorageTests.swift in Sources */,
 				1F68B0281E89519A001A0161 /* CelyWindowManagerTest.swift in Sources */,
-				1F68B03D1E89519A001A0161 /* LoginStyleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,7 +941,6 @@
 				1F68B02D1E89519A001A0161 /* ConstantsAndProtocolTests.swift in Sources */,
 				1F68B0211E89519A001A0161 /* CelyStorageTests.swift in Sources */,
 				1F68B0271E89519A001A0161 /* CelyWindowManagerTest.swift in Sources */,
-				1F68B03C1E89519A001A0161 /* LoginStyleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,11 +6,10 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import UIKit
 import Cely
+import UIKit
 
 struct LoginStyles: CelyStyle {
-
     func appLogo() -> UIImage? {
         return UIImage(named: "Cely")
     }
@@ -25,11 +24,9 @@ struct CustomAnimator: CelyAnimator {
         destinationVC?.view.addSubview(snapshot)
         celyWindow.setCurrentViewController(to: destinationVC)
 
-
         UIView.animate(withDuration: 0.5, animations: {
             snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
-        }, completion: {
-            (value: Bool) in
+        }, completion: { (_: Bool) in
             snapshot.removeFromSuperview()
         })
     }
@@ -42,11 +39,9 @@ struct CustomAnimator: CelyAnimator {
         destinationVC?.view.addSubview(snapshot)
         celyWindow.setCurrentViewController(to: destinationVC)
 
-
         UIView.animate(withDuration: 0.5, animations: {
             snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
-        }, completion: {
-            (value: Bool) in
+        }, completion: { (_: Bool) in
             snapshot.removeFromSuperview()
         })
     }

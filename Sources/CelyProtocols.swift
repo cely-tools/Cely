@@ -11,7 +11,7 @@ import UIKit
 /// Protocol for model class to implements
 public protocol CelyUser {
     /// Enum of all the properties you would like to save for a model
-    associatedtype Property : RawRepresentable
+    associatedtype Property: RawRepresentable
 }
 
 /// Protocol a storage class must abide by in order for Cely to use it
@@ -31,7 +31,6 @@ public protocol CelyStyle {
 }
 
 public extension CelyStyle {
-
     /// Background Color for default login screen
     ///
     /// - returns: UIColor
@@ -50,7 +49,7 @@ public extension CelyStyle {
     ///
     /// - returns: UIColor
     func buttonBackgroundColor() -> UIColor {
-        return UIColor(red: 86/255, green: 203/255, blue: 249/255, alpha: 1)
+        return UIColor(red: 86 / 255, green: 203 / 255, blue: 249 / 255, alpha: 1)
     }
 
     /// Text Color for login button
@@ -82,10 +81,9 @@ struct DefaultAnimator: CelyAnimator {
             destinationVC?.view.addSubview(snapshot)
             celyWindow.setCurrentViewController(to: destinationVC)
 
-
             UIView.animate(withDuration: 0.5, animations: {
                 snapshot.transform = CGAffineTransform(translationX: 600.0, y: 0.0)
-            }, completion: { (value: Bool) in
+            }, completion: { (_: Bool) in
                 snapshot.removeFromSuperview()
             })
         }
@@ -96,10 +94,9 @@ struct DefaultAnimator: CelyAnimator {
             destinationVC?.view.addSubview(snapshot)
             celyWindow.setCurrentViewController(to: destinationVC)
 
-
             UIView.animate(withDuration: 0.5, animations: {
                 snapshot.transform = CGAffineTransform(translationX: -600.0, y: 0.0)
-            }, completion: {(value: Bool) in
+            }, completion: { (_: Bool) in
                 snapshot.removeFromSuperview()
             })
         }

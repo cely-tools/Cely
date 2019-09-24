@@ -6,8 +6,8 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import XCTest
 @testable import Cely
+import XCTest
 
 let kWindowManagerNotification = "CallDummyCelyWindowManagerObserver"
 
@@ -21,27 +21,26 @@ class DummyCelyWindowManager: CelyWindowManager {
                          name: NSNotification.Name(rawValue: kWindowManagerNotification),
                          object: nil)
     }
-    
+
     func postNotification() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: kWindowManagerNotification), object: nil)
     }
-    
+
     @objc func dummyMethod() {
         DummyCelyWindowManager.observerCount += 1
     }
 }
 
 class CelyWindowManagerTest: XCTestCase {
-
     let testWindow = UIWindow()
-    let testHomeStoryboard = UIStoryboard()
-    var testLoginStoryboard = UIStoryboard()
+    let testAppEntryViewController = UIViewController()
+    var testLoginViewController = UIViewController()
 
     override func setUp() {
         super.setUp()
         CelyWindowManager.setup(window: testWindow, withOptions: [
-            .homeStoryboard: testHomeStoryboard,
-            .loginStoryboard: testLoginStoryboard
+            .homeViewController: testAppEntryViewController,
+            .loginViewController: testLoginViewController,
         ])
     }
 
@@ -55,29 +54,28 @@ class CelyWindowManagerTest: XCTestCase {
     }
 
     func testMatchingLoginScreens() {
-        CelyWindowManager.setLoginStoryboard(testLoginStoryboard)
-        XCTAssert(CelyWindowManager.manager.loginStoryboard == testLoginStoryboard, "did not properly set manager's login storyboard")
+        CelyWindowManager.setLoginViewController(testLoginViewController)
+        XCTAssert(CelyWindowManager.manager.loginViewController == testLoginViewController, "did not properly set manager's login storyboard")
     }
 
     func testMatchingHomeScreens() {
-        CelyWindowManager.setHomeStoryboard(testHomeStoryboard)
-        XCTAssert(CelyWindowManager.manager.homeStoryboard == testHomeStoryboard, "did not properly set manager's home storyboard")
+        CelyWindowManager.setHomeViewController(testAppEntryViewController)
+        XCTAssert(CelyWindowManager.manager.homeViewController == testAppEntryViewController, "did not properly set manager's home storyboard")
     }
 
     func testShowScreen() {
         testMatchingHomeScreens()
         Cely.changeStatus(to: .loggedIn)
-        XCTAssert(CelyWindowManager.manager.window.rootViewController == testHomeStoryboard.instantiateInitialViewController(), "did not properly set manager's home storyboard")
+        XCTAssert(CelyWindowManager.manager.window.rootViewController == testAppEntryViewController, "did not properly set manager's home storyboard")
 
         Cely.changeStatus(to: .loggedOut)
-        XCTAssert(CelyWindowManager.manager.window.rootViewController == testLoginStoryboard.instantiateInitialViewController(), "did not properly set manager's login storyboard")
+        XCTAssert(CelyWindowManager.manager.window.rootViewController == testLoginViewController, "did not properly set manager's login storyboard")
     }
-    
+
     func testNotificationRemoveObserver() {
-        
         var windowManager: DummyCelyWindowManager? = DummyCelyWindowManager()
         windowManager?.setupNotification()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: kWindowManagerNotification), object: nil) 
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: kWindowManagerNotification), object: nil)
         XCTAssertEqual(DummyCelyWindowManager.observerCount, 1, "ObserverCount is supposed to 1, not \(DummyCelyWindowManager.observerCount)")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: kWindowManagerNotification), object: nil)
         XCTAssertEqual(DummyCelyWindowManager.observerCount, 2, "ObserverCount is supposed to 2, not \(DummyCelyWindowManager.observerCount)")
@@ -86,7 +84,7 @@ class CelyWindowManagerTest: XCTestCase {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: kWindowManagerNotification), object: nil)
         XCTAssertEqual(DummyCelyWindowManager.observerCount, 4, "ObserverCount is supposed to 4, not \(DummyCelyWindowManager.observerCount)")
         windowManager = nil
-        
+
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: kWindowManagerNotification), object: nil)
         XCTAssertEqual(DummyCelyWindowManager.observerCount, 4, "ObserverCount should still be 4 since we unsubscribed to the notification center")
     }

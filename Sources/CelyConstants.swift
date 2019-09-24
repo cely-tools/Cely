@@ -23,15 +23,14 @@ public enum CelyStatus: CelyCommands {
 /// Options that you can pass into Cely on `Cely.setup(_:)`
 public enum CelyOptions {
     case storage
-    case homeStoryboard
-    case loginStoryboard
+    case homeViewController
+    case loginViewController
     case loginCompletionBlock
     case loginStyle
     case celyAnimator
 }
 
 internal extension UITextField {
-
     @IBInspectable var leftSpacer: CGFloat {
         get {
             if let l = leftView {
@@ -41,29 +40,6 @@ internal extension UITextField {
         } set {
             leftViewMode = .always
             leftView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
-        }
-    }
-}
-
-public extension Dictionary {
-    init(withoutOptionalValues initial: Dictionary<Key, Value?>) {
-        self = [Key: Value]()
-        for pair in initial {
-            if pair.1 != nil {
-                self[pair.0] = pair.1!
-            }
-        }
-    }
-
-    init(initial: Dictionary<Key, Value>, toMerge: Dictionary<Key, Value>) {
-        self = Dictionary<Key, Value>()
-
-        for pair in initial {
-            self[pair.0] = pair.1
-        }
-
-        for pair in toMerge {
-            self[pair.0] = pair.1
         }
     }
 }
