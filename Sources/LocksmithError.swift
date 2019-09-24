@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: Locksmith Error
+
 public enum LocksmithError: String, Error {
     case allocate = "Failed to allocate memory."
     case authFailed = "Authorization/Authentication failed."

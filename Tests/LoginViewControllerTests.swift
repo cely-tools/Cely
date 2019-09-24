@@ -6,29 +6,32 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import XCTest
 @testable import Cely
+import XCTest
 
 struct DummyStyles: CelyStyle {
     func backgroundColor() -> UIColor {
         return .brown
     }
+
     func buttonTextColor() -> UIColor {
         return .black
     }
+
     func buttonBackgroundColor() -> UIColor {
         return .white
     }
+
     func textFieldBackgroundColor() -> UIColor {
         return .yellow
     }
+
     func appLogo() -> UIImage? {
         return UIImage(named: "Cely.png")
     }
 }
 
 class LoginViewControllerTests: XCTestCase {
-
     var loginVC: CelyLoginViewController!
     let testDummy = DummyStyles()
 
@@ -38,9 +41,9 @@ class LoginViewControllerTests: XCTestCase {
         loginVC = CelyLoginViewController()
 
         let usernameTextField = UITextField()
-		let passwordTextField = UITextField()
-		
-		loginVC.usernameField = usernameTextField
+        let passwordTextField = UITextField()
+
+        loginVC.usernameField = usernameTextField
         loginVC.usernameField?.tag = 0
         loginVC.passwordField = passwordTextField
         loginVC.passwordField?.tag = 1
@@ -54,6 +57,7 @@ class LoginViewControllerTests: XCTestCase {
 }
 
 // MARK: - Test View LifeCycle
+
 extension LoginViewControllerTests {
     func testViewDidLoad() {
         loginVC.viewDidLoad()
@@ -68,7 +72,6 @@ extension LoginViewControllerTests {
     }
 
     func testViewDidAppear() {
-
         let constraint = NSLayoutConstraint()
         constraint.constant = 20
         loginVC.bottomLayoutConstraint = constraint
@@ -79,10 +82,9 @@ extension LoginViewControllerTests {
 }
 
 // MARK: - Test IBOutlets
+
 extension LoginViewControllerTests {
-
     func testDidPressLogin() {
-
         loginVC.usernameField?.text = "username"
         loginVC.passwordField?.text = "password"
 
@@ -108,8 +110,8 @@ extension LoginViewControllerTests {
 }
 
 // MARK: - Test Styles
-extension LoginViewControllerTests {
 
+extension LoginViewControllerTests {
     func testViewBackgroundColor() {
         XCTAssertEqual(loginVC.styles.backgroundColor(), testDummy.backgroundColor(), "view.backgroundColor was not properly set")
     }
@@ -132,13 +134,13 @@ extension LoginViewControllerTests {
 }
 
 // MARK: - Test Notifications
-extension LoginViewControllerTests {
 
+extension LoginViewControllerTests {
     func testConvertNotification_Failure() {
-        let fakeUserInfo: [AnyHashable : Any] = [
-            UIResponder.keyboardAnimationDurationUserInfoKey : "FORCE FAIL",
-            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: .zero),
-            UIWindow.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+        let fakeUserInfo: [AnyHashable: Any] = [
+            UIResponder.keyboardAnimationDurationUserInfoKey: "FORCE FAIL",
+            UIResponder.keyboardFrameEndUserInfoKey: NSValue(cgRect: .zero),
+            UIWindow.keyboardAnimationCurveUserInfoKey: NSNumber(value: 30),
         ]
 
         let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
@@ -149,11 +151,10 @@ extension LoginViewControllerTests {
     }
 
     func testConvertNotification_Success() {
-
-        let fakeUserInfo: [AnyHashable : Any] = [
-            UIResponder.keyboardAnimationDurationUserInfoKey : NSNumber(value: 20),
-            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: .zero),
-            UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+        let fakeUserInfo: [AnyHashable: Any] = [
+            UIResponder.keyboardAnimationDurationUserInfoKey: NSNumber(value: 20),
+            UIResponder.keyboardFrameEndUserInfoKey: NSValue(cgRect: .zero),
+            UIResponder.keyboardAnimationCurveUserInfoKey: NSNumber(value: 30),
         ]
 
         let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
@@ -173,15 +174,14 @@ extension LoginViewControllerTests {
     }
 
     func testKeyboardNotification_Success() {
-
         let constraint = NSLayoutConstraint()
         loginVC.bottomLayoutConstraint = constraint
         loginVC.bottomLayoutConstraint.constant = 20
 
-        let fakeUserInfo: [AnyHashable : Any] = [
-            UIResponder.keyboardAnimationDurationUserInfoKey : NSNumber(value: 20),
-            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
-            UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+        let fakeUserInfo: [AnyHashable: Any] = [
+            UIResponder.keyboardAnimationDurationUserInfoKey: NSNumber(value: 20),
+            UIResponder.keyboardFrameEndUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
+            UIResponder.keyboardAnimationCurveUserInfoKey: NSNumber(value: 30),
         ]
 
         let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)
@@ -195,15 +195,14 @@ extension LoginViewControllerTests {
     }
 
     func testKeyboardNotification_Failure() {
-
         let constraint = NSLayoutConstraint()
         loginVC.bottomLayoutConstraint = constraint
         loginVC.bottomLayoutConstraint.constant = 20
 
-        let fakeUserInfo: [AnyHashable : Any] = [
-            UIResponder.keyboardAnimationDurationUserInfoKey : "FORCE FAIL",
-            UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
-            UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 30)
+        let fakeUserInfo: [AnyHashable: Any] = [
+            UIResponder.keyboardAnimationDurationUserInfoKey: "FORCE FAIL",
+            UIResponder.keyboardFrameEndUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 200, width: 320, height: 500)),
+            UIResponder.keyboardAnimationCurveUserInfoKey: NSNumber(value: 30),
         ]
 
         let fakeNotification = NSNotification(name: UIResponder.keyboardWillChangeFrameNotification, object: nil, userInfo: fakeUserInfo)

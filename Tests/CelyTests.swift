@@ -6,8 +6,8 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import XCTest
 @testable import Cely
+import XCTest
 class DummyUser: CelyUser {
     enum Property: CelyProperty {
         case Username = "username"
@@ -17,15 +17,14 @@ class DummyUser: CelyUser {
 }
 
 class DummyStorage: CelyStorageProtocol {
-
-    public var dummyStorage: [String : Any?] = [
-        "username":"testUser",
-        "token":"helloToken"
+    public var dummyStorage: [String: Any?] = [
+        "username": "testUser",
+        "token": "helloToken",
     ]
 
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
-    func set(_ value: Any?, forKey key: String, securely secure: Bool = true, persisted: Bool = false) -> StorageResult {
+    func set(_ value: Any?, forKey _: String, securely _: Bool = true, persisted _: Bool = false) -> StorageResult {
         if value == nil { return .fail(.undefined) }
         DummyStorage.successful_setCalls += 1
         return .success
@@ -40,18 +39,17 @@ class DummyStorage: CelyStorageProtocol {
     }
 }
 
-
 /// Tests for Cely Framework
 class CelyTests: XCTestCase {
     var _properties: [DummyUser.Property]!
     var raw_properties: [CelyProperty] {
         #if swift(>=4.1)
-        return _properties.compactMap({"\($0.rawValue)"})
+            return _properties.compactMap { "\($0.rawValue)" }
         #else
-        return _properties.flatMap({"\($0.rawValue)"})
+            return _properties.flatMap { "\($0.rawValue)" }
         #endif
-
     }
+
     var triggeredNotification: String!
     override func setUp() {
         super.setUp()
@@ -68,8 +66,8 @@ class CelyTests: XCTestCase {
                          object: nil)
 
         _properties = [.Username, .Token]
-        Cely.setup(with: nil, forModel: DummyUser(), requiredProperties: _properties, withOptions:[
-            .storage: DummyStorage()
+        Cely.setup(with: nil, forModel: DummyUser(), requiredProperties: _properties, withOptions: [
+            .storage: DummyStorage(),
         ])
     }
 
@@ -82,17 +80,15 @@ class CelyTests: XCTestCase {
     }
 
     override func tearDown() {
-
         NotificationCenter.default.removeObserver(self)
         super.tearDown()
     }
 
-
     func testSetup() {
         #if swift(>=4.1)
-        let testRequiredProperties: [String] = _properties.compactMap({"\($0.rawValue)"})
+            let testRequiredProperties: [String] = _properties.compactMap { "\($0.rawValue)" }
         #else
-        let testRequiredProperties: [String] = _properties.flatMap({"\($0.rawValue)"})
+            let testRequiredProperties: [String] = _properties.flatMap { "\($0.rawValue)" }
         #endif
 
         XCTAssert(Cely.requiredProperties == testRequiredProperties, "Cely does not match the mock results")
@@ -101,7 +97,7 @@ class CelyTests: XCTestCase {
     func testCurrentLogin_LoggedIn_Status() {
         testSetup()
 
-        let status = Cely.currentLoginStatus(fromStorage:DummyStorage())
+        let status = Cely.currentLoginStatus(fromStorage: DummyStorage())
         XCTAssert(status == .loggedIn, "User failed to have status of being .loggedIn")
 
         let statusWithParameters = Cely.currentLoginStatus(requiredProperties: [DummyUser.Property.Username.rawValue, DummyUser.Property.Token.rawValue], fromStorage: DummyStorage())
@@ -116,7 +112,7 @@ class CelyTests: XCTestCase {
 
         Cely.requiredProperties.append(DummyUser.Property.Email.rawValue)
 
-        let status = Cely.currentLoginStatus(fromStorage:DummyStorage())
+        let status = Cely.currentLoginStatus(fromStorage: DummyStorage())
         XCTAssert(status == .loggedOut, "User failed to have status of being .loggedOut")
 
         let statusWithParameters = Cely.currentLoginStatus(requiredProperties: [DummyUser.Property.Email.rawValue], fromStorage: DummyStorage())

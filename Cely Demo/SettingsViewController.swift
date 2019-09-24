@@ -6,11 +6,10 @@
 //  Copyright © 2016 Fabian Buentello. All rights reserved.
 //
 
-import UIKit
 import Cely
+import UIKit
 
 class SettingsViewController: UIViewController {
-
     @IBAction func LogoutButtonPressed() {
         Cely.logout()
     }

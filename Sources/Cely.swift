@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public struct Cely {
-
     fileprivate init() {}
     public typealias CelyLoginCompletion = (_ username: String, _ password: String) -> Void
     /// Properties that are needed inorder for user to stay logged in.
@@ -28,15 +27,12 @@ public struct Cely {
     /// - parameter forModel:           The `Model` Cely will be storing.
     /// - parameter requiredProperties: `[CelyProperty]`: The properties that cely tests against to determine if a user is logged in.
     /// - parameter withOptions:         Dictionary of options to pass into cely upon setup. Please refer to `CelyOptions` to view all options.
-    public static func setup<T: CelyUser, U>(with window: UIWindow?, forModel: T, requiredProperties:[U] = [], withOptions options: [CelyOptions : Any?]? = [:]) where T.Property == U {
-
+    public static func setup<T: CelyUser, U>(with window: UIWindow?, forModel _: T, requiredProperties: [U] = [], withOptions options: [CelyOptions: Any?]? = [:]) where T.Property == U {
         #if swift(>=4.1)
-        Cely.requiredProperties = requiredProperties.compactMap({"\($0.rawValue)"})
+            Cely.requiredProperties = requiredProperties.compactMap { "\($0.rawValue)" }
         #else
-        Cely.requiredProperties = requiredProperties.flatMap({"\($0.rawValue)"})
+            Cely.requiredProperties = requiredProperties.flatMap { "\($0.rawValue)" }
         #endif
-
-
 
         Cely.loginCompletionBlock = options?[.loginCompletionBlock] as? CelyLoginCompletion
         store = options?[.storage] as? CelyStorageProtocol ?? store
@@ -49,7 +45,6 @@ public struct Cely {
 }
 
 extension Cely {
-
     /// Will return the `CelyStatus` of the current user.
     ///
     /// - parameter properties: Array of required properties that need to be in store.
@@ -60,8 +55,8 @@ extension Cely {
         guard properties.count > 0 else { return .loggedOut }
 
         let missingRequiredProperties = properties
-            .map({return store.get($0)})
-            .contains(where: {$0 == nil})
+            .map { store.get($0) }
+            .contains(where: { $0 == nil })
 
         if missingRequiredProperties {
             return .loggedOut

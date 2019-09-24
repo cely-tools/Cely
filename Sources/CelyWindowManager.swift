@@ -9,8 +9,8 @@
 import UIKit
 
 public class CelyWindowManager {
-
     // MARK: - Variables
+
     static let manager = CelyWindowManager()
     internal var window: UIWindow!
 
@@ -21,7 +21,7 @@ public class CelyWindowManager {
 
     public init() {}
 
-    static func setup(window _window: UIWindow, withOptions options: [CelyOptions : Any?]? = [:]) {
+    static func setup(window _window: UIWindow, withOptions options: [CelyOptions: Any?]? = [:]) {
         CelyWindowManager.manager.window = _window
 
         // Set the login Styles
@@ -29,10 +29,10 @@ public class CelyWindowManager {
 
         // Set the HomeViewController
         CelyWindowManager.setHomeViewController(options?[.homeViewController] as? UIViewController)
-        
+
         // Set the LoginViewController
         CelyWindowManager.setLoginViewController(options?[.loginViewController] as? UIViewController)
-        
+
         // Set the Transition Animator
         CelyWindowManager.manager.celyAnimator = options?[.celyAnimator] as? CelyAnimator ?? DefaultAnimator()
 
@@ -67,7 +67,7 @@ public class CelyWindowManager {
             }
         }
     }
-    
+
     static func setHomeViewController(_ viewController: UIViewController?) {
         CelyWindowManager.manager.homeViewController = viewController ?? UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
     }
@@ -75,7 +75,7 @@ public class CelyWindowManager {
     static func setLoginViewController(_ viewController: UIViewController?) {
         CelyWindowManager.manager.loginViewController = viewController ?? UIStoryboard(name: "Cely", bundle: Bundle(for: CelyWindowManager.self)).instantiateInitialViewController()
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
