@@ -24,17 +24,16 @@ class DummyStorage: CelyStorageProtocol {
 
     static var successful_setCalls = 0
     static var successful_removeCalls = 0
-    func set(_ value: Any?, forKey _: String, securely _: Bool = true, persisted _: Bool = false) -> Result<Void, CelyStorageError> {
-        if value == nil { return .failure(.param) }
+    func set(_ value: Any?, forKey _: String, securely _: Bool = true, persisted _: Bool = false) throws {
+        if value == nil { throw CelyStorageError.param }
         DummyStorage.successful_setCalls += 1
-        return .success(())
     }
 
     func get(_ key: String) -> Any? {
         return dummyStorage[key] ?? nil
     }
 
-    func removeAllData() {
+    func clearStorage() {
         DummyStorage.successful_removeCalls += 1
     }
 }

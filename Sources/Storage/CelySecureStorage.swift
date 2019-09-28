@@ -8,13 +8,13 @@
 
 import Foundation
 
-internal class CelySecureStorage {
+internal class CelySecureStorage: CelyStorageProtocol {
     var store: [String: Any] = [:]
-    private let _celyKeychain = CelyKeychain()
+    private let celyKeychain = CelyKeychain()
 
     init() {
         do {
-            let currentProtectedData = try _celyKeychain.getProtectedData()
+            let currentProtectedData = try celyKeychain.getProtectedData()
             store = currentProtectedData
         } catch let error as CelyStorageError {
             // Expect this error to happen if first keychain is empty :)
@@ -24,26 +24,16 @@ internal class CelySecureStorage {
         }
     }
 
-    @discardableResult func clearStorage() -> Result<Void, CelyStorageError> {
-        let result = _celyKeychain.clearKeychain()
-        if case .success = result {
-            store = [:]
-            return .success(())
-        }
-        return result
-    }
-
-    func set(_ value: Any, forKey key: String) -> Result<Void, CelyStorageError> {
+    func set(_ value: Any?, forKey key: String, securely _: Bool = true, persisted _: Bool = true) throws {
         var storeCopy = store
         storeCopy[key] = value
-        let result = _celyKeychain.set(storeCopy)
-        switch result {
-        case .success:
-            store[key] = value
-            return .success(())
-        default:
-            return result
-        }
+        try celyKeychain.set(storeCopy)
+        store[key] = value
+    }
+
+    func clearStorage() throws {
+        try celyKeychain.clearKeychain()
+        store = [:]
     }
 
     func get(_ key: String) -> Any? {

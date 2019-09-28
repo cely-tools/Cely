@@ -98,9 +98,9 @@ class StorageTests: XCTestCase {
 
     func testSavingData() {
         dummyData.forEach { dummy in
-            let status = store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
-            if case .success = status {
-            } else {
+            do {
+                try store.set(dummy.value, forKey: dummy.key, securely: dummy.storeSecurely, persisted: dummy.persisted)
+            } catch {
                 XCTFail(dummy.failedToSet())
             }
         }
@@ -135,7 +135,7 @@ class StorageTests: XCTestCase {
         XCTAssert(secureCount == 5, "Did not add all entries inside of 'secureStorage': \(secureCount)")
         XCTAssert(storageCount == 5, "Did not add all entries inside of 'storage': \(storageCount)")
 
-        store.removeAllData()
+        try! store.clearStorage()
 
         secureCount = store.secureStorage.count
 

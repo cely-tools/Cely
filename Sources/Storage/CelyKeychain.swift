@@ -24,57 +24,55 @@ internal struct CelyKeychain {
         return queryCopy
     }
 
-    func clearKeychain() -> Result<Void, CelyStorageError> {
+    func clearKeychain() throws {
         let status = SecItemDelete(baseQuery as CFDictionary)
         let errorStatus = CelyStorageError(status: status)
-        guard errorStatus == .noError else { return .failure(errorStatus) }
-        return .success(())
+        guard errorStatus == .noError else {
+            throw errorStatus
+        }
     }
 
     func getProtectedData() throws -> [String: Any] {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(searchQuery as CFDictionary, &item)
-        guard status == errSecSuccess else {
-            throw CelyStorageError(status: status)
+        let errorStatus = CelyStorageError(status: status)
+        guard errorStatus == .noError else {
+            throw errorStatus
         }
 
-        do {
-            guard let existingItem = item as? [String: Any],
-                let secureData = existingItem[kSecValueData as String] as? Data,
-                let loadedDictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(secureData) as? [String: Any]
-            else {
-                throw CelyStorageError.missingValue
-            }
-            return loadedDictionary
+        guard let existingItem = item as? [String: Any],
+            let secureData = existingItem[kSecValueData as String] as? Data,
+            let loadedDictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(secureData) as? [String: Any]
+        else {
+            throw CelyStorageError.missingValue
         }
+
+        return loadedDictionary
     }
 
-    func set(_ secrets: [String: Any]) -> Result<Void, CelyStorageError> {
+    func set(_ secrets: [String: Any]) throws {
         var queryCopy = baseQuery
         let storeData = NSKeyedArchiver.archivedData(withRootObject: secrets)
         queryCopy[kSecValueData as String] = storeData
 
         // try adding first
-        let status: OSStatus = SecItemAdd(queryCopy as CFDictionary, nil)
-        let code = CelyStorageError(status: status)
-        switch code {
-        case .noError:
-            return .success(())
-        case .duplicateItem:
-            return update(secrets: secrets)
-        default:
-            return .failure(code)
+        let status = SecItemAdd(queryCopy as CFDictionary, nil)
+        let errorStatus = CelyStorageError(status: status)
+
+        switch errorStatus {
+        case .noError: return
+        case .duplicateItem: return try update(secrets: secrets)
+        default: throw errorStatus
         }
     }
 
-    private func update(secrets: [String: Any]) -> Result<Void, CelyStorageError> {
+    private func update(secrets: [String: Any]) throws {
         let secretData = NSKeyedArchiver.archivedData(withRootObject: secrets)
         let updateDictionary = [kSecValueData as String: secretData]
-        let status: OSStatus = SecItemUpdate(baseQuery as CFDictionary, updateDictionary as CFDictionary)
-        let code = CelyStorageError(status: status)
-        if code == .noError {
-            return .success(())
+        let status = SecItemUpdate(baseQuery as CFDictionary, updateDictionary as CFDictionary)
+        let errorStatus = CelyStorageError(status: status)
+        guard errorStatus == .noError else {
+            throw errorStatus
         }
-        return .failure(code)
     }
 }

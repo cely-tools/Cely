@@ -90,8 +90,13 @@ extension Cely {
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
     @discardableResult
-    public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> Result<Void, CelyStorageError> {
-        return store.set(value, forKey: key, securely: secure, persisted: persist)
+    public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> Result<Void, Error> {
+        do {
+            try store.set(value, forKey: key, securely: secure, persisted: persist)
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
     }
 
     /// Perform action like `LoggedIn` or `LoggedOut`
@@ -104,9 +109,15 @@ extension Cely {
     /// Log user out
     ///
     /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorageProtocol`
-    public static func logout(useStorage store: CelyStorageProtocol = store) {
-        store.removeAllData()
-        changeStatus(to: .loggedOut)
+    @discardableResult
+    public static func logout(useStorage store: CelyStorageProtocol = store) -> Result<Void, Error> {
+        do {
+            try store.clearStorage()
+            changeStatus(to: .loggedOut)
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
     }
 
     /// Returns whether or not the user is logged in
