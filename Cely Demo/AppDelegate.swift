@@ -17,8 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Cely.setup(with: window!, forModel: User(), requiredProperties: [.token], withOptions: [
             .loginCompletionBlock: { (username: String, password: String) in
                 if username == "asdf", password == "asdf" {
-                    if case .success = User.save("FAKETOKEN:\(username)\(password)", as: .token) {
-                        Cely.changeStatus(to: .loggedIn)
+                    let tokenResult = User.save("FAKETOKEN:\(username)\(password)", as: .token)
+                    switch tokenResult {
+                    case .success:
+                        let credentialResult = Cely.credentials.set(
+                            username: username,
+                            password: password,
+                            server: "api.example.com",
+                            accessibility: [
+                                .biometricsIfPossible,
+                                .thisDeviceOnly,
+                            ]
+                        )
+
+                        switch credentialResult {
+                        case .success:
+                            Cely.changeStatus(to: .loggedIn)
+                        case let .failure(error):
+                            print("Cely store credentials error: \(error)")
+                        }
+                    case let .failure(error):
+                        print("tokenResult Error: \(error)")
                     }
                 }
             },

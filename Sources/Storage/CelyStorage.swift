@@ -12,6 +12,9 @@ internal let kCelyDomain = "cely.storage"
 internal let kStore = "store"
 internal let kPersisted = "persisted"
 internal let kLaunchedBefore = "launchedBefore"
+internal let kProtectedDataAccount = "cely.secure.store.protected.data"
+internal let kCelySecureStoreLabel = "cely.secure.store.key"
+internal let kCelyCredentialsLookupKey = "credentials-lookup"
 
 public class CelyStorage: CelyStorageProtocol {
     // MARK: - Variables

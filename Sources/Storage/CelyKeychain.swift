@@ -2,74 +2,63 @@
 //  CelyKeychain.swift
 //  Cely-iOS
 //
-//  Created by Fabian Buentello on 8/7/19.
-//  Copyright © 2019 Fabian Buentello. All rights reserved.
+//  Created by Fabian Buentello on 9/28/19.
+//  Copyright © 2019 ChaiOne. All rights reserved.
 //
 
 import Foundation
 
-internal struct CelyKeychain {
-    // query to identify Cely Credentials
-    private let baseQuery: [String: Any] = [
-        kSecClass as String: kSecClassInternetPassword,
-        kSecAttrLabel as String: "cely.secure.store.key",
-        kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
-    ]
+protocol KeychainProtocol {
+    func get(query: KeychainObject) -> Result<KeychainObject, Error>
+    func set(query: KeychainObject) throws
+    func delete(query: KeychainObject) throws
+}
 
-    private var searchQuery: [String: Any] {
-        var queryCopy = baseQuery
-        queryCopy[kSecMatchLimit as String] = kSecMatchLimitOne
-        queryCopy[kSecReturnAttributes as String] = true
-        queryCopy[kSecReturnData as String] = true
-        return queryCopy
-    }
-
-    func clearKeychain() throws {
-        let status = SecItemDelete(baseQuery as CFDictionary)
-        let errorStatus = CelyStorageError(status: status)
-        guard errorStatus == .noError else {
-            throw errorStatus
-        }
-    }
-
-    func getProtectedData() throws -> [String: Any] {
-        var item: CFTypeRef?
-        let status = SecItemCopyMatching(searchQuery as CFDictionary, &item)
-        let errorStatus = CelyStorageError(status: status)
-        guard errorStatus == .noError else {
-            throw errorStatus
+internal struct CelyKeychain: KeychainProtocol {
+    func get(query: KeychainObject) -> Result<KeychainObject, Error> {
+        let limitQuery: [CFString: Any] = [
+            kSecMatchLimit: kSecMatchLimitOne,
+            kSecReturnAttributes: true,
+            kSecReturnData: true,
+        ]
+        let newQuery = query.toCFDictionary(withValue: false).merging(limitQuery) { _, new in new }
+        var someItem: RawDictionary?
+        let status = SecItemCopyMatching(newQuery as CFDictionary, &someItem)
+        guard status == errSecSuccess else {
+            return .failure(CelyStorageError(status: status))
         }
 
-        guard let existingItem = item as? [String: Any],
-            let secureData = existingItem[kSecValueData as String] as? Data,
-            let loadedDictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(secureData) as? [String: Any]
-        else {
-            throw CelyStorageError.missingValue
+        guard let item = someItem else {
+            return .failure(CelyStorageError.missingValue)
         }
-
-        return loadedDictionary
+        let celyQuery = KeychainObject.buildFromKeychain(dictionary: item)
+        return .success(celyQuery)
     }
 
-    func set(_ secrets: [String: Any]) throws {
-        var queryCopy = baseQuery
-        let storeData = NSKeyedArchiver.archivedData(withRootObject: secrets)
-        queryCopy[kSecValueData as String] = storeData
-
+    func set(query: KeychainObject) throws {
         // try adding first
-        let status = SecItemAdd(queryCopy as CFDictionary, nil)
-        let errorStatus = CelyStorageError(status: status)
-
-        switch errorStatus {
+        let newQuery = query.toCFDictionary(withValue: true)
+        let status: OSStatus = SecItemAdd(newQuery as CFDictionary, nil)
+        let code = CelyStorageError(status: status)
+        switch code {
         case .noError: return
-        case .duplicateItem: return try update(secrets: secrets)
-        default: throw errorStatus
+        case .duplicateItem: return try update(query)
+        default: throw code
         }
     }
 
-    private func update(secrets: [String: Any]) throws {
-        let secretData = NSKeyedArchiver.archivedData(withRootObject: secrets)
-        let updateDictionary = [kSecValueData as String: secretData]
-        let status = SecItemUpdate(baseQuery as CFDictionary, updateDictionary as CFDictionary)
+    private func update(_ query: KeychainObject) throws {
+        guard let valueData = query.value as CFData? else { throw CelyStorageError.invalidValue }
+
+        let status: OSStatus = SecItemUpdate(query.toCFDictionary(withValue: false) as CFDictionary, [kSecValueData: valueData] as CFDictionary)
+        let code = CelyStorageError(status: status)
+        guard code == .noError else {
+            throw code
+        }
+    }
+
+    func delete(query: KeychainObject) throws {
+        let status = SecItemDelete(query.toCFDictionary(withValue: false) as CFDictionary)
         let errorStatus = CelyStorageError(status: status)
         guard errorStatus == .noError else {
             throw errorStatus

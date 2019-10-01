@@ -13,26 +13,32 @@ internal class CelySecureStorage: CelyStorageProtocol {
     private let celyKeychain = CelyKeychain()
 
     init() {
-        do {
-            let currentProtectedData = try celyKeychain.getProtectedData()
-            store = currentProtectedData
-        } catch let error as CelyStorageError {
-            // Expect this error to happen if first keychain is empty :)
-            Cely.debugPrint(str: error.description)
-        } catch {
-            Cely.debugPrint(str: error.localizedDescription)
+        let protectedDataQuery: Any = [
+            kSecClass: kSecClassInternetPassword,
+            kSecAttrAccount: kProtectedDataAccount,
+            kSecAttrLabel: kCelySecureStoreLabel,
+        ]
+
+        let object = KeychainObject.buildFromKeychain(dictionary: protectedDataQuery as AnyObject)
+        let existingResult = celyKeychain.get(query: object)
+
+        if case let .success(protectedData) = existingResult,
+            let protectedStoreData = protectedData.value,
+            let protectedStore = NSKeyedUnarchiver.unarchiveObject(with: protectedStoreData) as? [String: Any] {
+            store = protectedStore
         }
     }
 
     func set(_ value: Any?, forKey key: String, securely _: Bool = true, persisted _: Bool = true) throws {
         var storeCopy = store
         storeCopy[key] = value
-        try celyKeychain.set(storeCopy)
+        let object = KeychainObject(account: kProtectedDataAccount, value: NSKeyedArchiver.archivedData(withRootObject: storeCopy))
+        try celyKeychain.set(query: object)
         store[key] = value
     }
 
     func clearStorage() throws {
-        try celyKeychain.clearKeychain()
+        try celyKeychain.delete(query: KeychainObject())
         store = [:]
     }
 

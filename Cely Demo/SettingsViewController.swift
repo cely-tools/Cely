@@ -11,6 +11,20 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     @IBAction func LogoutButtonPressed() {
-        Cely.logout()
+        let result = Cely.logout()
+        if case let .failure(error) = result {
+            print(error)
+        }
+    }
+
+    @IBAction func getCredentialsClicked(_: Any) {
+        let result = Cely.credentials.get()
+        switch result {
+        case let .success(credentials):
+            print(credentials)
+        case let .failure(error):
+            print("failed to get credentials")
+            print(error)
+        }
     }
 }

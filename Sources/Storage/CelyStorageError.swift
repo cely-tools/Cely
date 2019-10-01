@@ -1237,10 +1237,8 @@ extension CelyStorageError: RawRepresentable, CustomStringConvertible {
     }
 }
 
-let KeychainAccessErrorDomain = "com.cely-tools.Cely.error"
-
-extension CelyStorageError: CustomNSError {
-    public static let errorDomain = KeychainAccessErrorDomain
+extension CelyStorageError: CustomNSError, CaseIterable {
+    public static let errorDomain = "com.cely-tools.Cely.error"
 
     public var errorCode: Int {
         return Int(rawValue)

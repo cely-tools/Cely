@@ -21,10 +21,7 @@ public struct Cely {
     /// A Completion Block that is expecting a `username:String` and a `password:String`
     public static var loginCompletionBlock: CelyLoginCompletion?
 
-    // TODO: decide on having a verbosity CelyOption flag.
-    // There's some errors (`.itemNotFound`) that are expected to happen and
-    // I'm not sure if I want to silence them
-    internal static var verbosity = false
+    public static var credentials = CelyCredentialStore.sharedInstance
 
     /// Sets up Cely within your application
     ///
@@ -125,13 +122,5 @@ extension Cely {
     /// - returns: `Boolean`
     public static func isLoggedIn() -> Bool {
         return currentLoginStatus() == .loggedIn
-    }
-}
-
-internal extension Cely {
-    static func debugPrint(str: CustomStringConvertible) {
-        if verbosity {
-            print(str)
-        }
     }
 }
