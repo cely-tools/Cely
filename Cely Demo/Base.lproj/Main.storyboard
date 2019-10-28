@@ -64,7 +64,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3U4-et-wir">
                                 <rect key="frame" x="134" y="215" width="107" height="30"/>
                                 <state key="normal" title="Get Credentials">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="getCredentialsClicked:" destination="rRA-t9-7xr" eventType="touchUpInside" id="eKB-Ky-FV9"/>
@@ -113,6 +113,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Yc-Ke-H6A" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204" y="743"/>
+        </scene>
+        <!--Biometric Login View Controller-->
+        <scene sceneID="YN1-YY-izx">
+            <objects>
+                <viewController storyboardIdentifier="BiometricLoginViewController" id="ZP6-Re-yGd" customClass="BiometricLoginViewController" customModule="Cely_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g3F-RX-NbP"/>
+                        <viewControllerLayoutGuide type="bottom" id="be8-I8-7fR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wmf-O2-iNa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2oj-QE-1Z6">
+                                <rect key="frame" x="20" y="297" width="335" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-pp-i8c">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="90"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OTm-Xc-nHh">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="0.40019415679999998" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="a7M-GG-JoO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftSpacer">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gJ-ra-7hL">
+                                                <rect key="frame" x="0.0" y="50" width="335" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="ZIl-36-v79"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftSpacer">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4XI-If-mOR">
+                                        <rect key="frame" x="0.0" y="110" width="335" height="40"/>
+                                        <color key="backgroundColor" red="0.33725490200000002" green="0.79607843140000001" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="fg4-L0-LYw"/>
+                                        </constraints>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonPressed" destination="ZP6-Re-yGd" eventType="touchUpInside" id="jcg-w4-8dR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2oj-QE-1Z6" firstAttribute="centerX" secondItem="wmf-O2-iNa" secondAttribute="centerX" id="4qo-2o-MUF"/>
+                            <constraint firstItem="be8-I8-7fR" firstAttribute="top" secondItem="2oj-QE-1Z6" secondAttribute="bottom" constant="220" id="YI2-k1-LZs"/>
+                            <constraint firstItem="2oj-QE-1Z6" firstAttribute="leading" secondItem="wmf-O2-iNa" secondAttribute="leading" constant="20" id="d3l-qa-RPr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="passwordField" destination="8gJ-ra-7hL" id="pol-F4-ncb"/>
+                        <outlet property="usernameField" destination="OTm-Xc-nHh" id="CBV-pa-W9H"/>
+                        <outletCollection property="textFields" destination="OTm-Xc-nHh" collectionClass="NSMutableArray" id="gR0-UN-A0f"/>
+                        <outletCollection property="textFields" destination="8gJ-ra-7hL" collectionClass="NSMutableArray" id="L4x-Ls-2Kc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJp-Xq-4uv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="788" y="743"/>
         </scene>
     </scenes>
 </document>

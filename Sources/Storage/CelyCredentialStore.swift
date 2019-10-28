@@ -14,9 +14,9 @@ public enum AccessibilityOptions {
 }
 
 public struct CelyCredentials {
-    let username: String
-    let password: String
-    let server: String
+    public let username: String
+    public let password: String
+    public let server: String
 }
 
 public struct CelyCredentialStore {
@@ -37,14 +37,14 @@ public struct CelyCredentialStore {
     }
 
     @discardableResult
-    public func set(username: String, password: String, server: String, accessibility _: [AccessibilityOptions] = []) -> Result<Void, Error> {
+    public func set(username: String, password: String, server: String, accessibility: [AccessibilityOptions] = []) -> Result<Void, Error> {
         guard let passwordData = password.data(using: .utf8) else {
             return .failure(CelyStorageError.invalidValue)
         }
 
         do {
-            let keychainQuery = KeychainObject(account: username, server: server, value: passwordData)
-            try setCredentialsLookupKey(keyDictionary: keychainQuery.toCFDictionary(withValue: false))
+            let keychainQuery = KeychainObject(account: username, server: server, value: passwordData, accessibility: accessibility)
+            try setCredentialsLookupKey(keyDictionary: keychainQuery.toLookupMap())
             try keychain.set(query: keychainQuery)
             return .success(())
         } catch {

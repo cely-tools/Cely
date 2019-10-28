@@ -79,5 +79,21 @@ class CelyCredentialStoreTests: XCTestCase {
         XCTAssert(error.localizedDescription == CelyStorageError.itemNotFound.description, "Should have received an `.itemNotFound`: \(error)")
     }
 
-    // TODO: test different `AcccessibilityOption`
+    func testIncludesBiometrics() {
+        let object = KeychainObject(account: "valid-username", server: "someserver.com", value: "valid-password".data(using: .utf8)!, accessibility: [.biometricsIfPossible])
+        let getMap = object.toSetMap(withValue: false)
+        let foundValue = getMap[kSecAttrAccessControl]
+        XCTAssert(foundValue != nil, "Failed to find biometrics flag")
+        let accessibility = object.getAccessibility()
+        XCTAssert(accessibility == kSecAttrAccessibleWhenUnlocked, "Failed to set correct `accessibility`: \(accessibility)")
+    }
+
+    func testThisDeviceOnly() {
+        let object = KeychainObject(account: "valid-username", server: "someserver.com", value: "valid-password".data(using: .utf8)!, accessibility: [.biometricsIfPossible, .thisDeviceOnly])
+        let getMap = object.toSetMap(withValue: false)
+        let foundValue = getMap[kSecAttrAccessControl]
+        XCTAssert(foundValue != nil, "Failed to find biometrics flag")
+        let accessibility = object.getAccessibility()
+        XCTAssert(accessibility == kSecAttrAccessibleWhenUnlockedThisDeviceOnly, "Failed to set correct `accessibility`: \(accessibility)")
+    }
 }

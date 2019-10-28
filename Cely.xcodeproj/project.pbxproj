@@ -70,6 +70,7 @@
 		31238F162331019400D6CBC3 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; };
 		31238F172331019400D6CBC3 /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31238F1A233103D500D6CBC3 /* CelyStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31238F19233103D500D6CBC3 /* CelyStorageError.swift */; };
+		31394AD223495B19007D16C6 /* BiometricLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31394AD123495B19007D16C6 /* BiometricLoginViewController.swift */; };
 		317D983923416BC0008E2016 /* CelyCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D983823416BC0008E2016 /* CelyCredentialStoreTests.swift */; };
 		317D983B234239BE008E2016 /* KeychainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D983A234239BE008E2016 /* KeychainObject.swift */; };
 		31FAEB8022ECC4DD003EC60A /* CelySecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */; };
@@ -159,6 +160,7 @@
 		1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
 		1F9D24071E8D49C700FB4BE6 /* Cely Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cely Demo.entitlements"; sourceTree = "<group>"; };
 		31238F19233103D500D6CBC3 /* CelyStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelyStorageError.swift; sourceTree = "<group>"; };
+		31394AD123495B19007D16C6 /* BiometricLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricLoginViewController.swift; sourceTree = "<group>"; };
 		317D983823416BC0008E2016 /* CelyCredentialStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelyCredentialStoreTests.swift; sourceTree = "<group>"; };
 		317D983A234239BE008E2016 /* KeychainObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainObject.swift; sourceTree = "<group>"; };
 		31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelySecureStorage.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				1F2864371E89578700EE8180 /* Assets.xcassets */,
 				1F2864391E89578700EE8180 /* LaunchScreen.storyboard */,
 				1F28643C1E89578700EE8180 /* Info.plist */,
+				31394AD123495B19007D16C6 /* BiometricLoginViewController.swift */,
 			);
 			path = "Cely Demo";
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				1F28642E1E89578700EE8180 /* AppDelegate.swift in Sources */,
 				1F2864501E895C2100EE8180 /* LoginStyles.swift in Sources */,
 				1F28644F1E895C2100EE8180 /* ViewController.swift in Sources */,
+				31394AD223495B19007D16C6 /* BiometricLoginViewController.swift in Sources */,
 				1F28644E1E895C2100EE8180 /* User.swift in Sources */,
 				1F2864511E895C2100EE8180 /* SettingsViewController.swift in Sources */,
 			);
@@ -1010,13 +1014,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H367AL682C;
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xcode.cely-tools.Cely-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
 			name = Debug;
@@ -1026,13 +1033,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H367AL682C;
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xcode.cely-tools.Cely-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
 			name = Release;

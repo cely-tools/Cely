@@ -11,14 +11,21 @@ import Foundation
 typealias RawDictionary = AnyObject
 
 struct KeychainObject {
+    var baseQuery: [CFString: Any] = [
+        kSecClass: kSecClassInternetPassword,
+        kSecAttrLabel: kCelySecureStoreLabel,
+    ]
+
     let account: String?
     let server: String?
     let value: Data?
+    private let accessibilityOptions: [AccessibilityOptions]
 
-    init(account: String? = nil, server: String? = nil, value: Data? = nil) {
+    init(account: String? = nil, server: String? = nil, value: Data? = nil, accessibility: [AccessibilityOptions] = []) {
         self.account = account
         self.server = server
         self.value = value
+        accessibilityOptions = accessibility
     }
 
     static func buildFromKeychain(dictionary: RawDictionary) -> KeychainObject {
@@ -29,24 +36,54 @@ struct KeychainObject {
         )
     }
 
-    func toCFDictionary(withValue: Bool) -> [CFString: Any] {
-        var query: [CFString: Any] = [
-            kSecClass: kSecClassInternetPassword,
-            kSecAttrLabel: kCelySecureStoreLabel,
-        ]
+    func toLookupMap() -> [CFString: Any] {
+        var lookupMap: [CFString: Any] = [:]
 
         if let account = account {
-            query[kSecAttrAccount] = account
+            lookupMap[kSecAttrAccount] = account
         }
 
         if let server = server {
-            query[kSecAttrServer] = server
+            lookupMap[kSecAttrServer] = server
         }
+
+        return baseQuery.merging(lookupMap) { _, new in new }
+    }
+
+    func toGetMap() -> [CFString: Any] {
+        let limitQuery: [CFString: Any] = [
+            kSecMatchLimit: kSecMatchLimitOne,
+            kSecReturnAttributes: true,
+            kSecReturnData: true,
+        ]
+
+        let query = toLookupMap()
+        return query.merging(limitQuery) { _, new in new }
+    }
+
+    func getAccessibility() -> CFString {
+        let isThisDeviceOnly = accessibilityOptions.contains(.thisDeviceOnly)
+        return isThisDeviceOnly ? kSecAttrAccessibleWhenUnlockedThisDeviceOnly : kSecAttrAccessibleWhenUnlocked
+    }
+
+    func toSetMap(withValue: Bool) -> [CFString: Any] {
+        var userMap = toLookupMap()
 
         if let value = value, withValue {
-            query[kSecValueData] = value
+            userMap[kSecValueData] = value
         }
 
-        return query
+        if accessibilityOptions.contains(.biometricsIfPossible) {
+            let accessibility = getAccessibility()
+            var error: Unmanaged<CFError>?
+            let access = SecAccessControlCreateWithFlags(nil,
+                                                         accessibility,
+                                                         .userPresence,
+                                                         &error)
+
+            userMap[kSecAttrAccessControl] = access
+        }
+
+        return baseQuery.merging(userMap) { _, new in new }
     }
 }

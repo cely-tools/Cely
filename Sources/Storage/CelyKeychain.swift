@@ -16,12 +16,7 @@ protocol KeychainProtocol {
 
 internal struct CelyKeychain: KeychainProtocol {
     func get(query: KeychainObject) -> Result<KeychainObject, Error> {
-        let limitQuery: [CFString: Any] = [
-            kSecMatchLimit: kSecMatchLimitOne,
-            kSecReturnAttributes: true,
-            kSecReturnData: true,
-        ]
-        let newQuery = query.toCFDictionary(withValue: false).merging(limitQuery) { _, new in new }
+        let newQuery = query.toGetMap()
         var someItem: RawDictionary?
         let status = SecItemCopyMatching(newQuery as CFDictionary, &someItem)
         guard status == errSecSuccess else {
@@ -37,7 +32,7 @@ internal struct CelyKeychain: KeychainProtocol {
 
     func set(query: KeychainObject) throws {
         // try adding first
-        let newQuery = query.toCFDictionary(withValue: true)
+        let newQuery = query.toSetMap(withValue: true)
         let status: OSStatus = SecItemAdd(newQuery as CFDictionary, nil)
         let code = CelyStorageError(status: status)
         switch code {
@@ -50,7 +45,7 @@ internal struct CelyKeychain: KeychainProtocol {
     private func update(_ query: KeychainObject) throws {
         guard let valueData = query.value as CFData? else { throw CelyStorageError.invalidValue }
 
-        let status: OSStatus = SecItemUpdate(query.toCFDictionary(withValue: false) as CFDictionary, [kSecValueData: valueData] as CFDictionary)
+        let status: OSStatus = SecItemUpdate(query.toSetMap(withValue: false) as CFDictionary, [kSecValueData: valueData] as CFDictionary)
         let code = CelyStorageError(status: status)
         guard code == .noError else {
             throw code
@@ -58,7 +53,7 @@ internal struct CelyKeychain: KeychainProtocol {
     }
 
     func delete(query: KeychainObject) throws {
-        let status = SecItemDelete(query.toCFDictionary(withValue: false) as CFDictionary)
+        let status = SecItemDelete(query.toLookupMap() as CFDictionary)
         let errorStatus = CelyStorageError(status: status)
         guard errorStatus == .noError else {
             throw errorStatus
