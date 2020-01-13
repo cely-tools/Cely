@@ -43,9 +43,13 @@ internal struct CelyKeychain: KeychainProtocol {
     }
 
     private func update(_ query: KeychainObject) throws {
-        guard let valueData = query.value as CFData? else { throw CelyStorageError.invalidValue }
+        guard let _ = query.value as CFData? else { throw CelyStorageError.invalidValue }
+        var newDictionary = query.toSetMap(withValue: true)
+        for key in query.toGetMap().keys {
+            newDictionary.removeValue(forKey: key)
+        }
 
-        let status: OSStatus = SecItemUpdate(query.toSetMap(withValue: false) as CFDictionary, [kSecValueData: valueData] as CFDictionary)
+        let status: OSStatus = SecItemUpdate(query.toLookupMap() as CFDictionary, newDictionary as CFDictionary)
         let code = CelyStorageError(status: status)
         guard code == .noError else {
             throw code
