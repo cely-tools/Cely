@@ -16,9 +16,9 @@ public protocol CelyUser {
 
 /// Protocol a storage class must abide by in order for Cely to use it
 public protocol CelyStorageProtocol {
-    func set(_ value: Any?, forKey key: String, securely secure: Bool, persisted persist: Bool) -> StorageResult
+    func set(_ value: Any?, forKey key: String, securely secure: Bool, persisted persist: Bool) throws
     func get(_ key: String) -> Any?
-    func removeAllData()
+    func clearStorage() throws
 }
 
 /// Protocol that allows styles to be applied to Cely's default LoginViewController

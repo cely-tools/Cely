@@ -33,17 +33,10 @@
 		1F68AFE71E89505A001A0161 /* CelyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD61E89505A001A0161 /* CelyProtocols.swift */; };
 		1F68AFE81E89505A001A0161 /* CelyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD61E89505A001A0161 /* CelyProtocols.swift */; };
 		1F68AFE91E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
-		1F68AFEA1E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
-		1F68AFEB1E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
-		1F68AFEC1E89505A001A0161 /* CelyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD71E89505A001A0161 /* CelyStorage.swift */; };
 		1F68AFED1E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
 		1F68AFEE1E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
 		1F68AFEF1E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
 		1F68AFF01E89505A001A0161 /* CelyWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */; };
-		1F68AFF91E89505A001A0161 /* LocksmithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFDB1E89505A001A0161 /* LocksmithError.swift */; };
-		1F68AFFA1E89505A001A0161 /* LocksmithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFDB1E89505A001A0161 /* LocksmithError.swift */; };
-		1F68AFFB1E89505A001A0161 /* LocksmithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFDB1E89505A001A0161 /* LocksmithError.swift */; };
-		1F68AFFC1E89505A001A0161 /* LocksmithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68AFDB1E89505A001A0161 /* LocksmithError.swift */; };
 		1F68B0041E895069001A0161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0011E895069001A0161 /* Assets.xcassets */; };
 		1F68B0051E895069001A0161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0011E895069001A0161 /* Assets.xcassets */; };
 		1F68B0061E895069001A0161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0011E895069001A0161 /* Assets.xcassets */; };
@@ -74,7 +67,9 @@
 		1F68B0451E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
 		1F68B0461E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
 		1F68B0471E8951AA001A0161 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */; };
-		1FB2CEF11E8D3E2D00E1A5F6 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; };
+		31238F162331019400D6CBC3 /* Cely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; };
+		31238F172331019400D6CBC3 /* Cely.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3549BB211DA389CD00C63030 /* Cely.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31238F1A233103D500D6CBC3 /* CelyStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31238F19233103D500D6CBC3 /* CelyStorageError.swift */; };
 		31817D1122FBCA15004FF30F /* CelyKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31817D1022FBCA15004FF30F /* CelyKeychain.swift */; };
 		31FAEB8022ECC4DD003EC60A /* CelySecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */; };
 		3549BB501DA38A2000C63030 /* Cely.h in Headers */ = {isa = PBXBuildFile; fileRef = 3549BB181DA3890B00C63030 /* Cely.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -117,6 +112,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		31238F182331019400D6CBC3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				31238F172331019400D6CBC3 /* Cely.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1F28642B1E89578700EE8180 /* Cely Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cely Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F28642D1E89578700EE8180 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,7 +143,6 @@
 		1F68AFD61E89505A001A0161 /* CelyProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyProtocols.swift; sourceTree = "<group>"; };
 		1F68AFD71E89505A001A0161 /* CelyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyStorage.swift; sourceTree = "<group>"; };
 		1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyWindowManager.swift; sourceTree = "<group>"; };
-		1F68AFDB1E89505A001A0161 /* LocksmithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithError.swift; sourceTree = "<group>"; };
 		1F68B0011E895069001A0161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
 		1F68B0021E895069001A0161 /* Cely.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Cely.storyboard; path = "Supporting Files/Cely.storyboard"; sourceTree = "<group>"; };
 		1F68B0031E895069001A0161 /* CelyLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelyLoginViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +154,7 @@
 		1F68B01C1E89519A001A0161 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F68B0441E8951AA001A0161 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestStoryboard.storyboard; path = Frameworks/TestStoryboard.storyboard; sourceTree = "<group>"; };
 		1F9D24071E8D49C700FB4BE6 /* Cely Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cely Demo.entitlements"; sourceTree = "<group>"; };
+		31238F19233103D500D6CBC3 /* CelyStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelyStorageError.swift; sourceTree = "<group>"; };
 		31817D1022FBCA15004FF30F /* CelyKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelyKeychain.swift; sourceTree = "<group>"; };
 		31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelySecureStorage.swift; sourceTree = "<group>"; };
 		3549BB171DA3890B00C63030 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,7 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FB2CEF11E8D3E2D00E1A5F6 /* Cely.framework in Frameworks */,
+				31238F162331019400D6CBC3 /* Cely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +275,17 @@
 				1F28643C1E89578700EE8180 /* Info.plist */,
 			);
 			path = "Cely Demo";
+			sourceTree = "<group>";
+		};
+		311B5E3023310901002166E1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1F68AFD71E89505A001A0161 /* CelyStorage.swift */,
+				31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */,
+				31817D1022FBCA15004FF30F /* CelyKeychain.swift */,
+				31238F19233103D500D6CBC3 /* CelyStorageError.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		3549BAFB1DA387DB00C63030 = {
@@ -344,14 +364,11 @@
 		3549BB5C1DA38AA500C63030 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				311B5E3023310901002166E1 /* Storage */,
 				1F68AFD41E89505A001A0161 /* Cely.swift */,
 				1F68AFD51E89505A001A0161 /* CelyConstants.swift */,
 				1F68AFD61E89505A001A0161 /* CelyProtocols.swift */,
-				1F68AFD71E89505A001A0161 /* CelyStorage.swift */,
-				31FAEB7F22ECC4DD003EC60A /* CelySecureStorage.swift */,
 				1F68AFD81E89505A001A0161 /* CelyWindowManager.swift */,
-				1F68AFDB1E89505A001A0161 /* LocksmithError.swift */,
-				31817D1022FBCA15004FF30F /* CelyKeychain.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -505,6 +522,7 @@
 				1F2864271E89578700EE8180 /* Sources */,
 				1F2864281E89578700EE8180 /* Frameworks */,
 				1F2864291E89578700EE8180 /* Resources */,
+				31238F182331019400D6CBC3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -655,7 +673,7 @@
 				TargetAttributes = {
 					1F28642A1E89578700EE8180 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7CX9JN6SPG;
+						DevelopmentTeam = H367AL682C;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -845,12 +863,12 @@
 				1F68AFE51E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE11E89505A001A0161 /* CelyConstants.swift in Sources */,
 				31FAEB8022ECC4DD003EC60A /* CelySecureStorage.swift in Sources */,
+				31238F1A233103D500D6CBC3 /* CelyStorageError.swift in Sources */,
 				1F68B00C1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
 				1F68AFE91E89505A001A0161 /* CelyStorage.swift in Sources */,
 				31817D1122FBCA15004FF30F /* CelyKeychain.swift in Sources */,
 				1F68AFED1E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFDD1E89505A001A0161 /* Cely.swift in Sources */,
-				1F68AFF91E89505A001A0161 /* LocksmithError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,10 +879,8 @@
 				1F68AFE81E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE41E89505A001A0161 /* CelyConstants.swift in Sources */,
 				1F68B00F1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
-				1F68AFEC1E89505A001A0161 /* CelyStorage.swift in Sources */,
 				1F68AFF01E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFE01E89505A001A0161 /* Cely.swift in Sources */,
-				1F68AFFC1E89505A001A0161 /* LocksmithError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,10 +891,8 @@
 				1F68AFE61E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE21E89505A001A0161 /* CelyConstants.swift in Sources */,
 				1F68B00D1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
-				1F68AFEA1E89505A001A0161 /* CelyStorage.swift in Sources */,
 				1F68AFEE1E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFDE1E89505A001A0161 /* Cely.swift in Sources */,
-				1F68AFFA1E89505A001A0161 /* LocksmithError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,10 +903,8 @@
 				1F68AFE71E89505A001A0161 /* CelyProtocols.swift in Sources */,
 				1F68AFE31E89505A001A0161 /* CelyConstants.swift in Sources */,
 				1F68B00E1E895069001A0161 /* CelyLoginViewController.swift in Sources */,
-				1F68AFEB1E89505A001A0161 /* CelyStorage.swift in Sources */,
 				1F68AFEF1E89505A001A0161 /* CelyWindowManager.swift in Sources */,
 				1F68AFDF1E89505A001A0161 /* Cely.swift in Sources */,
-				1F68AFFB1E89505A001A0161 /* LocksmithError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,11 +995,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7CX9JN6SPG;
+				DEVELOPMENT_TEAM = H367AL682C;
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Cely.Cely-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
@@ -999,11 +1011,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cely Demo/Cely Demo.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7CX9JN6SPG;
+				DEVELOPMENT_TEAM = H367AL682C;
 				INFOPLIST_FILE = "Cely Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Cely.Cely-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
@@ -1139,7 +1151,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1162,7 +1174,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1183,7 +1195,7 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1208,7 +1220,7 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1234,7 +1246,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1259,7 +1271,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1280,7 +1292,7 @@
 				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1304,7 +1316,7 @@
 				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.Cely;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.Cely";
 				PRODUCT_NAME = Cely;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1326,7 +1338,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG -D TEST";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.CelyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1345,7 +1357,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.CelyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cely Demo.app/Cely Demo";
@@ -1361,7 +1373,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.CelyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1379,7 +1391,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.CelyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
@@ -1399,7 +1411,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.CelyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1419,7 +1431,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cely.Cely.CelyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cely-tools.CelyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 3.0;

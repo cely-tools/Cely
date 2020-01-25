@@ -21,6 +21,11 @@ public struct Cely {
     /// A Completion Block that is expecting a `username:String` and a `password:String`
     public static var loginCompletionBlock: CelyLoginCompletion?
 
+    // TODO: decide on having a verbosity CelyOption flag.
+    // There's some errors (`.itemNotFound`) that are expected to happen and
+    // I'm not sure if I want to silence them
+    internal static var verbosity = false
+
     /// Sets up Cely within your application
     ///
     /// - parameter window:             `UIWindow` of your application.
@@ -84,8 +89,14 @@ extension Cely {
     /// - parameter persist: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean`: Whether or not your value was successfully set.
-    @discardableResult public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> StorageResult {
-        return store.set(value, forKey: key, securely: secure, persisted: persist)
+    @discardableResult
+    public static func save(_ value: Any?, forKey key: String, toStorage store: CelyStorageProtocol = store, securely secure: Bool = false, persisted persist: Bool = false) -> Result<Void, Error> {
+        do {
+            try store.set(value, forKey: key, securely: secure, persisted: persist)
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
     }
 
     /// Perform action like `LoggedIn` or `LoggedOut`
@@ -98,9 +109,15 @@ extension Cely {
     /// Log user out
     ///
     /// - parameter store: Storage `Cely` will be using. Defaulted to `CelyStorageProtocol`
-    public static func logout(useStorage store: CelyStorageProtocol = store) {
-        store.removeAllData()
-        changeStatus(to: .loggedOut)
+    @discardableResult
+    public static func logout(useStorage store: CelyStorageProtocol = store) -> Result<Void, Error> {
+        do {
+            try store.clearStorage()
+            changeStatus(to: .loggedOut)
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
     }
 
     /// Returns whether or not the user is logged in
@@ -108,5 +125,13 @@ extension Cely {
     /// - returns: `Boolean`
     public static func isLoggedIn() -> Bool {
         return currentLoginStatus() == .loggedIn
+    }
+}
+
+internal extension Cely {
+    static func debugPrint(str: CustomStringConvertible) {
+        if verbosity {
+            print(str)
+        }
     }
 }

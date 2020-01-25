@@ -23,34 +23,11 @@ public enum CelyStatus: CelyCommands {
 /// Options that you can pass into Cely on `Cely.setup(_:)`
 public enum CelyOptions {
     case storage
-    @available(*, deprecated, renamed: "homeViewController", message: "We will no longer support UIStoryboard as a way to instantiate ViewControllers.")
-    case homeStoryboard
-    @available(*, deprecated, renamed: "loginViewController", message: "We will no longer support UIStoryboard as a way to instantiate ViewControllers.")
-    case loginStoryboard
     case homeViewController
     case loginViewController
     case loginCompletionBlock
     case loginStyle
     case celyAnimator
-}
-
-// enum result on whether or not Cely successfully saved your data
-public enum StorageResult: Equatable {
-    case success
-    case fail(LocksmithError)
-}
-
-public func == (lhs: StorageResult, rhs: StorageResult) -> Bool {
-    switch (lhs, rhs) {
-    case let (.fail(error1), .fail(error2)):
-        return error1 == error2
-
-    case (.success, .success):
-        return true
-
-    default:
-        return false
-    }
 }
 
 internal extension UITextField {

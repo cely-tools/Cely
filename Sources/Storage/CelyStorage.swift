@@ -35,7 +35,9 @@ public class CelyStorage: CelyStorageProtocol {
             UserDefaults.standard.synchronize()
 
             // Clear Secure Storage
-            secureStore.clearStorage()
+            do {
+                try secureStore.clearStorage()
+            } catch {}
         }
 
         setupStorage()
@@ -51,11 +53,11 @@ public class CelyStorage: CelyStorageProtocol {
     }
 
     /// Removes all data from both `secureStorage` and regular `storage`
-    public func removeAllData() {
+    public func clearStorage() throws {
         CelyStorage.sharedInstance.storage[kStore] = [:]
         UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
         UserDefaults.standard.synchronize()
-        CelyStorage.sharedInstance.secureStore.clearStorage()
+        try CelyStorage.sharedInstance.secureStore.clearStorage()
     }
 
     /// Saves data to storage
@@ -66,10 +68,10 @@ public class CelyStorage: CelyStorageProtocol {
     /// - parameter persisted: `Boolean`: Keep data after logout
     ///
     /// - returns: `Boolean` on whether or not it successfully saved
-    public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) -> StorageResult {
-        guard let val = value else { return .fail(.undefined) }
+    public func set(_ value: Any?, forKey key: String, securely secure: Bool = false, persisted: Bool = false) throws {
+        guard let val = value else { throw CelyStorageError.param }
         if secure {
-            return secureStore.set(val, forKey: key)
+            return try secureStore.set(val, forKey: key)
         } else {
             if persisted {
                 CelyStorage.sharedInstance.storage[kPersisted]?[key] = val
@@ -81,7 +83,6 @@ public class CelyStorage: CelyStorageProtocol {
             UserDefaults.standard.setPersistentDomain(CelyStorage.sharedInstance.storage, forName: kCelyDomain)
             UserDefaults.standard.synchronize()
         }
-        return .success
     }
 
     /// Retrieve user data from key
