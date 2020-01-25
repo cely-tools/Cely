@@ -19,6 +19,7 @@ public struct CelyCredentials {
     public let server: String
 }
 
+/// CelyCredentialStore - object that stores user credentials
 public struct CelyCredentialStore {
     static let sharedInstance = CelyCredentialStore()
 
@@ -36,8 +37,14 @@ public struct CelyCredentialStore {
         return Cely.get(key: kCelyCredentialsLookupKey) as? [CFString: Any]
     }
 
-    @discardableResult
-    public func set(username: String, password: String, server: String, accessibility: [AccessibilityOptions] = []) -> Result<Void, Error> {
+
+    /// Set user credentials
+    /// - Parameters:
+    ///   - username: username for user
+    ///   - password: password for user
+    ///   - server: api uri for account
+    ///   - accessibility: Array of AccessibilityOptions for credentials to be saved with
+    @discardableResult public func set(username: String, password: String, server: String, accessibility: [AccessibilityOptions] = []) -> Result<Void, Error> {
         guard let passwordData = password.data(using: .utf8) else {
             return .failure(CelyStorageError.invalidValue)
         }

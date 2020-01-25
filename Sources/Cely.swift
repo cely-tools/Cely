@@ -13,15 +13,16 @@ public struct Cely {
     fileprivate init() {}
     public typealias CelyLoginCompletion = (_ username: String, _ password: String) -> Void
     /// Properties that are needed inorder for user to stay logged in.
-    public static var requiredProperties: [CelyProperty] = []
+    public private(set) static var requiredProperties: [CelyProperty] = []
 
     /// A `Storage` instance
-    public static var store: CelyStorageProtocol = CelyStorage.sharedInstance
+    public private(set) static var store: CelyStorageProtocol = CelyStorage.sharedInstance
 
     /// A Completion Block that is expecting a `username:String` and a `password:String`
-    public static var loginCompletionBlock: CelyLoginCompletion?
+    private(set) static var loginCompletionBlock: CelyLoginCompletion?
 
-    public static var credentials = CelyCredentialStore.sharedInstance
+    /// `CelyCredentialsStore` instance
+    public private(set) static var credentials = CelyCredentialStore.sharedInstance
 
     /// Sets up Cely within your application
     ///

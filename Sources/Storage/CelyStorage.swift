@@ -16,7 +16,7 @@ internal let kProtectedDataAccount = "cely.secure.store.protected.data"
 internal let kCelySecureStoreLabel = "cely.secure.store.key"
 internal let kCelyCredentialsLookupKey = "credentials-lookup"
 
-public class CelyStorage: CelyStorageProtocol {
+internal class CelyStorage: CelyStorageProtocol {
     // MARK: - Variables
 
     static let sharedInstance = CelyStorage()

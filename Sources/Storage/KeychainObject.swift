@@ -74,6 +74,7 @@ struct KeychainObject {
         }
 
         if accessibilityOptions.contains(.biometricsIfPossible) {
+            // TODO: what happens if application doesnt have biometrics setup? does it error
             let accessibility = getAccessibility()
             var error: Unmanaged<CFError>?
             let access = SecAccessControlCreateWithFlags(nil,
