@@ -13,7 +13,7 @@ public struct Cely {
     fileprivate init() {}
     public typealias CelyLoginCompletion = (_ username: String, _ password: String) -> Void
     /// Properties that are needed inorder for user to stay logged in.
-    public private(set) static var requiredProperties: [CelyProperty] = []
+    public internal(set) static var requiredProperties: [CelyProperty] = []
 
     /// A `Storage` instance
     public private(set) static var store: CelyStorageProtocol = CelyStorage.sharedInstance

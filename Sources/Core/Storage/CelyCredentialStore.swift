@@ -8,11 +8,6 @@
 
 import Foundation
 
-public enum AccessibilityOptions {
-    case biometricsIfPossible
-    case thisDeviceOnly
-}
-
 public struct CelyCredentials {
     public let username: String
     public let password: String
@@ -37,14 +32,14 @@ public struct CelyCredentialStore {
         return Cely.get(key: kCelyCredentialsLookupKey) as? [CFString: Any]
     }
 
-
     /// Set user credentials
     /// - Parameters:
     ///   - username: username for user
     ///   - password: password for user
     ///   - server: api uri for account
     ///   - accessibility: Array of AccessibilityOptions for credentials to be saved with
-    @discardableResult public func set(username: String, password: String, server: String, accessibility: [AccessibilityOptions] = []) -> Result<Void, Error> {
+    @discardableResult
+    public func set(username: String, password: String, server: String, accessibility: [AccessibilityOptions] = []) -> Result<Void, Error> {
         guard let passwordData = password.data(using: .utf8) else {
             return .failure(CelyStorageError.invalidValue)
         }
@@ -59,6 +54,7 @@ public struct CelyCredentialStore {
         }
     }
 
+    /// Return credentials
     public func get() -> Result<CelyCredentials, Error> {
         guard let lookupQuery = getCredentialsLookupKey() else {
             return .failure(CelyStorageError.unexpectedError)

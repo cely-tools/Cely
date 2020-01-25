@@ -44,7 +44,7 @@ internal extension UITextField {
     }
 }
 
-public extension UIWindow {
+internal extension UIWindow {
     func setCurrentViewController(to viewController: UIViewController?) {
         let previousViewController = rootViewController
         rootViewController = viewController
@@ -53,4 +53,9 @@ public extension UIWindow {
             previousViewController.dismiss(animated: false)
         }
     }
+}
+
+public enum AccessibilityOptions {
+    case biometricsIfPossible
+    case thisDeviceOnly
 }

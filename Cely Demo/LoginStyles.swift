@@ -15,6 +15,17 @@ struct LoginStyles: CelyStyle {
     }
 }
 
+extension UIWindow {
+    func setCurrentViewController(to viewController: UIViewController?) {
+        let previousViewController = rootViewController
+        rootViewController = viewController
+
+        if let previousViewController = previousViewController {
+            previousViewController.dismiss(animated: false)
+        }
+    }
+}
+
 struct CustomAnimator: CelyAnimator {
     func loginTransition(to destinationVC: UIViewController?, with celyWindow: UIWindow) {
         guard let snapshot = celyWindow.snapshotView(afterScreenUpdates: true) else {
