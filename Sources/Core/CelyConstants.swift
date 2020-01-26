@@ -23,6 +23,10 @@ public enum CelyStatus: CelyCommands {
 /// Options that you can pass into Cely on `Cely.setup(_:)`
 public enum CelyOptions {
     case storage
+    @available(*, deprecated, renamed: "homeViewController", message: "We will no longer support UIStoryboard as a way to instantiate ViewControllers.")
+    case homeStoryboard
+    @available(*, deprecated, renamed: "loginViewController", message: "We will no longer support UIStoryboard as a way to instantiate ViewControllers.")
+    case loginStoryboard
     case homeViewController
     case loginViewController
     case loginCompletionBlock
