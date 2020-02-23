@@ -37,15 +37,15 @@ public struct CelyCredentialStore {
     ///   - username: username for user
     ///   - password: password for user
     ///   - server: api uri for account
-    ///   - accessibility: Array of AccessibilityOptions for credentials to be saved with
+    ///   - options: Array of AccessControlOptions for credentials to be saved with
     @discardableResult
-    public func set(username: String, password: String, server: String, accessibility: [AccessibilityOptions] = []) -> Result<Void, Error> {
+    public func set(username: String, password: String, server: String, options: [AccessControlOptions] = []) -> Result<Void, Error> {
         guard let passwordData = password.data(using: .utf8) else {
             return .failure(CelyStorageError.invalidValue)
         }
 
         do {
-            let keychainQuery = KeychainObject(account: username, server: server, value: passwordData, accessibility: accessibility)
+            let keychainQuery = KeychainObject(account: username, server: server, value: passwordData, options: options)
             try setCredentialsLookupKey(keyDictionary: keychainQuery.toLookupMap())
             try keychain.set(query: keychainQuery)
             return .success(())

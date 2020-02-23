@@ -19,13 +19,13 @@ struct KeychainObject {
     let account: String?
     let server: String?
     let value: Data?
-    private let accessibilityOptions: [AccessibilityOptions]
+    private let accessControlOptions: [AccessControlOptions]
 
-    init(account: String? = nil, server: String? = nil, value: Data? = nil, accessibility: [AccessibilityOptions] = []) {
+    init(account: String? = nil, server: String? = nil, value: Data? = nil, options: [AccessControlOptions] = []) {
         self.account = account
         self.server = server
         self.value = value
-        accessibilityOptions = accessibility
+        accessControlOptions = options
     }
 
     static func buildFromKeychain(dictionary: RawDictionary) -> KeychainObject {
@@ -61,8 +61,8 @@ struct KeychainObject {
         return query.merging(limitQuery) { _, new in new }
     }
 
-    func getAccessibility() -> CFString {
-        let isThisDeviceOnly = accessibilityOptions.contains(.thisDeviceOnly)
+    func getAccessControlOptions() -> CFString {
+        let isThisDeviceOnly = accessControlOptions.contains(.thisDeviceOnly)
         return isThisDeviceOnly ? kSecAttrAccessibleWhenUnlockedThisDeviceOnly : kSecAttrAccessibleWhenUnlocked
     }
 
@@ -73,11 +73,11 @@ struct KeychainObject {
             userMap[kSecValueData] = value
         }
 
-        if accessibilityOptions.contains(.biometricsIfPossible) {
-            let accessibility = getAccessibility()
+        if accessControlOptions.contains(.biometricsIfPossible) {
+            let options = getAccessControlOptions()
             var error: Unmanaged<CFError>?
             let access = SecAccessControlCreateWithFlags(nil,
-                                                         accessibility,
+                                                         options,
                                                          .userPresence,
                                                          &error)
 

@@ -48,7 +48,7 @@ class BiometricLoginViewController: UIViewController, UITextFieldDelegate {
                     username: username,
                     password: password,
                     server: "api.example.com",
-                    accessibility: [.biometricsIfPossible]
+                    options: [.biometricsIfPossible]
                 )
 
                 if case let .failure(error) = credentialResult {

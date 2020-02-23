@@ -80,20 +80,20 @@ class CelyCredentialStoreTests: XCTestCase {
     }
 
     func testIncludesBiometrics() {
-        let object = KeychainObject(account: "valid-username", server: "someserver.com", value: "valid-password".data(using: .utf8)!, accessibility: [.biometricsIfPossible])
+        let object = KeychainObject(account: "valid-username", server: "someserver.com", value: "valid-password".data(using: .utf8)!, options: [.biometricsIfPossible])
         let getMap = object.toSetMap(withValue: false)
         let foundValue = getMap[kSecAttrAccessControl]
         XCTAssert(foundValue != nil, "Failed to find biometrics flag")
-        let accessibility = object.getAccessibility()
-        XCTAssert(accessibility == kSecAttrAccessibleWhenUnlocked, "Failed to set correct `accessibility`: \(accessibility)")
+        let options = object.getAccessControlOptions()
+        XCTAssert(options == kSecAttrAccessibleWhenUnlocked, "Failed to set correct `accessibility`: \(options)")
     }
 
     func testThisDeviceOnly() {
-        let object = KeychainObject(account: "valid-username", server: "someserver.com", value: "valid-password".data(using: .utf8)!, accessibility: [.biometricsIfPossible, .thisDeviceOnly])
+        let object = KeychainObject(account: "valid-username", server: "someserver.com", value: "valid-password".data(using: .utf8)!, options: [.biometricsIfPossible, .thisDeviceOnly])
         let getMap = object.toSetMap(withValue: false)
         let foundValue = getMap[kSecAttrAccessControl]
         XCTAssert(foundValue != nil, "Failed to find biometrics flag")
-        let accessibility = object.getAccessibility()
-        XCTAssert(accessibility == kSecAttrAccessibleWhenUnlockedThisDeviceOnly, "Failed to set correct `accessibility`: \(accessibility)")
+        let options = object.getAccessControlOptions()
+        XCTAssert(options == kSecAttrAccessibleWhenUnlockedThisDeviceOnly, "Failed to set correct `accessibility`: \(options)")
     }
 }
