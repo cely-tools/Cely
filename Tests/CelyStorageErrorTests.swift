@@ -3,7 +3,7 @@
 //  CelyTests-iOS
 //
 //  Created by Fabian Buentello on 9/30/19.
-//  Copyright © 2019 ChaiOne. All rights reserved.
+//  Copyright © 2019 Fabian Buentello. All rights reserved.
 //
 
 @testable import Cely
